@@ -584,18 +584,6 @@
           </div>
         </div>
 
-        <div style="display:flex; gap:15px; margin-top:20px; opacity:0.5;">
-          <div style="flex:1; background:#0a0a0a; border:1px solid #333; padding:15px; text-align:center; color:#666;">
-            🔒 AIMBOT [LOCKED]
-          </div>
-          <div style="flex:1; background:#0a0a0a; border:1px solid #333; padding:15px; text-align:center; color:#666;">
-            🔒 ESP [LOCKED]
-          </div>
-          <div style="flex:1; background:#0a0a0a; border:1px solid #333; padding:15px; text-align:center; color:#666;">
-            🔒 FLY [LOCKED]
-          </div>
-        </div>
-
         <div class="ip-tracker" style="color:#ff0055;">
           <span>▶ INJECTION METHOD: MEMORY</span><br>
           <span>▶ BYPASS: BYFRON DISABLED</span>
@@ -689,34 +677,29 @@
     ];
 
     continueBtn.addEventListener('click', function() {
-      // Show overlay
       overlay.style.display = 'flex';
       
       let progress = 0;
       let stepIndex = 0;
       
-      // Disable scrolling during transition
       document.body.style.overflow = 'hidden';
       
       const interval = setInterval(() => {
-        progress += Math.random() * 15 + 5; // Random progress speed
+        progress += Math.random() * 15 + 5;
         
         if (progress >= 100) {
           progress = 100;
           progressBar.style.width = progress + '%';
           percentageText.textContent = Math.floor(progress) + '%';
           
-          // Add final log
           addLog("[✓] ACCESS GRANTED - LOADING CHEAT PANEL...");
           
           clearInterval(interval);
           
-          // Change title
           transitionTitle.textContent = "ACCESS GRANTED";
           transitionTitle.style.color = "#00ff41";
           transitionTitle.style.textShadow = "3px 3px 0 #00cc33";
           
-          // Short delay then show page 2
           setTimeout(() => {
             overlay.style.display = 'none';
             page1.style.display = 'none';
@@ -725,7 +708,6 @@
             document.body.style.overflow = 'auto';
             window.scrollTo({ top: 0 });
             
-            // Reset transition for next time
             progressBar.style.width = '0%';
             percentageText.textContent = '0%';
             transitionLogs.innerHTML = '';
@@ -742,26 +724,23 @@
         progressBar.style.width = progress + '%';
         percentageText.textContent = Math.floor(progress) + '%';
         
-        // Add logs based on progress
         const stepThreshold = (stepIndex + 1) * (100 / hackSteps.length);
         if (progress >= stepThreshold && stepIndex < hackSteps.length) {
           addLog(hackSteps[stepIndex]);
           stepIndex++;
           
-          // Change title occasionally
           if (stepIndex % 3 === 0) {
             const titleIndex = Math.floor(stepIndex / 3) % titles.length;
             transitionTitle.textContent = titles[titleIndex];
           }
         }
         
-        // Random glitch effect on overlay
         if (Math.random() > 0.7) {
           overlay.style.transform = `skew(${Math.random() * 2 - 1}deg)`;
           setTimeout(() => overlay.style.transform = '', 50);
         }
         
-      }, 150); // Update every 150ms
+      }, 150);
     });
 
     function addLog(text) {
@@ -772,19 +751,16 @@
       transitionLogs.scrollTop = transitionLogs.scrollHeight;
     }
 
-    // ==================== PAGE SWITCHING ====================
     function goBack() {
       page1.style.display = 'block';
       continueBtn.style.display = 'block';
       page2.style.display = 'none';
       
-      // Hide code reveals
       document.querySelectorAll('.code-reveal').forEach(el => el.classList.remove('show'));
       
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ==================== CHEAT CODE REVEAL ====================
     function revealCode(cheatId) {
       const revealDiv = document.getElementById('codeReveal' + cheatId);
       revealDiv.classList.add('show');
@@ -808,7 +784,6 @@
       });
     }
 
-    // ==================== EXTRA EFFECTS ====================
     setInterval(() => {
       if (Math.random() > 0.8) {
         document.body.style.opacity = '0.97';
