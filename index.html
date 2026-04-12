@@ -17,6 +17,71 @@
       overflow-x: hidden;
     }
 
+    /* ========== YOUTUBE SUBSCRIBE BUTTON - TOP RIGHT ========== */
+    .youtube-corner {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      border: 2px solid #ff0000;
+      padding: 10px 18px;
+      border-radius: 50px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: glowPulse 2s infinite;
+    }
+
+    .youtube-corner:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px #ff0000;
+      border-color: #ffffff;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
+      50% { box-shadow: 0 0 35px rgba(255, 0, 0, 0.8); }
+    }
+
+    .youtube-icon {
+      color: #ff0000;
+      font-size: 28px;
+      filter: drop-shadow(0 0 5px #ff0000);
+    }
+
+    .youtube-text {
+      color: #ffffff;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .youtube-text span {
+      color: #ff0000;
+      margin-left: 5px;
+    }
+
+    .owner-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff0000;
+      color: #ffffff;
+      font-size: 0.6rem;
+      padding: 3px 6px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: 1px solid #ffffff;
+    }
+
     /* ========== LOADING SCREEN ========== */
     .loading-screen {
       position: fixed;
@@ -282,7 +347,7 @@
     .corner-bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
     .corner-br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
 
-    /* CONTINUE BUTTON - VISIBLE WITHOUT SCROLLING */
+    /* CONTINUE BUTTON */
     .continue-section {
       width: 100%;
       max-width: 500px;
@@ -582,7 +647,21 @@
       text-transform: uppercase;
     }
 
+    /* SVG Icons */
+    .yt-svg {
+      width: 28px;
+      height: 28px;
+    }
+
     @media (max-width: 600px) {
+      .youtube-corner {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+      }
+      .youtube-text {
+        font-size: 0.8rem;
+      }
       .loading-name { font-size: 2.8rem; letter-spacing: 5px; }
       .glitch { font-size: 3rem; letter-spacing: 4px; }
       .continue-btn { font-size: 1.5rem; padding: 15px 25px; }
@@ -591,6 +670,19 @@
   </style>
 </head>
 <body>
+
+  <!-- YOUTUBE SUBSCRIBE BUTTON - TOP RIGHT -->
+  <a href="https://www.youtube.com/@amirdatukali" target="_blank" class="youtube-corner">
+    <div class="youtube-icon">
+      <svg class="yt-svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+      </svg>
+    </div>
+    <div class="youtube-text">
+      SUBSCRIBE<span>@amirdatukali</span>
+    </div>
+    <div class="owner-badge">OWNER</div>
+  </a>
 
   <!-- LOADING SCREEN -->
   <div class="loading-screen" id="loadingScreen">
@@ -625,7 +717,7 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT (HIDDEN UNTIL LOADING DONE) -->
+  <!-- MAIN CONTENT -->
   <div class="main-content" id="mainContent">
     
     <div class="page-1" id="page1">
@@ -732,7 +824,7 @@
   </div>
 
   <script>
-    // ==================== LOADING SCREEN SEQUENCE ====================
+    // ==================== LOADING SCREEN ====================
     const loadingScreen = document.getElementById('loadingScreen');
     const mainContent = document.getElementById('mainContent');
     const loadingMainText = document.getElementById('loadingMainText');
@@ -816,7 +908,6 @@
     const overlay = document.getElementById('transitionOverlay');
     const progressBar = document.getElementById('progressBar');
     const percentageText = document.getElementById('percentageText');
-    const transitionLogs = document.getElementById('transitionLogs');
     const transitionTitle = document.getElementById('transitionTitle');
 
     continueBtn.addEventListener('click', function() {
