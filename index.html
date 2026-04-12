@@ -14,10 +14,117 @@
     body {
       background: #000000;
       font-family: 'Courier New', 'Fira Code', monospace;
-      position: relative;
       overflow-x: hidden;
-      overflow-y: scroll;
-      min-height: 100vh;
+    }
+
+    /* ========== LOADING SCREEN ========== */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000000;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s ease;
+    }
+
+    .loading-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-content {
+      text-align: center;
+    }
+
+    .loading-name {
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: #00ff41;
+      text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff;
+      letter-spacing: 10px;
+      margin-bottom: 40px;
+      animation: glitchSkew 2s infinite;
+    }
+
+    @keyframes glitchSkew {
+      0%, 100% { transform: skew(0deg); text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff; }
+      20% { transform: skew(2deg); text-shadow: -6px 3px 0 #ff0055, 5px -3px 0 #00ffff; }
+      40% { transform: skew(-2deg); text-shadow: 5px -4px 0 #ff0055, -5px 5px 0 #00ffff; }
+      60% { transform: skew(1deg); text-shadow: -3px 5px 0 #ff0055, 6px -2px 0 #00ffff; }
+      80% { transform: skew(-1deg); text-shadow: 7px 2px 0 #ff0055, -4px -4px 0 #00ffff; }
+    }
+
+    /* CIRCLE LOADER */
+    .circle-loader {
+      width: 80px;
+      height: 80px;
+      margin: 30px auto;
+      position: relative;
+    }
+
+    .circle-loader svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .circle-loader circle {
+      fill: none;
+      stroke-width: 4;
+    }
+
+    .circle-bg {
+      stroke: #0a1a0a;
+    }
+
+    .circle-progress {
+      stroke: #00ff41;
+      stroke-dasharray: 251.2;
+      stroke-dashoffset: 251.2;
+      animation: fillCircle 8s linear forwards;
+      filter: drop-shadow(0 0 8px #00ff41);
+    }
+
+    @keyframes fillCircle {
+      0% { stroke-dashoffset: 251.2; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .loading-text {
+      color: #00ff41;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      animation: pulseText 1.5s infinite;
+    }
+
+    @keyframes pulseText {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .loading-subtext {
+      color: #008800;
+      font-size: 0.85rem;
+      margin-top: 15px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      opacity: 0.7;
+    }
+
+    .loading-steps {
+      color: #00cc33;
+      font-size: 0.8rem;
+      margin-top: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     /* MATRIX BACKGROUND */
@@ -44,15 +151,21 @@
       z-index: 2;
     }
 
-    /* MAIN CONTENT WRAPPER */
-    .wrapper {
+    /* MAIN CONTENT - HIDDEN UNTIL LOADING DONE */
+    .main-content {
       position: relative;
       z-index: 10;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 20px 50px;
+      padding: 40px 20px 50px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .main-content.show {
+      opacity: 1;
     }
 
     /* PAGE 1 CONTENT */
@@ -67,7 +180,7 @@
       backdrop-filter: blur(12px);
       border: 2px solid #00ff41;
       box-shadow: 0 0 40px rgba(0, 255, 65, 0.2), inset 0 0 30px rgba(0, 255, 65, 0.05);
-      padding: 35px 25px;
+      padding: 40px 30px;
       position: relative;
       animation: borderPulse 3s infinite;
       border-radius: 8px;
@@ -92,14 +205,6 @@
       text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff;
       letter-spacing: 8px;
       animation: glitchSkew 4s infinite;
-    }
-
-    @keyframes glitchSkew {
-      0%, 100% { transform: skew(0deg); text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff; }
-      20% { transform: skew(2deg); text-shadow: -6px 3px 0 #ff0055, 5px -3px 0 #00ffff; }
-      40% { transform: skew(-2deg); text-shadow: 5px -4px 0 #ff0055, -5px 5px 0 #00ffff; }
-      60% { transform: skew(1deg); text-shadow: -3px 5px 0 #ff0055, 6px -2px 0 #00ffff; }
-      80% { transform: skew(-1deg); text-shadow: 7px 2px 0 #ff0055, -4px -4px 0 #00ffff; }
     }
 
     /* STATUS */
@@ -128,7 +233,7 @@
     .terminal-box {
       background: #0a0a0a;
       border: 1px solid #00ff41;
-      padding: 18px;
+      padding: 20px;
       margin: 20px 0;
       color: #00ff41;
       box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
@@ -136,7 +241,7 @@
     }
 
     .terminal-line {
-      margin: 6px 0;
+      margin: 8px 0;
       display: flex;
       gap: 10px;
       font-size: 0.9rem;
@@ -157,10 +262,10 @@
       color: #00cc33;
       font-size: 0.85rem;
       margin: 20px 0;
-      padding: 10px;
+      padding: 12px;
       background: rgba(0, 0, 0, 0.6);
       border-left: 4px solid #00ff41;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* CORNERS */
@@ -177,38 +282,11 @@
     .corner-bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
     .corner-br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
 
-    /* SCROLL INDICATOR */
-    .scroll-section {
-      text-align: center;
-      margin: 20px 0 10px;
-    }
-
-    .scroll-hint {
-      color: #00ff41;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 8px;
-      opacity: 0.9;
-    }
-
-    .scroll-arrow {
-      color: #00ff41;
-      font-size: 1.8rem;
-      animation: bounce 2s infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
-    }
-
-    /* CONTINUE BUTTON - BIG AND VISIBLE */
+    /* CONTINUE BUTTON - VISIBLE WITHOUT SCROLLING */
     .continue-section {
       width: 100%;
       max-width: 500px;
-      margin: 20px 0 50px;
+      margin: 20px 0 40px;
       text-align: center;
     }
 
@@ -225,8 +303,6 @@
       letter-spacing: 10px;
       width: 100%;
       transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
       border-radius: 6px;
       box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
     }
@@ -339,7 +415,7 @@
       backdrop-filter: blur(12px);
       border: 2px solid #ff0055;
       box-shadow: 0 0 50px rgba(255, 0, 85, 0.3), inset 0 0 30px rgba(255, 0, 85, 0.05);
-      padding: 35px 25px;
+      padding: 40px 30px;
       position: relative;
       animation: borderPulseRed 3s infinite;
       border-radius: 8px;
@@ -507,6 +583,7 @@
     }
 
     @media (max-width: 600px) {
+      .loading-name { font-size: 2.8rem; letter-spacing: 5px; }
       .glitch { font-size: 3rem; letter-spacing: 4px; }
       .continue-btn { font-size: 1.5rem; padding: 15px 25px; }
       .cheat-title { font-size: 1.3rem; }
@@ -515,8 +592,28 @@
 </head>
 <body>
 
+  <!-- LOADING SCREEN -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-name">AMIRHAXK</div>
+      
+      <div class="circle-loader">
+        <svg viewBox="0 0 100 100">
+          <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+          <circle class="circle-progress" cx="50" cy="50" r="40"></circle>
+        </svg>
+      </div>
+      
+      <div class="loading-text" id="loadingMainText">HOLD ON</div>
+      <div class="loading-subtext" id="loadingSubText">SIT TIGHT</div>
+      <div class="loading-steps" id="loadingSteps">ESTABLISHING SECURE CONNECTION...</div>
+    </div>
+  </div>
+
+  <!-- MATRIX CANVAS -->
   <canvas id="matrix-bg"></canvas>
 
+  <!-- TRANSITION OVERLAY -->
   <div class="transition-overlay" id="transitionOverlay">
     <div class="transition-content">
       <div class="transition-title" id="transitionTitle">INITIALIZING</div>
@@ -528,7 +625,8 @@
     </div>
   </div>
 
-  <div class="wrapper">
+  <!-- MAIN CONTENT (HIDDEN UNTIL LOADING DONE) -->
+  <div class="main-content" id="mainContent">
     
     <div class="page-1" id="page1">
       <div class="hack-container">
@@ -573,10 +671,6 @@
           <div>  [SYS] Awaiting input...</div>
         </div>
 
-        <div class="scroll-section">
-          <div class="scroll-hint">▼ SCROLL DOWN ▼</div>
-          <div class="scroll-arrow">▼</div>
-        </div>
       </div>
     </div>
 
@@ -638,6 +732,41 @@
   </div>
 
   <script>
+    // ==================== LOADING SCREEN SEQUENCE ====================
+    const loadingScreen = document.getElementById('loadingScreen');
+    const mainContent = document.getElementById('mainContent');
+    const loadingMainText = document.getElementById('loadingMainText');
+    const loadingSubText = document.getElementById('loadingSubText');
+    const loadingSteps = document.getElementById('loadingSteps');
+
+    const messages = [
+      { main: 'HOLD ON', sub: 'SIT TIGHT', step: 'ESTABLISHING SECURE CONNECTION...' },
+      { main: 'ALMOST THERE', sub: 'DON\'T MOVE', step: 'BYPASSING FIREWALL...' },
+      { main: 'GET READY', sub: 'ACCESS INCOMING', step: 'DECRYPTING GATEWAY...' },
+      { main: 'WELCOME', sub: 'AMIRHAXK', step: 'ACCESS GRANTED' }
+    ];
+
+    let msgIndex = 0;
+    const msgInterval = setInterval(() => {
+      msgIndex++;
+      if (msgIndex < messages.length) {
+        loadingMainText.textContent = messages[msgIndex].main;
+        loadingSubText.textContent = messages[msgIndex].sub;
+        loadingSteps.textContent = messages[msgIndex].step;
+      }
+    }, 2000);
+
+    setTimeout(() => {
+      clearInterval(msgInterval);
+      loadingScreen.classList.add('fade-out');
+      mainContent.classList.add('show');
+      
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 1000);
+    }, 8000);
+
+    // ==================== MATRIX RAIN ====================
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
 
@@ -680,6 +809,7 @@
     }
     setInterval(drawMatrix, 50);
 
+    // ==================== PAGE SWITCHING ====================
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const continueBtn = document.getElementById('continueBtn');
