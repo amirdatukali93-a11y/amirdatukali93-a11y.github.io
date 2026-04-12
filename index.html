@@ -51,45 +51,46 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
     }
 
     /* PAGE 1 CONTENT */
     .page-1 {
       width: 100%;
       max-width: 850px;
-      margin-bottom: 50px;
+      margin-bottom: 80px;
     }
 
     .hack-container {
-      background: rgba(0, 15, 0, 0.75);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 15, 0, 0.85);
+      backdrop-filter: blur(12px);
       border: 2px solid #00ff41;
-      box-shadow: 0 0 30px rgba(0, 255, 65, 0.3), inset 0 0 20px rgba(0, 255, 65, 0.1);
-      padding: 40px 30px;
+      box-shadow: 0 0 40px rgba(0, 255, 65, 0.2), inset 0 0 30px rgba(0, 255, 65, 0.05);
+      padding: 50px 40px;
       position: relative;
-      animation: borderPulse 2s infinite;
+      animation: borderPulse 3s infinite;
+      border-radius: 8px;
     }
 
     @keyframes borderPulse {
-      0%, 100% { border-color: #00ff41; box-shadow: 0 0 30px rgba(0, 255, 65, 0.3), inset 0 0 20px rgba(0, 255, 65, 0.1); }
-      50% { border-color: #00cc33; box-shadow: 0 0 50px rgba(0, 255, 65, 0.6), inset 0 0 30px rgba(0, 255, 65, 0.2); }
+      0%, 100% { border-color: #00ff41; box-shadow: 0 0 40px rgba(0, 255, 65, 0.2), inset 0 0 30px rgba(0, 255, 65, 0.05); }
+      50% { border-color: #00ff88; box-shadow: 0 0 60px rgba(0, 255, 65, 0.4), inset 0 0 40px rgba(0, 255, 65, 0.1); }
     }
 
     /* GLITCH NAME */
     .glitch-wrapper {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .glitch {
-      font-size: 5rem;
+      font-size: 5.5rem;
       font-weight: 900;
       text-transform: uppercase;
       color: #00ff41;
       text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff;
-      letter-spacing: 8px;
-      animation: glitchSkew 3s infinite;
+      letter-spacing: 10px;
+      animation: glitchSkew 4s infinite;
     }
 
     @keyframes glitchSkew {
@@ -104,36 +105,40 @@
     .status-bar {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin: 30px 0;
+      gap: 40px;
+      margin: 35px 0;
       color: #00ff41;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       flex-wrap: wrap;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     .blink {
-      animation: blink 1s step-end infinite;
+      animation: blink 1.5s step-end infinite;
     }
 
     @keyframes blink {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+      50% { opacity: 0.3; }
     }
 
     /* TERMINAL */
     .terminal-box {
-      background: #000000;
+      background: #0a0a0a;
       border: 1px solid #00ff41;
-      padding: 20px;
-      margin: 25px 0;
+      padding: 25px;
+      margin: 30px 0;
       color: #00ff41;
-      box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.2);
+      box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
+      border-radius: 4px;
     }
 
     .terminal-line {
-      margin: 8px 0;
+      margin: 10px 0;
       display: flex;
-      gap: 10px;
+      gap: 12px;
+      font-size: 1rem;
     }
 
     .prompt {
@@ -142,74 +147,121 @@
     }
 
     .hash {
-      color: #666;
+      color: #008800;
       margin-right: 10px;
     }
 
     /* ACCESS LOG */
     .access-log {
       color: #00cc33;
-      font-size: 0.9rem;
-      margin: 20px 0;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      border-left: 3px solid #00ff41;
+      font-size: 0.95rem;
+      margin: 25px 0;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      border-left: 4px solid #00ff41;
+      line-height: 1.8;
     }
 
     /* CORNERS */
     .corner {
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
       border-color: #00ff41;
       border-style: solid;
     }
 
-    .corner-tl { top: 10px; left: 10px; border-width: 3px 0 0 3px; }
-    .corner-tr { top: 10px; right: 10px; border-width: 3px 3px 0 0; }
-    .corner-bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
-    .corner-br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
+    .corner-tl { top: 15px; left: 15px; border-width: 3px 0 0 3px; }
+    .corner-tr { top: 15px; right: 15px; border-width: 3px 3px 0 0; }
+    .corner-bl { bottom: 15px; left: 15px; border-width: 0 0 3px 3px; }
+    .corner-br { bottom: 15px; right: 15px; border-width: 0 3px 3px 0; }
 
-    /* SCROLL INDICATOR */
-    .scroll-hint {
+    /* SCROLL INDICATOR - PROFESSIONAL */
+    .scroll-section {
       text-align: center;
+      margin: 30px 0 20px;
+    }
+
+    .scroll-hint {
       color: #00ff41;
-      margin: 20px 0;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+      opacity: 0.8;
+    }
+
+    .scroll-arrow {
+      color: #00ff41;
+      font-size: 2rem;
       animation: bounce 2s infinite;
+      opacity: 0.7;
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
+      50% { transform: translateY(12px); }
     }
 
-    /* CONTINUE BUTTON */
+    /* CONTINUE BUTTON - PROFESSIONAL */
+    .continue-section {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px 0 40px;
+    }
+
     .continue-btn {
       background: transparent;
-      border: 3px solid #00ff41;
+      border: 2px solid #00ff41;
       color: #00ff41;
       font-family: 'Courier New', monospace;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: bold;
       text-transform: uppercase;
-      padding: 20px 50px;
-      margin: 30px 0;
+      padding: 18px 40px;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-      letter-spacing: 6px;
+      letter-spacing: 8px;
       width: 100%;
-      transition: all 0.3s;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .continue-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+      transition: left 0.6s;
     }
 
     .continue-btn:hover {
       background: #00ff41;
       color: #000000;
-      box-shadow: 0 0 50px #00ff41;
+      box-shadow: 0 0 60px #00ff41;
       transform: scale(1.02);
+      border-color: #00ff41;
     }
 
-    /* ========== TRANSITION OVERLAY ========== */
+    .continue-btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-subtitle {
+      color: #008800;
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      opacity: 0.7;
+    }
+
+    /* ========== TRANSITION OVERLAY - PROFESSIONAL ========== */
     .transition-overlay {
       position: fixed;
       top: 0;
@@ -222,104 +274,77 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      animation: glitchBg 0.5s infinite;
-    }
-
-    @keyframes glitchBg {
-      0%, 100% { background: #000000; }
-      25% { background: #0a0a0a; }
-      50% { background: #001a00; }
-      75% { background: #0a000a; }
     }
 
     .transition-content {
-      width: 80%;
-      max-width: 600px;
+      width: 85%;
+      max-width: 650px;
       text-align: center;
     }
 
     .transition-title {
       color: #00ff41;
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: bold;
       text-transform: uppercase;
-      margin-bottom: 30px;
-      text-shadow: 3px 3px 0 #ff0055;
-      animation: titleGlitch 0.3s infinite;
-    }
-
-    @keyframes titleGlitch {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(-5px, 2px); }
-      40% { transform: translate(5px, -2px); }
-      60% { transform: translate(-3px, 3px); }
-      80% { transform: translate(4px, -1px); }
+      margin-bottom: 40px;
+      letter-spacing: 8px;
+      text-shadow: 0 0 30px #00ff41;
     }
 
     .progress-container {
       width: 100%;
-      height: 30px;
+      height: 8px;
       background: #0a0a0a;
-      border: 2px solid #00ff41;
-      margin: 30px 0;
+      border: 1px solid #00ff41;
+      margin: 40px 0;
       position: relative;
       overflow: hidden;
+      border-radius: 4px;
     }
 
     .progress-bar-transition {
       height: 100%;
-      background: linear-gradient(90deg, #00ff41, #00cc33, #00ff41);
+      background: linear-gradient(90deg, #00ff41, #00ff88, #00ff41);
       width: 0%;
-      transition: width 0.1s;
+      transition: width 0.15s;
       box-shadow: 0 0 20px #00ff41;
       position: relative;
     }
 
-    .progress-bar-transition::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(90deg, transparent, rgba(255,255,255,0.2) 50%, transparent);
-      animation: scanMove 1s infinite;
-    }
-
-    @keyframes scanMove {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+    .percentage-text {
+      color: #00ff41;
+      font-size: 2.5rem;
+      margin: 25px 0;
+      font-weight: bold;
+      letter-spacing: 4px;
     }
 
     .transition-logs {
       color: #00cc33;
       font-family: 'Courier New', monospace;
       text-align: left;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 25px;
       border: 1px solid #00ff41;
-      max-height: 200px;
+      max-height: 220px;
       overflow-y: auto;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.8;
     }
 
     .log-entry {
-      margin: 5px 0;
+      margin: 3px 0;
       opacity: 0;
-      animation: fadeInLog 0.1s forwards;
+      animation: fadeInLog 0.2s forwards;
     }
 
     @keyframes fadeInLog {
       to { opacity: 1; }
     }
 
-    .percentage-text {
-      color: #00ff41;
-      font-size: 2rem;
-      margin: 20px 0;
-      font-weight: bold;
-    }
-
-    /* ========== PAGE 2 ========== */
+    /* ========== PAGE 2 - PROFESSIONAL ========== */
     .page-2 {
       width: 100%;
       max-width: 850px;
@@ -327,112 +352,123 @@
     }
 
     .cheat-container {
-      background: rgba(0, 15, 0, 0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 15, 0, 0.9);
+      backdrop-filter: blur(12px);
       border: 2px solid #ff0055;
-      box-shadow: 0 0 40px rgba(255, 0, 85, 0.4), inset 0 0 20px rgba(255, 0, 85, 0.1);
-      padding: 40px 30px;
+      box-shadow: 0 0 50px rgba(255, 0, 85, 0.3), inset 0 0 30px rgba(255, 0, 85, 0.05);
+      padding: 50px 40px;
       position: relative;
-      animation: borderPulseRed 2s infinite;
+      animation: borderPulseRed 3s infinite;
+      border-radius: 8px;
     }
 
     @keyframes borderPulseRed {
-      0%, 100% { border-color: #ff0055; box-shadow: 0 0 30px rgba(255, 0, 85, 0.3), inset 0 0 20px rgba(255, 0, 85, 0.1); }
-      50% { border-color: #ff3377; box-shadow: 0 0 50px rgba(255, 0, 85, 0.6), inset 0 0 30px rgba(255, 0, 85, 0.2); }
+      0%, 100% { border-color: #ff0055; box-shadow: 0 0 40px rgba(255, 0, 85, 0.2), inset 0 0 30px rgba(255, 0, 85, 0.05); }
+      50% { border-color: #ff3377; box-shadow: 0 0 60px rgba(255, 0, 85, 0.4), inset 0 0 40px rgba(255, 0, 85, 0.1); }
     }
 
     .page-2 h2 {
       color: #ff0055;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       text-shadow: 2px 2px 0 #00ff41;
-      letter-spacing: 4px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
     }
 
     /* CHEAT CARD */
     .cheat-card {
       background: #0a0a0a;
       border: 2px solid #ff0055;
-      padding: 30px;
-      margin: 20px 0;
+      padding: 40px;
+      margin: 30px 0;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
       position: relative;
+      border-radius: 6px;
     }
 
     .cheat-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 40px rgba(255, 0, 85, 0.5);
+      box-shadow: 0 0 50px rgba(255, 0, 85, 0.5);
       border-color: #00ff41;
     }
 
     .cheat-title {
       color: #ff0055;
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: bold;
       text-align: center;
       margin-bottom: 15px;
+      letter-spacing: 4px;
     }
 
     .cheat-desc {
       color: #00ff41;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
     }
 
     .roblox-icon {
       text-align: center;
-      font-size: 3rem;
-      margin-bottom: 10px;
+      font-size: 3.5rem;
+      margin-bottom: 15px;
     }
 
     /* CODE REVEAL AREA */
     .code-reveal {
       background: #000000;
       border: 1px solid #00ff41;
-      padding: 20px;
-      margin-top: 30px;
+      padding: 25px;
+      margin-top: 35px;
       display: none;
+      border-radius: 4px;
     }
 
     .code-reveal.show {
       display: block;
-      animation: glitchReveal 0.3s;
+      animation: fadeIn 0.4s;
     }
 
-    @keyframes glitchReveal {
-      0% { opacity: 0; transform: skew(5deg); }
-      50% { opacity: 0.5; transform: skew(-5deg); }
-      100% { opacity: 1; transform: skew(0); }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .code-box {
       background: #0a1a0a;
-      padding: 20px;
+      padding: 25px;
       border: 1px solid #00ff41;
       color: #00ff41;
       font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       word-break: break-all;
-      position: relative;
+      border-radius: 4px;
     }
 
     .copy-btn {
       background: #00ff41;
       color: #000000;
       border: none;
-      padding: 10px 20px;
-      margin-top: 15px;
+      padding: 14px 30px;
+      margin-top: 20px;
       font-family: 'Courier New', monospace;
       font-weight: bold;
+      font-size: 1rem;
       cursor: pointer;
       border: 1px solid #00ff41;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      transition: all 0.3s;
     }
 
     .copy-btn:hover {
       background: #000000;
       color: #00ff41;
+      box-shadow: 0 0 30px #00ff41;
     }
 
     /* BACK BUTTON */
@@ -442,33 +478,43 @@
       color: #ff0055;
       font-family: 'Courier New', monospace;
       font-size: 1.2rem;
-      padding: 12px 30px;
-      margin-top: 20px;
+      padding: 14px 35px;
+      margin-top: 30px;
       cursor: pointer;
       transition: all 0.3s;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: bold;
     }
 
     .back-btn:hover {
       background: #ff0055;
       color: #000000;
-      box-shadow: 0 0 30px #ff0055;
+      box-shadow: 0 0 40px #ff0055;
     }
 
     /* IP TRACKER */
     .ip-tracker {
       color: #008800;
-      font-size: 0.8rem;
-      margin-top: 20px;
-      opacity: 0.7;
+      font-size: 0.85rem;
+      margin-top: 25px;
+      opacity: 0.8;
       text-align: center;
+      line-height: 1.8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
-      .glitch { font-size: 3rem; letter-spacing: 4px; }
-      .continue-btn { font-size: 1.5rem; padding: 15px 30px; }
+      .glitch { font-size: 3rem; letter-spacing: 5px; }
+      .continue-btn { font-size: 1.3rem; padding: 15px 25px; letter-spacing: 5px; }
       .cheat-title { font-size: 1.5rem; }
       .transition-title { font-size: 2rem; }
+      .hack-container { padding: 30px 20px; }
+      .cheat-container { padding: 30px 20px; }
+      .page-2 h2 { font-size: 2rem; }
     }
   </style>
 </head>
@@ -480,7 +526,7 @@
   <!-- TRANSITION OVERLAY -->
   <div class="transition-overlay" id="transitionOverlay">
     <div class="transition-content">
-      <div class="transition-title" id="transitionTitle">BREACHING...</div>
+      <div class="transition-title" id="transitionTitle">INITIALIZING</div>
       <div class="progress-container">
         <div class="progress-bar-transition" id="progressBar"></div>
       </div>
@@ -504,45 +550,54 @@
         </div>
 
         <div class="status-bar">
-          <span><span class="blink">⬤</span> SYSTEM: ONLINE</span>
-          <span>ENCRYPTION: AES-256</span>
-          <span><span class="blink">⚠</span> SECURE</span>
+          <span><span class="blink">⬤</span> SYSTEM ONLINE</span>
+          <span>ENCRYPTION AES-256</span>
+          <span><span class="blink">⚠</span> SECURE CHANNEL</span>
         </div>
 
         <div class="terminal-box">
           <div class="terminal-line">
             <span class="prompt">root@amirhaxk:~#</span>
-            <span>./gateway_init --secure</span>
+            <span>./gateway_init --secure --verbose</span>
           </div>
           <div class="terminal-line">
             <span class="hash">[OK]</span>
-            <span>Handshake established</span>
+            <span>Handshake established with secure endpoint</span>
           </div>
           <div class="terminal-line">
             <span class="hash">[>>]</span>
-            <span>Awaiting user verification...</span>
+            <span>Verifying user credentials...</span>
           </div>
           <div class="terminal-line">
             <span class="hash">[✓]</span>
-            <span>AMIRHAXK | CLEARANCE: MAXIMUM</span>
+            <span>AMIRHAXK | CLEARANCE LEVEL: MAXIMUM</span>
+          </div>
+          <div class="terminal-line">
+            <span class="hash">[✓]</span>
+            <span>All systems nominal — Ready for continuation</span>
           </div>
         </div>
 
         <div class="access-log">
-          <div>▶ SECURE CHANNEL LOG:</div>
-          <div>  [ENC] PGP fingerprint: A4F2...B9E1</div>
-          <div>  [TOR] Circuit established (3 hops)</div>
-          <div>  [SYS] >>> READY FOR CONTINUATION <<<</div>
+          <div>▶ SECURE CHANNEL ESTABLISHED</div>
+          <div>  [ENC] PGP Key Fingerprint: A4F2...B9E1</div>
+          <div>  [NET] TOR Circuit: 3 Hops (Verified)</div>
+          <div>  [AUTH] Two-Factor Authentication: Passed</div>
+          <div>  [SYS] Awaiting user input...</div>
         </div>
 
-        <div class="scroll-hint">
-          ▼ SCROLL DOWN ▼
+        <div class="scroll-section">
+          <div class="scroll-hint">Scroll Down to Continue</div>
+          <div class="scroll-arrow">▼</div>
         </div>
       </div>
     </div>
 
-    <!-- CONTINUE BUTTON -->
-    <button class="continue-btn" id="continueBtn">[ CONTINUED ]</button>
+    <!-- CONTINUE BUTTON SECTION -->
+    <div class="continue-section">
+      <button class="continue-btn" id="continueBtn">CONTINUE</button>
+      <div class="btn-subtitle">Secure Connection Required</div>
+    </div>
 
     <!-- ========== PAGE 2 ========== -->
     <div class="page-2" id="page2">
@@ -552,22 +607,20 @@
         <div class="corner corner-bl" style="border-color:#ff0055;"></div>
         <div class="corner corner-br" style="border-color:#ff0055;"></div>
 
-        <h2>⚡ CHEAT PANEL ⚡</h2>
+        <h2>CHEAT PANEL</h2>
 
         <div class="status-bar" style="color:#ff0055;">
           <span><span class="blink">🔴</span> INJECTION READY</span>
-          <span>ROBLOX: CONNECTED</span>
-          <span>EXECUTOR: SYNAPSE</span>
+          <span>ROBLOX CONNECTED</span>
+          <span>EXECUTOR SYNAPSE</span>
         </div>
 
-        <!-- CHEAT CARD -->
         <div class="cheat-card" onclick="revealCode(1)">
           <div class="roblox-icon">🎮</div>
           <div class="cheat-title">AMIRHAXK ROBLOX</div>
           <div class="cheat-desc">[ CLICK TO REVEAL LOADSTRING ]</div>
         </div>
 
-        <!-- CODE REVEAL -->
         <div class="code-reveal" id="codeReveal1">
           <div class="terminal-line">
             <span class="prompt" style="color:#ff0055;">>>></span>
@@ -576,20 +629,22 @@
           <div class="code-box" id="codeBox1">
             loadstring(game:HttpGet("https://pastebin.com/raw/WFQNNwQh"))()
           </div>
-          <button class="copy-btn" onclick="copyCode(1)">[ COPY TO CLIPBOARD ]</button>
-          <div class="access-log" style="margin-top:20px; border-left-color:#ff0055;">
+          <button class="copy-btn" onclick="copyCode(1)">COPY TO CLIPBOARD</button>
+          <div class="access-log" style="margin-top:25px; border-left-color:#ff0055;">
             <div>⚠ USE AT YOUR OWN RISK</div>
-            <div>✓ Executor required (Synapse, Krnl, etc)</div>
-            <div>✓ Auto-inject on execution</div>
+            <div>✓ Executor Required (Synapse, Krnl, ScriptWare)</div>
+            <div>✓ Auto-Inject on Execution</div>
+            <div>✓ Undetected as of Latest Update</div>
           </div>
         </div>
 
         <div class="ip-tracker" style="color:#ff0055;">
-          <span>▶ INJECTION METHOD: MEMORY</span><br>
-          <span>▶ BYPASS: BYFRON DISABLED</span>
+          <span>▶ INJECTION METHOD: MEMORY HOOK</span><br>
+          <span>▶ BYFRON BYPASS: ACTIVE</span><br>
+          <span>▶ SIGNATURE: ENCRYPTED</span>
         </div>
 
-        <button class="back-btn" onclick="goBack()">◄ [ BACK TO MAIN ]</button>
+        <button class="back-btn" onclick="goBack()">◀ BACK TO MAIN</button>
       </div>
     </div>
 
@@ -607,7 +662,7 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アイウエオカキクケコサシスセソタチツテト";
     const charArray = chars.split('');
     const fontSize = 16;
     let columns, drops;
@@ -631,7 +686,7 @@
         const text = charArray[Math.floor(Math.random() * charArray.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
-        const greenIntensity = Math.floor(Math.random() * 155 + 100);
+        const greenIntensity = Math.floor(Math.random() * 100 + 100);
         ctx.fillStyle = `rgb(0, ${greenIntensity}, 0)`;
         ctx.fillText(text, x, y);
         if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
@@ -640,7 +695,7 @@
     }
     setInterval(drawMatrix, 50);
 
-    // ==================== TRANSITION SEQUENCE ====================
+    // ==================== PROFESSIONAL TRANSITION ====================
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const continueBtn = document.getElementById('continueBtn');
@@ -651,29 +706,20 @@
     const transitionTitle = document.getElementById('transitionTitle');
 
     const hackSteps = [
-      "[*] Initializing breach sequence...",
-      "[*] Bypassing firewall...",
-      "[✓] Firewall disabled",
-      "[*] Scanning for vulnerabilities...",
-      "[!] Found: PORT 443 (HTTPS)",
-      "[!] Found: PORT 22 (SSH)",
-      "[*] Exploiting CVE-2024-1337...",
-      "[✓] Shell access obtained",
-      "[*] Escalating privileges...",
-      "[✓] Root access granted",
-      "[*] Decrypting cheat panel...",
+      "[*] Establishing secure connection...",
+      "[✓] TLS 1.3 Handshake complete",
+      "[*] Bypassing perimeter firewall...",
+      "[✓] Firewall rules modified",
+      "[*] Scanning for entry points...",
+      "[!] PORT 443 — OPEN",
+      "[!] PORT 22 — FILTERED",
+      "[*] Executing privilege escalation...",
+      "[✓] Root access obtained",
+      "[*] Decrypting payload...",
       "[*] Loading AMIRHAXK modules...",
-      "[✓] Payload prepared",
-      "[*] Establishing secure tunnel...",
-      "[✓] Connection encrypted"
-    ];
-
-    const titles = [
-      "BREACHING...",
-      "BYPASSING...",
-      "EXPLOITING...",
-      "DECRYPTING...",
-      "ACCESSING..."
+      "[✓] Payload signature verified",
+      "[*] Establishing encrypted tunnel...",
+      "[✓] Connection secured"
     ];
 
     continueBtn.addEventListener('click', function() {
@@ -685,20 +731,18 @@
       document.body.style.overflow = 'hidden';
       
       const interval = setInterval(() => {
-        progress += Math.random() * 15 + 5;
+        progress += Math.random() * 12 + 8;
         
         if (progress >= 100) {
           progress = 100;
           progressBar.style.width = progress + '%';
           percentageText.textContent = Math.floor(progress) + '%';
           
-          addLog("[✓] ACCESS GRANTED - LOADING CHEAT PANEL...");
+          addLog("[✓] ACCESS GRANTED — LOADING DASHBOARD");
           
           clearInterval(interval);
           
           transitionTitle.textContent = "ACCESS GRANTED";
-          transitionTitle.style.color = "#00ff41";
-          transitionTitle.style.textShadow = "3px 3px 0 #00cc33";
           
           setTimeout(() => {
             overlay.style.display = 'none';
@@ -706,17 +750,13 @@
             continueBtn.style.display = 'none';
             page2.style.display = 'block';
             document.body.style.overflow = 'auto';
-            window.scrollTo({ top: 0 });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             
             progressBar.style.width = '0%';
             percentageText.textContent = '0%';
             transitionLogs.innerHTML = '';
-            transitionTitle.textContent = 'BREACHING...';
-            transitionTitle.style.color = '#00ff41';
-            transitionTitle.style.textShadow = '3px 3px 0 #ff0055';
-            
-            console.log('%c[!] CHEAT PANEL LOADED [!]', 'color: #ff0055; font-size: 16px; font-weight: bold;');
-          }, 800);
+            transitionTitle.textContent = 'INITIALIZING';
+          }, 600);
           
           return;
         }
@@ -729,18 +769,12 @@
           addLog(hackSteps[stepIndex]);
           stepIndex++;
           
-          if (stepIndex % 3 === 0) {
-            const titleIndex = Math.floor(stepIndex / 3) % titles.length;
-            transitionTitle.textContent = titles[titleIndex];
-          }
+          if (stepIndex === 4) transitionTitle.textContent = "BYPASSING";
+          if (stepIndex === 8) transitionTitle.textContent = "ESCALATING";
+          if (stepIndex === 12) transitionTitle.textContent = "FINALIZING";
         }
         
-        if (Math.random() > 0.7) {
-          overlay.style.transform = `skew(${Math.random() * 2 - 1}deg)`;
-          setTimeout(() => overlay.style.transform = '', 50);
-        }
-        
-      }, 150);
+      }, 120);
     });
 
     function addLog(text) {
@@ -764,12 +798,6 @@
     function revealCode(cheatId) {
       const revealDiv = document.getElementById('codeReveal' + cheatId);
       revealDiv.classList.add('show');
-      
-      const card = event.currentTarget;
-      card.style.transform = 'skew(2deg)';
-      setTimeout(() => card.style.transform = '', 100);
-      
-      console.log('%c[!] LOADSTRING REVEALED [!]', 'color: #ff0055; font-size: 14px;');
     }
 
     function copyCode(cheatId) {
@@ -777,22 +805,11 @@
       const code = codeBox.innerText;
       
       navigator.clipboard.writeText(code).then(() => {
-        alert('[✓] LOADSTRING COPIED TO CLIPBOARD!\n\n' + code);
-        console.log('%c[✓] Code copied!', 'color: #00ff41;');
+        alert('[✓] LOADSTRING COPIED TO CLIPBOARD');
       }).catch(() => {
-        prompt('[!] MANUAL COPY:', code);
+        prompt('[!] Manual Copy:', code);
       });
     }
-
-    setInterval(() => {
-      if (Math.random() > 0.8) {
-        document.body.style.opacity = '0.97';
-        setTimeout(() => document.body.style.opacity = '1', 40);
-      }
-    }, 300);
-
-    console.log('%c[!] AMIRHAXK GATEWAY ACTIVE [!]', 'color: #00ff41; font-size: 20px; font-weight: bold; font-family: monospace;');
-    console.log('%c> Press CONTINUED to initiate breach sequence...', 'color: #00cc33; font-size: 14px;');
   </script>
 </body>
 </html>
