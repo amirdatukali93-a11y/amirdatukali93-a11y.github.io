@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -16,7 +16,8 @@
       font-family: 'Courier New', 'Fira Code', monospace;
       position: relative;
       overflow-x: hidden;
-      overflow-y: auto;
+      overflow-y: scroll;
+      min-height: 100vh;
     }
 
     /* MATRIX BACKGROUND */
@@ -43,7 +44,7 @@
       z-index: 2;
     }
 
-    /* MAIN CONTENT WRAPPER - SCROLLABLE */
+    /* MAIN CONTENT WRAPPER */
     .wrapper {
       position: relative;
       z-index: 10;
@@ -51,14 +52,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 30px 20px 50px;
     }
 
     /* PAGE 1 CONTENT */
     .page-1 {
       width: 100%;
       max-width: 850px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     .hack-container {
@@ -66,7 +67,7 @@
       backdrop-filter: blur(12px);
       border: 2px solid #00ff41;
       box-shadow: 0 0 40px rgba(0, 255, 65, 0.2), inset 0 0 30px rgba(0, 255, 65, 0.05);
-      padding: 40px 30px;
+      padding: 35px 25px;
       position: relative;
       animation: borderPulse 3s infinite;
       border-radius: 8px;
@@ -84,7 +85,7 @@
     }
 
     .glitch {
-      font-size: 5rem;
+      font-size: 4.5rem;
       font-weight: 900;
       text-transform: uppercase;
       color: #00ff41;
@@ -105,10 +106,10 @@
     .status-bar {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin: 30px 0;
+      gap: 25px;
+      margin: 25px 0;
       color: #00ff41;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       flex-wrap: wrap;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -127,18 +128,18 @@
     .terminal-box {
       background: #0a0a0a;
       border: 1px solid #00ff41;
-      padding: 20px;
-      margin: 25px 0;
+      padding: 18px;
+      margin: 20px 0;
       color: #00ff41;
       box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
       border-radius: 4px;
     }
 
     .terminal-line {
-      margin: 8px 0;
+      margin: 6px 0;
       display: flex;
       gap: 10px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     .prompt {
@@ -148,18 +149,18 @@
 
     .hash {
       color: #008800;
-      margin-right: 10px;
+      margin-right: 8px;
     }
 
     /* ACCESS LOG */
     .access-log {
       color: #00cc33;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       margin: 20px 0;
-      padding: 12px;
+      padding: 10px;
       background: rgba(0, 0, 0, 0.6);
       border-left: 4px solid #00ff41;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* CORNERS */
@@ -187,15 +188,15 @@
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 3px;
-      margin-bottom: 10px;
-      opacity: 0.8;
+      margin-bottom: 8px;
+      opacity: 0.9;
     }
 
     .scroll-arrow {
       color: #00ff41;
       font-size: 1.8rem;
       animation: bounce 2s infinite;
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     @keyframes bounce {
@@ -203,40 +204,31 @@
       50% { transform: translateY(10px); }
     }
 
-    /* CONTINUE BUTTON */
+    /* CONTINUE BUTTON - BIG AND VISIBLE */
     .continue-section {
       width: 100%;
       max-width: 500px;
-      margin: 20px 0 40px;
+      margin: 20px 0 50px;
+      text-align: center;
     }
 
     .continue-btn {
       background: transparent;
-      border: 2px solid #00ff41;
+      border: 3px solid #00ff41;
       color: #00ff41;
       font-family: 'Courier New', monospace;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: bold;
       text-transform: uppercase;
-      padding: 18px 40px;
+      padding: 20px 40px;
       cursor: pointer;
-      letter-spacing: 8px;
+      letter-spacing: 10px;
       width: 100%;
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
-      border-radius: 4px;
-    }
-
-    .continue-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
-      transition: left 0.6s;
+      border-radius: 6px;
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
     }
 
     .continue-btn:hover {
@@ -244,21 +236,15 @@
       color: #000000;
       box-shadow: 0 0 60px #00ff41;
       transform: scale(1.02);
-      border-color: #00ff41;
-    }
-
-    .continue-btn:hover::before {
-      left: 100%;
     }
 
     .btn-subtitle {
-      color: #008800;
-      font-size: 0.75rem;
-      text-align: center;
-      margin-top: 10px;
+      color: #00ff41;
+      font-size: 0.8rem;
+      margin-top: 12px;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      opacity: 0.7;
+      letter-spacing: 3px;
+      opacity: 0.8;
     }
 
     /* ========== TRANSITION OVERLAY ========== */
@@ -278,13 +264,13 @@
 
     .transition-content {
       width: 85%;
-      max-width: 650px;
+      max-width: 600px;
       text-align: center;
     }
 
     .transition-title {
       color: #00ff41;
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: bold;
       text-transform: uppercase;
       margin-bottom: 30px;
@@ -309,7 +295,6 @@
       width: 0%;
       transition: width 0.15s;
       box-shadow: 0 0 20px #00ff41;
-      position: relative;
     }
 
     .percentage-text {
@@ -317,7 +302,6 @@
       font-size: 2rem;
       margin: 20px 0;
       font-weight: bold;
-      letter-spacing: 3px;
     }
 
     .transition-logs {
@@ -327,11 +311,10 @@
       background: rgba(0, 0, 0, 0.9);
       padding: 20px;
       border: 1px solid #00ff41;
-      max-height: 200px;
+      max-height: 180px;
       overflow-y: auto;
       border-radius: 4px;
-      font-size: 0.9rem;
-      line-height: 1.6;
+      font-size: 0.85rem;
     }
 
     .log-entry {
@@ -356,36 +339,34 @@
       backdrop-filter: blur(12px);
       border: 2px solid #ff0055;
       box-shadow: 0 0 50px rgba(255, 0, 85, 0.3), inset 0 0 30px rgba(255, 0, 85, 0.05);
-      padding: 40px 30px;
+      padding: 35px 25px;
       position: relative;
       animation: borderPulseRed 3s infinite;
       border-radius: 8px;
     }
 
     @keyframes borderPulseRed {
-      0%, 100% { border-color: #ff0055; box-shadow: 0 0 40px rgba(255, 0, 85, 0.2), inset 0 0 30px rgba(255, 0, 85, 0.05); }
-      50% { border-color: #ff3377; box-shadow: 0 0 60px rgba(255, 0, 85, 0.4), inset 0 0 40px rgba(255, 0, 85, 0.1); }
+      0%, 100% { border-color: #ff0055; }
+      50% { border-color: #ff3377; }
     }
 
     .page-2 h2 {
       color: #ff0055;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       text-shadow: 2px 2px 0 #00ff41;
       letter-spacing: 5px;
-      text-transform: uppercase;
     }
 
     /* CHEAT CARD */
     .cheat-card {
       background: #0a0a0a;
       border: 2px solid #ff0055;
-      padding: 35px;
-      margin: 25px 0;
+      padding: 30px;
+      margin: 20px 0;
       cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
+      transition: all 0.3s;
       border-radius: 6px;
     }
 
@@ -397,10 +378,10 @@
 
     .cheat-title {
       color: #ff0055;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: bold;
       text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: 3px;
     }
 
@@ -408,42 +389,35 @@
       color: #00ff41;
       text-align: center;
       font-size: 1rem;
-      letter-spacing: 2px;
     }
 
     .roblox-icon {
       text-align: center;
-      font-size: 3rem;
-      margin-bottom: 12px;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
 
-    /* CODE REVEAL AREA */
+    /* CODE REVEAL */
     .code-reveal {
       background: #000000;
       border: 1px solid #00ff41;
       padding: 20px;
-      margin-top: 30px;
+      margin-top: 25px;
       display: none;
       border-radius: 4px;
     }
 
     .code-reveal.show {
       display: block;
-      animation: fadeIn 0.4s;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     .code-box {
       background: #0a1a0a;
-      padding: 20px;
+      padding: 18px;
       border: 1px solid #00ff41;
       color: #00ff41;
       font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
+      font-size: 1rem;
       word-break: break-all;
       border-radius: 4px;
     }
@@ -456,13 +430,9 @@
       margin-top: 15px;
       font-family: 'Courier New', monospace;
       font-weight: bold;
-      font-size: 0.95rem;
       cursor: pointer;
-      border: 1px solid #00ff41;
       border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      transition: all 0.3s;
     }
 
     .copy-btn:hover {
@@ -473,7 +443,7 @@
 
     /* GET EXECUTOR BUTTON */
     .executor-section {
-      margin-top: 30px;
+      margin-top: 25px;
       text-align: center;
     }
 
@@ -489,26 +459,22 @@
       cursor: pointer;
       letter-spacing: 4px;
       width: 100%;
-      transition: all 0.3s ease;
-      border-radius: 4px;
       display: inline-block;
       text-decoration: none;
+      border-radius: 4px;
     }
 
     .executor-btn:hover {
       background: #ff0055;
       color: #000000;
       box-shadow: 0 0 40px #ff0055;
-      transform: scale(1.02);
     }
 
     .executor-hint {
       color: #ff3377;
-      font-size: 0.8rem;
-      margin-top: 10px;
+      font-size: 0.75rem;
+      margin-top: 8px;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      opacity: 0.8;
     }
 
     /* BACK BUTTON */
@@ -517,54 +483,40 @@
       border: 2px solid #ff0055;
       color: #ff0055;
       font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding: 12px 30px;
       margin-top: 25px;
       cursor: pointer;
-      transition: all 0.3s;
       border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 3px;
       font-weight: bold;
     }
 
     .back-btn:hover {
       background: #ff0055;
       color: #000000;
-      box-shadow: 0 0 40px #ff0055;
     }
 
     /* IP TRACKER */
     .ip-tracker {
       color: #008800;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       margin-top: 20px;
-      opacity: 0.8;
       text-align: center;
-      line-height: 1.6;
       text-transform: uppercase;
-      letter-spacing: 2px;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 600px) {
       .glitch { font-size: 3rem; letter-spacing: 4px; }
-      .continue-btn { font-size: 1.3rem; padding: 15px 25px; letter-spacing: 5px; }
-      .cheat-title { font-size: 1.5rem; }
-      .transition-title { font-size: 2rem; }
-      .hack-container { padding: 25px 18px; }
-      .cheat-container { padding: 25px 18px; }
-      .page-2 h2 { font-size: 2rem; }
-      .executor-btn { font-size: 1rem; padding: 12px 20px; }
+      .continue-btn { font-size: 1.5rem; padding: 15px 25px; }
+      .cheat-title { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- MATRIX CANVAS -->
   <canvas id="matrix-bg"></canvas>
 
-  <!-- TRANSITION OVERLAY -->
   <div class="transition-overlay" id="transitionOverlay">
     <div class="transition-content">
       <div class="transition-title" id="transitionTitle">INITIALIZING</div>
@@ -578,7 +530,6 @@
 
   <div class="wrapper">
     
-    <!-- ========== PAGE 1 ========== -->
     <div class="page-1" id="page1">
       <div class="hack-container">
         <div class="corner corner-tl"></div>
@@ -593,54 +544,47 @@
         <div class="status-bar">
           <span><span class="blink">⬤</span> SYSTEM ONLINE</span>
           <span>ENCRYPTION AES-256</span>
-          <span><span class="blink">⚠</span> SECURE CHANNEL</span>
+          <span><span class="blink">⚠</span> SECURE</span>
         </div>
 
         <div class="terminal-box">
           <div class="terminal-line">
             <span class="prompt">root@amirhaxk:~#</span>
-            <span>./gateway_init --secure --verbose</span>
+            <span>./gateway_init --secure</span>
           </div>
           <div class="terminal-line">
             <span class="hash">[OK]</span>
-            <span>Handshake established with secure endpoint</span>
-          </div>
-          <div class="terminal-line">
-            <span class="hash">[>>]</span>
-            <span>Verifying user credentials...</span>
+            <span>Handshake established</span>
           </div>
           <div class="terminal-line">
             <span class="hash">[✓]</span>
-            <span>AMIRHAXK | CLEARANCE LEVEL: MAXIMUM</span>
+            <span>AMIRHAXK | CLEARANCE: MAXIMUM</span>
           </div>
           <div class="terminal-line">
             <span class="hash">[✓]</span>
-            <span>All systems nominal — Ready for continuation</span>
+            <span>Ready for continuation</span>
           </div>
         </div>
 
         <div class="access-log">
-          <div>▶ SECURE CHANNEL ESTABLISHED</div>
-          <div>  [ENC] PGP Key Fingerprint: A4F2...B9E1</div>
-          <div>  [NET] TOR Circuit: 3 Hops (Verified)</div>
-          <div>  [AUTH] Two-Factor Authentication: Passed</div>
-          <div>  [SYS] Awaiting user input...</div>
+          <div>▶ SECURE CHANNEL ACTIVE</div>
+          <div>  [ENC] PGP: A4F2...B9E1</div>
+          <div>  [TOR] 3 Hops Verified</div>
+          <div>  [SYS] Awaiting input...</div>
         </div>
 
         <div class="scroll-section">
-          <div class="scroll-hint">Scroll Down to Continue</div>
+          <div class="scroll-hint">▼ SCROLL DOWN ▼</div>
           <div class="scroll-arrow">▼</div>
         </div>
       </div>
     </div>
 
-    <!-- CONTINUE BUTTON SECTION -->
     <div class="continue-section">
       <button class="continue-btn" id="continueBtn">CONTINUE</button>
-      <div class="btn-subtitle">Secure Connection Required</div>
+      <div class="btn-subtitle">▶ SECURE ACCESS REQUIRED ◀</div>
     </div>
 
-    <!-- ========== PAGE 2 ========== -->
     <div class="page-2" id="page2">
       <div class="cheat-container">
         <div class="corner corner-tl" style="border-color:#ff0055;"></div>
@@ -648,7 +592,7 @@
         <div class="corner corner-bl" style="border-color:#ff0055;"></div>
         <div class="corner corner-br" style="border-color:#ff0055;"></div>
 
-        <h2>CHEAT PANEL</h2>
+        <h2>⚡ CHEAT PANEL ⚡</h2>
 
         <div class="status-bar" style="color:#ff0055;">
           <span><span class="blink">🔴</span> INJECTION READY</span>
@@ -665,30 +609,26 @@
         <div class="code-reveal" id="codeReveal1">
           <div class="terminal-line">
             <span class="prompt" style="color:#ff0055;">>>></span>
-            <span>LOADSTRING GENERATED:</span>
+            <span>LOADSTRING:</span>
           </div>
           <div class="code-box" id="codeBox1">
             loadstring(game:HttpGet("https://pastebin.com/raw/WFQNNwQh"))()
           </div>
           <button class="copy-btn" onclick="copyCode(1)">COPY TO CLIPBOARD</button>
-          <div class="access-log" style="margin-top:20px; border-left-color:#ff0055;">
+          <div class="access-log" style="margin-top:15px; border-left-color:#ff0055;">
             <div>⚠ USE AT YOUR OWN RISK</div>
-            <div>✓ Executor Required (Synapse, Krnl, ScriptWare)</div>
-            <div>✓ Auto-Inject on Execution</div>
-            <div>✓ Undetected as of Latest Update</div>
+            <div>✓ Executor Required</div>
           </div>
         </div>
 
-        <!-- GET EXECUTOR BUTTON -->
         <div class="executor-section">
           <a href="https://wearedevs.net/exploits" target="_blank" class="executor-btn">GET EXECUTOR</a>
           <div class="executor-hint">wearedevs.net/exploits</div>
         </div>
 
         <div class="ip-tracker" style="color:#ff0055;">
-          <span>▶ INJECTION METHOD: MEMORY HOOK</span><br>
-          <span>▶ BYFRON BYPASS: ACTIVE</span><br>
-          <span>▶ SIGNATURE: ENCRYPTED</span>
+          <span>▶ INJECTION: MEMORY HOOK</span><br>
+          <span>▶ BYFRON BYPASS: ACTIVE</span>
         </div>
 
         <button class="back-btn" onclick="goBack()">◀ BACK TO MAIN</button>
@@ -698,7 +638,6 @@
   </div>
 
   <script>
-    // ==================== MATRIX RAIN ====================
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
 
@@ -709,7 +648,7 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789アイウエオカキクケコサシスセソタチツテト";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     const charArray = chars.split('');
     const fontSize = 16;
     let columns, drops;
@@ -733,8 +672,7 @@
         const text = charArray[Math.floor(Math.random() * charArray.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
-        const greenIntensity = Math.floor(Math.random() * 100 + 100);
-        ctx.fillStyle = `rgb(0, ${greenIntensity}, 0)`;
+        ctx.fillStyle = `rgb(0, ${Math.floor(Math.random() * 100 + 100)}, 0)`;
         ctx.fillText(text, x, y);
         if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i]++;
@@ -742,7 +680,6 @@
     }
     setInterval(drawMatrix, 50);
 
-    // ==================== TRANSITION ====================
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const continueBtn = document.getElementById('continueBtn');
@@ -752,40 +689,19 @@
     const transitionLogs = document.getElementById('transitionLogs');
     const transitionTitle = document.getElementById('transitionTitle');
 
-    const hackSteps = [
-      "[*] Establishing secure connection...",
-      "[✓] TLS 1.3 Handshake complete",
-      "[*] Bypassing perimeter firewall...",
-      "[✓] Firewall rules modified",
-      "[*] Scanning for entry points...",
-      "[!] PORT 443 — OPEN",
-      "[*] Executing privilege escalation...",
-      "[✓] Root access obtained",
-      "[*] Decrypting payload...",
-      "[*] Loading AMIRHAXK modules...",
-      "[✓] Payload signature verified",
-      "[*] Establishing encrypted tunnel...",
-      "[✓] Connection secured"
-    ];
-
     continueBtn.addEventListener('click', function() {
       overlay.style.display = 'flex';
-      
-      let progress = 0;
-      let stepIndex = 0;
-      
       document.body.style.overflow = 'hidden';
       
+      let progress = 0;
+      
       const interval = setInterval(() => {
-        progress += Math.random() * 12 + 8;
+        progress += Math.random() * 15 + 10;
         
         if (progress >= 100) {
           progress = 100;
-          progressBar.style.width = progress + '%';
-          percentageText.textContent = Math.floor(progress) + '%';
-          
-          addLog("[✓] ACCESS GRANTED — LOADING DASHBOARD");
-          
+          progressBar.style.width = '100%';
+          percentageText.textContent = '100%';
           clearInterval(interval);
           
           transitionTitle.textContent = "ACCESS GRANTED";
@@ -796,13 +712,12 @@
             continueBtn.style.display = 'none';
             page2.style.display = 'block';
             document.body.style.overflow = 'auto';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0 });
             
             progressBar.style.width = '0%';
             percentageText.textContent = '0%';
-            transitionLogs.innerHTML = '';
             transitionTitle.textContent = 'INITIALIZING';
-          }, 600);
+          }, 800);
           
           return;
         }
@@ -810,50 +725,31 @@
         progressBar.style.width = progress + '%';
         percentageText.textContent = Math.floor(progress) + '%';
         
-        const stepThreshold = (stepIndex + 1) * (100 / hackSteps.length);
-        if (progress >= stepThreshold && stepIndex < hackSteps.length) {
-          addLog(hackSteps[stepIndex]);
-          stepIndex++;
-          
-          if (stepIndex === 4) transitionTitle.textContent = "BYPASSING";
-          if (stepIndex === 7) transitionTitle.textContent = "ESCALATING";
-          if (stepIndex === 10) transitionTitle.textContent = "FINALIZING";
-        }
+        if (progress > 30 && progress < 35) transitionTitle.textContent = "BYPASSING";
+        if (progress > 60 && progress < 65) transitionTitle.textContent = "DECRYPTING";
+        if (progress > 85) transitionTitle.textContent = "FINALIZING";
         
-      }, 120);
+      }, 100);
     });
-
-    function addLog(text) {
-      const logEntry = document.createElement('div');
-      logEntry.className = 'log-entry';
-      logEntry.textContent = text;
-      transitionLogs.appendChild(logEntry);
-      transitionLogs.scrollTop = transitionLogs.scrollHeight;
-    }
 
     function goBack() {
       page1.style.display = 'block';
       continueBtn.style.display = 'block';
       page2.style.display = 'none';
-      
       document.querySelectorAll('.code-reveal').forEach(el => el.classList.remove('show'));
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0 });
     }
 
     function revealCode(cheatId) {
-      const revealDiv = document.getElementById('codeReveal' + cheatId);
-      revealDiv.classList.add('show');
+      document.getElementById('codeReveal' + cheatId).classList.add('show');
     }
 
     function copyCode(cheatId) {
-      const codeBox = document.getElementById('codeBox' + cheatId);
-      const code = codeBox.innerText;
-      
+      const code = document.getElementById('codeBox' + cheatId).innerText;
       navigator.clipboard.writeText(code).then(() => {
-        alert('[✓] LOADSTRING COPIED TO CLIPBOARD');
+        alert('[✓] COPIED!');
       }).catch(() => {
-        prompt('[!] Manual Copy:', code);
+        prompt('Manual copy:', code);
       });
     }
   </script>
