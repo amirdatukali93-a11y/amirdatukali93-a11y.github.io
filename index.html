@@ -14,9 +14,9 @@
     body {
       background: #000000;
       font-family: 'Courier New', 'Fira Code', monospace;
-      min-height: 100vh;
       position: relative;
       overflow-x: hidden;
+      overflow-y: auto;
     }
 
     /* MATRIX BACKGROUND */
@@ -43,7 +43,7 @@
       z-index: 2;
     }
 
-    /* MAIN CONTENT WRAPPER */
+    /* MAIN CONTENT WRAPPER - SCROLLABLE */
     .wrapper {
       position: relative;
       z-index: 10;
@@ -51,14 +51,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 20px;
+      padding: 40px 20px;
     }
 
     /* PAGE 1 CONTENT */
     .page-1 {
       width: 100%;
       max-width: 850px;
-      margin-bottom: 80px;
+      margin-bottom: 40px;
     }
 
     .hack-container {
@@ -66,7 +66,7 @@
       backdrop-filter: blur(12px);
       border: 2px solid #00ff41;
       box-shadow: 0 0 40px rgba(0, 255, 65, 0.2), inset 0 0 30px rgba(0, 255, 65, 0.05);
-      padding: 50px 40px;
+      padding: 40px 30px;
       position: relative;
       animation: borderPulse 3s infinite;
       border-radius: 8px;
@@ -80,16 +80,16 @@
     /* GLITCH NAME */
     .glitch-wrapper {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     .glitch {
-      font-size: 5.5rem;
+      font-size: 5rem;
       font-weight: 900;
       text-transform: uppercase;
       color: #00ff41;
       text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff;
-      letter-spacing: 10px;
+      letter-spacing: 8px;
       animation: glitchSkew 4s infinite;
     }
 
@@ -105,10 +105,10 @@
     .status-bar {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      margin: 35px 0;
+      gap: 30px;
+      margin: 30px 0;
       color: #00ff41;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       flex-wrap: wrap;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -127,18 +127,18 @@
     .terminal-box {
       background: #0a0a0a;
       border: 1px solid #00ff41;
-      padding: 25px;
-      margin: 30px 0;
+      padding: 20px;
+      margin: 25px 0;
       color: #00ff41;
       box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
       border-radius: 4px;
     }
 
     .terminal-line {
-      margin: 10px 0;
+      margin: 8px 0;
       display: flex;
-      gap: 12px;
-      font-size: 1rem;
+      gap: 10px;
+      font-size: 0.95rem;
     }
 
     .prompt {
@@ -154,56 +154,56 @@
     /* ACCESS LOG */
     .access-log {
       color: #00cc33;
-      font-size: 0.95rem;
-      margin: 25px 0;
-      padding: 15px;
+      font-size: 0.9rem;
+      margin: 20px 0;
+      padding: 12px;
       background: rgba(0, 0, 0, 0.6);
       border-left: 4px solid #00ff41;
-      line-height: 1.8;
+      line-height: 1.6;
     }
 
     /* CORNERS */
     .corner {
       position: absolute;
-      width: 25px;
-      height: 25px;
+      width: 20px;
+      height: 20px;
       border-color: #00ff41;
       border-style: solid;
     }
 
-    .corner-tl { top: 15px; left: 15px; border-width: 3px 0 0 3px; }
-    .corner-tr { top: 15px; right: 15px; border-width: 3px 3px 0 0; }
-    .corner-bl { bottom: 15px; left: 15px; border-width: 0 0 3px 3px; }
-    .corner-br { bottom: 15px; right: 15px; border-width: 0 3px 3px 0; }
+    .corner-tl { top: 10px; left: 10px; border-width: 3px 0 0 3px; }
+    .corner-tr { top: 10px; right: 10px; border-width: 3px 3px 0 0; }
+    .corner-bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
+    .corner-br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
 
-    /* SCROLL INDICATOR - PROFESSIONAL */
+    /* SCROLL INDICATOR */
     .scroll-section {
       text-align: center;
-      margin: 30px 0 20px;
+      margin: 20px 0 10px;
     }
 
     .scroll-hint {
       color: #00ff41;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      margin-bottom: 15px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
       opacity: 0.8;
     }
 
     .scroll-arrow {
       color: #00ff41;
-      font-size: 2rem;
+      font-size: 1.8rem;
       animation: bounce 2s infinite;
       opacity: 0.7;
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(12px); }
+      50% { transform: translateY(10px); }
     }
 
-    /* CONTINUE BUTTON - PROFESSIONAL */
+    /* CONTINUE BUTTON */
     .continue-section {
       width: 100%;
       max-width: 500px;
@@ -253,15 +253,15 @@
 
     .btn-subtitle {
       color: #008800;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-align: center;
-      margin-top: 12px;
+      margin-top: 10px;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       opacity: 0.7;
     }
 
-    /* ========== TRANSITION OVERLAY - PROFESSIONAL ========== */
+    /* ========== TRANSITION OVERLAY ========== */
     .transition-overlay {
       position: fixed;
       top: 0;
@@ -284,23 +284,23 @@
 
     .transition-title {
       color: #00ff41;
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: bold;
       text-transform: uppercase;
-      margin-bottom: 40px;
-      letter-spacing: 8px;
+      margin-bottom: 30px;
+      letter-spacing: 6px;
       text-shadow: 0 0 30px #00ff41;
     }
 
     .progress-container {
       width: 100%;
-      height: 8px;
+      height: 6px;
       background: #0a0a0a;
       border: 1px solid #00ff41;
-      margin: 40px 0;
+      margin: 30px 0;
       position: relative;
       overflow: hidden;
-      border-radius: 4px;
+      border-radius: 3px;
     }
 
     .progress-bar-transition {
@@ -314,10 +314,10 @@
 
     .percentage-text {
       color: #00ff41;
-      font-size: 2.5rem;
-      margin: 25px 0;
+      font-size: 2rem;
+      margin: 20px 0;
       font-weight: bold;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
     }
 
     .transition-logs {
@@ -325,13 +325,13 @@
       font-family: 'Courier New', monospace;
       text-align: left;
       background: rgba(0, 0, 0, 0.9);
-      padding: 25px;
+      padding: 20px;
       border: 1px solid #00ff41;
-      max-height: 220px;
+      max-height: 200px;
       overflow-y: auto;
       border-radius: 4px;
-      font-size: 0.95rem;
-      line-height: 1.8;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     .log-entry {
@@ -344,7 +344,7 @@
       to { opacity: 1; }
     }
 
-    /* ========== PAGE 2 - PROFESSIONAL ========== */
+    /* ========== PAGE 2 ========== */
     .page-2 {
       width: 100%;
       max-width: 850px;
@@ -356,7 +356,7 @@
       backdrop-filter: blur(12px);
       border: 2px solid #ff0055;
       box-shadow: 0 0 50px rgba(255, 0, 85, 0.3), inset 0 0 30px rgba(255, 0, 85, 0.05);
-      padding: 50px 40px;
+      padding: 40px 30px;
       position: relative;
       animation: borderPulseRed 3s infinite;
       border-radius: 8px;
@@ -369,11 +369,11 @@
 
     .page-2 h2 {
       color: #ff0055;
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       text-shadow: 2px 2px 0 #00ff41;
-      letter-spacing: 6px;
+      letter-spacing: 5px;
       text-transform: uppercase;
     }
 
@@ -381,8 +381,8 @@
     .cheat-card {
       background: #0a0a0a;
       border: 2px solid #ff0055;
-      padding: 40px;
-      margin: 30px 0;
+      padding: 35px;
+      margin: 25px 0;
       cursor: pointer;
       transition: all 0.3s ease;
       position: relative;
@@ -397,32 +397,32 @@
 
     .cheat-title {
       color: #ff0055;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: bold;
       text-align: center;
-      margin-bottom: 15px;
-      letter-spacing: 4px;
+      margin-bottom: 12px;
+      letter-spacing: 3px;
     }
 
     .cheat-desc {
       color: #00ff41;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       letter-spacing: 2px;
     }
 
     .roblox-icon {
       text-align: center;
-      font-size: 3.5rem;
-      margin-bottom: 15px;
+      font-size: 3rem;
+      margin-bottom: 12px;
     }
 
     /* CODE REVEAL AREA */
     .code-reveal {
       background: #000000;
       border: 1px solid #00ff41;
-      padding: 25px;
-      margin-top: 35px;
+      padding: 20px;
+      margin-top: 30px;
       display: none;
       border-radius: 4px;
     }
@@ -439,11 +439,11 @@
 
     .code-box {
       background: #0a1a0a;
-      padding: 25px;
+      padding: 20px;
       border: 1px solid #00ff41;
       color: #00ff41;
       font-family: 'Courier New', monospace;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       word-break: break-all;
       border-radius: 4px;
     }
@@ -452,16 +452,16 @@
       background: #00ff41;
       color: #000000;
       border: none;
-      padding: 14px 30px;
-      margin-top: 20px;
+      padding: 12px 25px;
+      margin-top: 15px;
       font-family: 'Courier New', monospace;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
       border: 1px solid #00ff41;
       border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       transition: all 0.3s;
     }
 
@@ -471,20 +471,60 @@
       box-shadow: 0 0 30px #00ff41;
     }
 
+    /* GET EXECUTOR BUTTON */
+    .executor-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .executor-btn {
+      background: transparent;
+      border: 2px solid #ff0055;
+      color: #ff0055;
+      font-family: 'Courier New', monospace;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 15px 30px;
+      cursor: pointer;
+      letter-spacing: 4px;
+      width: 100%;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .executor-btn:hover {
+      background: #ff0055;
+      color: #000000;
+      box-shadow: 0 0 40px #ff0055;
+      transform: scale(1.02);
+    }
+
+    .executor-hint {
+      color: #ff3377;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.8;
+    }
+
     /* BACK BUTTON */
     .back-btn {
       background: transparent;
       border: 2px solid #ff0055;
       color: #ff0055;
       font-family: 'Courier New', monospace;
-      font-size: 1.2rem;
-      padding: 14px 35px;
-      margin-top: 30px;
+      font-size: 1.1rem;
+      padding: 12px 30px;
+      margin-top: 25px;
       cursor: pointer;
       transition: all 0.3s;
       border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       font-weight: bold;
     }
 
@@ -497,24 +537,25 @@
     /* IP TRACKER */
     .ip-tracker {
       color: #008800;
-      font-size: 0.85rem;
-      margin-top: 25px;
+      font-size: 0.8rem;
+      margin-top: 20px;
       opacity: 0.8;
       text-align: center;
-      line-height: 1.8;
+      line-height: 1.6;
       text-transform: uppercase;
       letter-spacing: 2px;
     }
 
     /* RESPONSIVE */
     @media (max-width: 600px) {
-      .glitch { font-size: 3rem; letter-spacing: 5px; }
+      .glitch { font-size: 3rem; letter-spacing: 4px; }
       .continue-btn { font-size: 1.3rem; padding: 15px 25px; letter-spacing: 5px; }
       .cheat-title { font-size: 1.5rem; }
       .transition-title { font-size: 2rem; }
-      .hack-container { padding: 30px 20px; }
-      .cheat-container { padding: 30px 20px; }
+      .hack-container { padding: 25px 18px; }
+      .cheat-container { padding: 25px 18px; }
       .page-2 h2 { font-size: 2rem; }
+      .executor-btn { font-size: 1rem; padding: 12px 20px; }
     }
   </style>
 </head>
@@ -630,12 +671,18 @@
             loadstring(game:HttpGet("https://pastebin.com/raw/WFQNNwQh"))()
           </div>
           <button class="copy-btn" onclick="copyCode(1)">COPY TO CLIPBOARD</button>
-          <div class="access-log" style="margin-top:25px; border-left-color:#ff0055;">
+          <div class="access-log" style="margin-top:20px; border-left-color:#ff0055;">
             <div>⚠ USE AT YOUR OWN RISK</div>
             <div>✓ Executor Required (Synapse, Krnl, ScriptWare)</div>
             <div>✓ Auto-Inject on Execution</div>
             <div>✓ Undetected as of Latest Update</div>
           </div>
+        </div>
+
+        <!-- GET EXECUTOR BUTTON -->
+        <div class="executor-section">
+          <a href="https://wearedevs.net/exploits" target="_blank" class="executor-btn">GET EXECUTOR</a>
+          <div class="executor-hint">wearedevs.net/exploits</div>
         </div>
 
         <div class="ip-tracker" style="color:#ff0055;">
@@ -695,7 +742,7 @@
     }
     setInterval(drawMatrix, 50);
 
-    // ==================== PROFESSIONAL TRANSITION ====================
+    // ==================== TRANSITION ====================
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const continueBtn = document.getElementById('continueBtn');
@@ -712,7 +759,6 @@
       "[✓] Firewall rules modified",
       "[*] Scanning for entry points...",
       "[!] PORT 443 — OPEN",
-      "[!] PORT 22 — FILTERED",
       "[*] Executing privilege escalation...",
       "[✓] Root access obtained",
       "[*] Decrypting payload...",
@@ -770,8 +816,8 @@
           stepIndex++;
           
           if (stepIndex === 4) transitionTitle.textContent = "BYPASSING";
-          if (stepIndex === 8) transitionTitle.textContent = "ESCALATING";
-          if (stepIndex === 12) transitionTitle.textContent = "FINALIZING";
+          if (stepIndex === 7) transitionTitle.textContent = "ESCALATING";
+          if (stepIndex === 10) transitionTitle.textContent = "FINALIZING";
         }
         
       }, 120);
