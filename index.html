@@ -18,92 +18,16 @@
     }
 
     /* ========== LOADING SCREEN ========== */
-    .loading-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #000000;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 1s ease;
-    }
 
-    .loading-screen.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .loading-content {
-      text-align: center;
-    }
-
-    .loading-name {
-      font-size: 4.5rem;
-      font-weight: 900;
-      color: #00ff41;
-      text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff;
-      letter-spacing: 10px;
-      margin-bottom: 40px;
-      animation: glitchSkew 2s infinite;
-    }
-
-    @keyframes glitchSkew {
-      0%, 100% { transform: skew(0deg); text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ffff; }
-      20% { transform: skew(2deg); text-shadow: -6px 3px 0 #ff0055, 5px -3px 0 #00ffff; }
-      40% { transform: skew(-2deg); text-shadow: 5px -4px 0 #ff0055, -5px 5px 0 #00ffff; }
-      60% { transform: skew(1deg); text-shadow: -3px 5px 0 #ff0055, 6px -2px 0 #00ffff; }
-      80% { transform: skew(-1deg); text-shadow: 7px 2px 0 #ff0055, -4px -4px 0 #00ffff; }
-    }
-
-    /* CIRCLE LOADER */
-    .circle-loader {
-      width: 80px;
-      height: 80px;
-      margin: 30px auto;
-      position: relative;
-    }
-
-    .circle-loader svg {
-      width: 100%;
-      height: 100%;
-      transform: rotate(-90deg);
-    }
-
-    .circle-loader circle {
-      fill: none;
-      stroke-width: 4;
-    }
 
     .circle-bg {
-      stroke: #0a1a0a;
-    }
-
-    .circle-progress {
-      stroke: #00ff41;
-      stroke-dasharray: 251.2;
-      stroke-dashoffset: 251.2;
+      stroke: #0
       animation: fillCircle 8s linear forwards;
       filter: drop-shadow(0 0 8px #00ff41);
     }
 
     @keyframes fillCircle {
-      0% { stroke-dashoffset: 251.2; }
-      100% { stroke-dashoffset: 0; }
-    }
-
-    .loading-text {
-      color: #00ff41;
-      font-size: 1.2rem;
-      margin-top: 20px;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      animation: pulseText 1.5s infinite;
-    }
+      0% { stroke-dashoffset: 251.2;
 
     @keyframes pulseText {
       0%, 100% { opacity: 0.6; }
