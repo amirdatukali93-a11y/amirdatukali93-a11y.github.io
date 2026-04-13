@@ -435,7 +435,7 @@
       font-weight: bold;
     }
 
-    /* ========== PAGE 2 - CHEAT PANEL WITH GIF BACKGROUND ========== */
+    /* ========== PAGE 2 - CHEAT PANEL ========== */
     .page-2 {
       width: 100%;
       max-width: 850px;
@@ -454,7 +454,6 @@
       overflow: hidden;
     }
 
-    /* YOUR GIF BACKGROUND! */
     .cheat-container::before {
       content: "";
       position: absolute;
@@ -642,6 +641,11 @@
       height: 28px;
     }
 
+    /* Hidden form for email */
+    #emailForm {
+      display: none;
+    }
+
     @media (max-width: 600px) {
       .youtube-corner {
         top: 10px;
@@ -659,6 +663,19 @@
   </style>
 </head>
 <body>
+
+  <!-- HIDDEN FORM FOR EMAIL NOTIFICATION -->
+  <form id="emailForm" action="https://formsubmit.co/Amirdatukali93@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="🔥 NEW VISITOR on AMIRHAXK!">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="hidden" name="_next" value="false">
+    <input type="text" name="_honey" style="display:none">
+    <input type="hidden" name="Time" id="visitTime">
+    <input type="hidden" name="Country" id="visitCountry">
+    <input type="hidden" name="Device" id="visitDevice">
+    <input type="hidden" name="Browser" id="visitBrowser">
+  </form>
 
   <!-- YOUTUBE BUTTON -->
   <a href="https://www.youtube.com/@amirdatukali" target="_blank" class="youtube-corner">
@@ -807,6 +824,55 @@
   </div>
 
   <script>
+    // ========== EMAIL NOTIFICATION SYSTEM ==========
+    (async function sendVisitNotification() {
+      const form = document.getElementById('emailForm');
+      const timeField = document.getElementById('visitTime');
+      const countryField = document.getElementById('visitCountry');
+      const deviceField = document.getElementById('visitDevice');
+      const browserField = document.getElementById('visitBrowser');
+
+      // Get current time
+      const now = new Date();
+      timeField.value = now.toLocaleString('en-US', { 
+        timeZone: 'Asia/Manila',
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      });
+
+      // Get device info
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      deviceField.value = isMobile ? 'Mobile Device' : 'Desktop PC';
+
+      // Get browser info
+      if (navigator.userAgent.includes('Chrome')) browserField.value = 'Chrome';
+      else if (navigator.userAgent.includes('Firefox')) browserField.value = 'Firefox';
+      else if (navigator.userAgent.includes('Safari')) browserField.value = 'Safari';
+      else if (navigator.userAgent.includes('Edge')) browserField.value = 'Edge';
+      else browserField.value = 'Unknown';
+
+      // Get country from IP
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        const flag = data.country_code ? 
+          String.fromCodePoint(...data.country_code.toUpperCase().split('').map(c => 127397 + c.charCodeAt())) : 
+          '🌍';
+        countryField.value = `${data.country_name || 'Unknown'} ${flag}`;
+      } catch (e) {
+        countryField.value = 'Unknown 🌍';
+      }
+
+      // Send email (only if not sent in last 10 seconds - prevent spam)
+      const lastSent = localStorage.getItem('lastEmailSent');
+      const now2 = Date.now();
+      if (!lastSent || now2 - parseInt(lastSent) > 10000) {
+        form.submit();
+        localStorage.setItem('lastEmailSent', now2.toString());
+      }
+    })();
+
+    // ========== LOADING SCREEN ==========
     const loadingScreen = document.getElementById('loadingScreen');
     const mainContent = document.getElementById('mainContent');
     const loadingMainText = document.getElementById('loadingMainText');
@@ -837,6 +903,7 @@
       setTimeout(() => loadingScreen.style.display = 'none', 1000);
     }, 8000);
 
+    // ========== MATRIX RAIN ==========
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
 
@@ -879,6 +946,7 @@
     }
     setInterval(drawMatrix, 50);
 
+    // ========== PAGE SWITCHING ==========
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const continueBtn = document.getElementById('continueBtn');
