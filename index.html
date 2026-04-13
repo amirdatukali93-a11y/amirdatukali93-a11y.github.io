@@ -17,7 +17,7 @@
       overflow-x: hidden;
     }
 
-    /* ========== YOUTUBE SUBSCRIBE BUTTON - TOP RIGHT ========== */
+    /* ========== YOUTUBE SUBSCRIBE BUTTON ========== */
     .youtube-corner {
       position: fixed;
       top: 20px;
@@ -125,7 +125,6 @@
       80% { transform: skew(-1deg); text-shadow: 7px 2px 0 #ff0055, -4px -4px 0 #00ffff; }
     }
 
-    /* CIRCLE LOADER */
     .circle-loader {
       width: 80px;
       height: 80px;
@@ -203,7 +202,6 @@
       opacity: 0.25;
     }
 
-    /* SCANLINES */
     body::before {
       content: "";
       position: fixed;
@@ -216,7 +214,6 @@
       z-index: 2;
     }
 
-    /* MAIN CONTENT - HIDDEN UNTIL LOADING DONE */
     .main-content {
       position: relative;
       z-index: 10;
@@ -233,7 +230,6 @@
       opacity: 1;
     }
 
-    /* PAGE 1 CONTENT */
     .page-1 {
       width: 100%;
       max-width: 850px;
@@ -256,7 +252,6 @@
       50% { border-color: #00ff88; box-shadow: 0 0 60px rgba(0, 255, 65, 0.4), inset 0 0 40px rgba(0, 255, 65, 0.1); }
     }
 
-    /* GLITCH NAME */
     .glitch-wrapper {
       text-align: center;
       margin-bottom: 20px;
@@ -272,7 +267,6 @@
       animation: glitchSkew 4s infinite;
     }
 
-    /* STATUS */
     .status-bar {
       display: flex;
       justify-content: center;
@@ -294,7 +288,6 @@
       50% { opacity: 0.3; }
     }
 
-    /* TERMINAL */
     .terminal-box {
       background: #0a0a0a;
       border: 1px solid #00ff41;
@@ -322,7 +315,6 @@
       margin-right: 8px;
     }
 
-    /* ACCESS LOG */
     .access-log {
       color: #00cc33;
       font-size: 0.85rem;
@@ -333,7 +325,6 @@
       line-height: 1.6;
     }
 
-    /* CORNERS */
     .corner {
       position: absolute;
       width: 20px;
@@ -347,7 +338,6 @@
     .corner-bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
     .corner-br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
 
-    /* CONTINUE BUTTON */
     .continue-section {
       width: 100%;
       max-width: 500px;
@@ -445,30 +435,7 @@
       font-weight: bold;
     }
 
-    .transition-logs {
-      color: #00cc33;
-      font-family: 'Courier New', monospace;
-      text-align: left;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 20px;
-      border: 1px solid #00ff41;
-      max-height: 180px;
-      overflow-y: auto;
-      border-radius: 4px;
-      font-size: 0.85rem;
-    }
-
-    .log-entry {
-      margin: 3px 0;
-      opacity: 0;
-      animation: fadeInLog 0.2s forwards;
-    }
-
-    @keyframes fadeInLog {
-      to { opacity: 1; }
-    }
-
-    /* ========== PAGE 2 ========== */
+    /* ========== PAGE 2 - CHEAT PANEL WITH GIF BACKGROUND ========== */
     .page-2 {
       width: 100%;
       max-width: 850px;
@@ -476,14 +443,37 @@
     }
 
     .cheat-container {
-      background: rgba(0, 15, 0, 0.9);
-      backdrop-filter: blur(12px);
+      background: rgba(0, 15, 0, 0.75);
+      backdrop-filter: blur(8px);
       border: 2px solid #ff0055;
       box-shadow: 0 0 50px rgba(255, 0, 85, 0.3), inset 0 0 30px rgba(255, 0, 85, 0.05);
       padding: 40px 30px;
       position: relative;
       animation: borderPulseRed 3s infinite;
       border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* YOUR GIF BACKGROUND! */
+    .cheat-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('bg-clip.gif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.35;
+      z-index: 0;
+      filter: blur(1px);
+    }
+
+    .cheat-container > * {
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes borderPulseRed {
@@ -500,9 +490,9 @@
       letter-spacing: 5px;
     }
 
-    /* CHEAT CARD */
     .cheat-card {
-      background: #0a0a0a;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(4px);
       border: 2px solid #ff0055;
       padding: 30px;
       margin: 20px 0;
@@ -515,6 +505,7 @@
       transform: translateY(-5px);
       box-shadow: 0 0 50px rgba(255, 0, 85, 0.5);
       border-color: #00ff41;
+      background: rgba(10, 10, 10, 0.95);
     }
 
     .cheat-title {
@@ -538,9 +529,9 @@
       margin-bottom: 10px;
     }
 
-    /* CODE REVEAL */
     .code-reveal {
-      background: #000000;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(4px);
       border: 1px solid #00ff41;
       padding: 20px;
       margin-top: 25px;
@@ -582,14 +573,14 @@
       box-shadow: 0 0 30px #00ff41;
     }
 
-    /* GET EXECUTOR BUTTON */
     .executor-section {
       margin-top: 25px;
       text-align: center;
     }
 
     .executor-btn {
-      background: transparent;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
       border: 2px solid #ff0055;
       color: #ff0055;
       font-family: 'Courier New', monospace;
@@ -618,9 +609,9 @@
       text-transform: uppercase;
     }
 
-    /* BACK BUTTON */
     .back-btn {
-      background: transparent;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
       border: 2px solid #ff0055;
       color: #ff0055;
       font-family: 'Courier New', monospace;
@@ -638,7 +629,6 @@
       color: #000000;
     }
 
-    /* IP TRACKER */
     .ip-tracker {
       color: #008800;
       font-size: 0.75rem;
@@ -647,7 +637,6 @@
       text-transform: uppercase;
     }
 
-    /* SVG Icons */
     .yt-svg {
       width: 28px;
       height: 28px;
@@ -671,7 +660,7 @@
 </head>
 <body>
 
-  <!-- YOUTUBE SUBSCRIBE BUTTON - TOP RIGHT -->
+  <!-- YOUTUBE BUTTON -->
   <a href="https://www.youtube.com/@amirdatukali" target="_blank" class="youtube-corner">
     <div class="youtube-icon">
       <svg class="yt-svg" viewBox="0 0 24 24" fill="currentColor">
@@ -688,21 +677,18 @@
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-content">
       <div class="loading-name">AMIRHAXK</div>
-      
       <div class="circle-loader">
         <svg viewBox="0 0 100 100">
           <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
           <circle class="circle-progress" cx="50" cy="50" r="40"></circle>
         </svg>
       </div>
-      
       <div class="loading-text" id="loadingMainText">HOLD ON</div>
       <div class="loading-subtext" id="loadingSubText">SIT TIGHT</div>
       <div class="loading-steps" id="loadingSteps">ESTABLISHING SECURE CONNECTION...</div>
     </div>
   </div>
 
-  <!-- MATRIX CANVAS -->
   <canvas id="matrix-bg"></canvas>
 
   <!-- TRANSITION OVERLAY -->
@@ -713,11 +699,9 @@
         <div class="progress-bar-transition" id="progressBar"></div>
       </div>
       <div class="percentage-text" id="percentageText">0%</div>
-      <div class="transition-logs" id="transitionLogs"></div>
     </div>
   </div>
 
-  <!-- MAIN CONTENT -->
   <div class="main-content" id="mainContent">
     
     <div class="page-1" id="page1">
@@ -762,7 +746,6 @@
           <div>  [TOR] 3 Hops Verified</div>
           <div>  [SYS] Awaiting input...</div>
         </div>
-
       </div>
     </div>
 
@@ -801,7 +784,7 @@
             loadstring(game:HttpGet("https://pastebin.com/raw/WFQNNwQh"))()
           </div>
           <button class="copy-btn" onclick="copyCode(1)">COPY TO CLIPBOARD</button>
-          <div class="access-log" style="margin-top:15px; border-left-color:#ff0055;">
+          <div class="access-log" style="margin-top:15px; border-left-color:#ff0055; background:rgba(0,0,0,0.7);">
             <div>⚠ USE AT YOUR OWN RISK</div>
             <div>✓ Executor Required</div>
           </div>
@@ -824,7 +807,6 @@
   </div>
 
   <script>
-    // ==================== LOADING SCREEN ====================
     const loadingScreen = document.getElementById('loadingScreen');
     const mainContent = document.getElementById('mainContent');
     const loadingMainText = document.getElementById('loadingMainText');
@@ -852,13 +834,9 @@
       clearInterval(msgInterval);
       loadingScreen.classList.add('fade-out');
       mainContent.classList.add('show');
-      
-      setTimeout(() => {
-        loadingScreen.style.display = 'none';
-      }, 1000);
+      setTimeout(() => loadingScreen.style.display = 'none', 1000);
     }, 8000);
 
-    // ==================== MATRIX RAIN ====================
     const canvas = document.getElementById('matrix-bg');
     const ctx = canvas.getContext('2d');
 
@@ -901,7 +879,6 @@
     }
     setInterval(drawMatrix, 50);
 
-    // ==================== PAGE SWITCHING ====================
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const continueBtn = document.getElementById('continueBtn');
