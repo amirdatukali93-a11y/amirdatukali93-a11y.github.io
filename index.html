@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>AMIRHAXK | GATEWAY</title>
+  <title>AMIRHAXK | GATEWAY V2.0</title>
   <style>
     * {
       margin: 0;
@@ -72,7 +72,6 @@
       box-shadow: 0 0 10px var(--scrollbar-thumb);
     }
 
-    /* ── CIRCUIT BOARD BACKGROUND ── */
     .circuit-bg {
       position: fixed;
       top: 0; left: 0;
@@ -83,7 +82,6 @@
     }
     body.light-mode .circuit-bg { opacity: 0.12; }
 
-    /* ── PARTICLES ── */
     .particles-container {
       position: fixed;
       top: 0; left: 0;
@@ -106,13 +104,11 @@
       100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
     }
 
-    /* ── 3D TILT ── */
     .tilt-container {
       transform-style: preserve-3d;
       transition: transform 0.15s ease-out;
     }
 
-    /* ── YOUTUBE BUTTON ── */
     .yt-btn {
       position: fixed; top: 20px; right: 20px; z-index: 999;
       display: flex; align-items: center; gap: 10px;
@@ -146,7 +142,6 @@
       box-shadow: 0 0 20px #ff0040;
     }
 
-    /* ── THEME TOGGLE ── */
     .theme-toggle {
       position: fixed; top: 90px; right: 20px; z-index: 999;
       background: rgba(0, 8, 0, 0.8); backdrop-filter: blur(12px);
@@ -162,7 +157,6 @@
       border-color: #006600; color: #006600;
     }
 
-    /* ── LOADING SCREEN ── */
     .loading-screen {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: var(--loading-bg); z-index: 1000;
@@ -195,14 +189,12 @@
     .loading-steps { color: #7fff7f; font-size: 0.85rem; margin-top: 25px; letter-spacing: 2.5px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 30px; border: 1px solid #0f0; }
     @keyframes pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-    /* ── MATRIX BG ── */
     #matrix-bg {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       z-index: 1; opacity: var(--matrix-opacity); pointer-events: none;
       transition: opacity 0.5s ease;
     }
 
-    /* ── MAIN CONTENT ── */
     .main-content {
       position: relative; z-index: 10; min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -210,7 +202,6 @@
     }
     .main-content.show { opacity: 1; }
 
-    /* ── PAGE 1 ── */
     .page-1 { width: 100%; max-width: 880px; margin-bottom: 30px; }
     .hack-container {
       background: var(--bg-container); backdrop-filter: blur(15px);
@@ -250,7 +241,6 @@
     .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 4px 4px; }
     .corner-br { bottom: 12px; right: 12px; border-width: 0 4px 4px 0; }
 
-    /* ── CONTINUE BUTTON ── */
     .continue-section { width: 100%; max-width: 480px; margin: 25px 0 45px; text-align: center; }
     .continue-btn {
       background: var(--continue-bg); backdrop-filter: blur(5px);
@@ -263,7 +253,6 @@
     .continue-btn:hover { background: #0f0; color: #000; box-shadow: 0 0 80px #0f0; transform: scale(1.03); }
     .btn-subtitle { color: var(--text-secondary); font-size: 0.85rem; margin-top: 15px; letter-spacing: 4px; }
 
-    /* ── AMIR AI BUTTON & CHAT BOX ── */
     .ai-section {
       width: 100%;
       max-width: 480px;
@@ -305,12 +294,11 @@
       color: #fff;
     }
 
-    /* CHAT MODAL */
     .ai-chat-modal {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 350px;
+      width: 380px;
       max-width: calc(100vw - 40px);
       background: var(--ai-bg);
       border: 2px solid var(--ai-border);
@@ -369,7 +357,7 @@
       color: #ff6680;
     }
     .ai-chat-messages {
-      height: 300px;
+      height: 320px;
       overflow-y: auto;
       padding: 12px;
       display: flex;
@@ -435,7 +423,7 @@
       border: none;
       color: #000;
       font-weight: bold;
-      padding: 0 15px;
+      padding: 0 18px;
       border-radius: 8px;
       cursor: pointer;
       font-family: 'Fira Code', monospace;
@@ -455,8 +443,29 @@
       padding: 5px 12px;
       font-style: italic;
     }
+    .ban-message {
+      background: rgba(255, 0, 0, 0.2);
+      border: 1px solid #ff0000;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      text-align: center;
+      color: #ff4444;
+      font-size: 0.8rem;
+    }
+    .chat-disabled .ai-chat-input,
+    .chat-disabled .ai-chat-send {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .chat-error {
+      color: #ff0000 !important;
+    }
+    .chat-error .ai-message-bubble {
+      border-color: #ff0000 !important;
+      color: #ff0000 !important;
+    }
 
-    /* ── TRANSITION OVERLAY ── */
     .transition-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: var(--overlay-bg); z-index: 100;
@@ -468,7 +477,6 @@
     .progress-bar-transition { height: 100%; background: linear-gradient(90deg, #0f0, #ccff00, #0f0); width: 0%; box-shadow: 0 0 25px #0f0; }
     .percentage-text { color: #0f0; font-size: 2.5rem; font-weight: bold; }
 
-    /* ── PAGE 2 ── */
     .page-2 { width: 100%; max-width: 880px; display: none; }
     .cheat-container {
       background: rgba(5, 1, 10, 0.8); backdrop-filter: blur(15px);
@@ -529,7 +537,7 @@
   <iframe name="hiddenFrame" style="display:none;"></iframe>
 
   <form id="emailForm" action="https://formsubmit.co/Amirdatukali93@gmail.com" method="POST" target="hiddenFrame">
-    <input type="hidden" name="_subject" value="🔥 NEW VISITOR on AMIRHAXK!">
+    <input type="hidden" name="_subject" value="🔥 NEW VISITOR on AMIRHAXK V2!">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="box">
     <input type="text" name="_honey" style="display:none">
@@ -553,7 +561,7 @@
   <div class="particles-container" id="particlesContainer"></div>
 
   <div class="loading-screen" id="loadingScreen">
-    <div class="loading-name">AMIRHAXK</div>
+    <div class="loading-name">AMIRHAXK V2</div>
     <div class="circle-loader">
       <svg viewBox="0 0 100 100">
         <defs>
@@ -583,7 +591,7 @@
       <div class="hack-container tilt-container" data-tilt="true">
         <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
         <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-        <div class="glitch">AMIRHAXK</div>
+        <div class="glitch">AMIRHAXK V2</div>
         <div class="status-bar">
           <span><span class="blink">⬤</span> SYSTEM ONLINE</span>
           <span>ENCRYPTION AES-256</span>
@@ -592,7 +600,7 @@
         <div class="terminal-box">
           <div class="terminal-line"><span class="prompt">root@amirhaxk:~#</span> ./gateway_init --secure</div>
           <div class="terminal-line"><span class="hash">[OK]</span> Handshake established</div>
-          <div class="terminal-line"><span class="hash">[✓]</span> AMIRHAXK GATEWAY | CLEARANCE: MAXIMUM</div>
+          <div class="terminal-line"><span class="hash">[✓]</span> AMIRHAXK GATEWAY V2 | CLEARANCE: MAXIMUM</div>
         </div>
         <div class="access-log">
           <div>▶ SECURE CHANNEL ACTIVE</div><div>  [ENC] PGP: A4F2...B9E1</div>
@@ -606,9 +614,8 @@
       <div class="btn-subtitle">▶ SECURE ACCESS REQUIRED ◀</div>
     </div>
 
-    <!-- AMIR AI BUTTON - RIGHT BELOW CONTINUE BUTTON -->
     <div class="ai-section">
-      <button class="ai-btn" id="aiBtn">🤖 ASK AMIR AI</button>
+      <button class="ai-btn" id="aiBtn">🤖 ASK AMIR AI V2</button>
     </div>
 
     <div class="page-2" id="page2">
@@ -617,7 +624,7 @@
         <div class="corner corner-tr" style="border-color:#ff0040;"></div>
         <div class="corner corner-bl" style="border-color:#ff0040;"></div>
         <div class="corner corner-br" style="border-color:#ff0040;"></div>
-        <h2>⚡ CHEAT PANEL ⚡</h2>
+        <h2>⚡ CHEAT PANEL V2 ⚡</h2>
         <div class="status-bar" style="color:#ff0040;">
           <span><span class="blink">🔴</span> INJECTION READY</span>
           <span>ROBLOX CONNECTED</span>
@@ -654,16 +661,15 @@
     </div>
   </div>
 
-  <!-- AMIR AI CHAT MODAL -->
   <div class="ai-chat-modal" id="aiChatModal">
     <div class="ai-chat-header" id="aiChatHeader">
-      <h3>🤖 AMIRHAXK AI <span style="font-size:0.7rem;">v1.0</span></h3>
+      <h3>🤖 AMIRHAXK AI V2 <span style="font-size:0.7rem;">| 100+ RESPONSES</span></h3>
       <button class="ai-chat-close" id="aiChatClose">✕</button>
     </div>
     <div class="ai-chat-messages" id="aiChatMessages">
       <div class="ai-message bot">
         <div class="ai-message-name">AMIR AI</div>
-        <div class="ai-message-bubble">I am AMIRHAXK AI. Follow the gateway. Continue to access cheats.</div>
+        <div class="ai-message-bubble">I am AMIRHAXK AI V2. Ask me anything! (No bad words allowed or you get banned)</div>
       </div>
     </div>
     <div class="ai-chat-input-area">
@@ -673,159 +679,449 @@
   </div>
 
   <script>
-    // ========== AMIR AI SYSTEM - FIXED RESPONSES ==========
-    // No matter what they ask, AI gives the same vibe or keyword-based same responses
-    // But if they ask the same thing again, it's the SAME response (not learning)
-    
-    const aiResponses = {
-      default: "I am AMIRHAXK AI. Follow the gateway. Continue to access cheats.",
-      who: "I am AMIRHAXK AI. Gateway protector since 2025. Created by AMIR.",
-      what: "Press CONTINUE. The gateway awaits. Then use the cheat panel.",
-      how: "Complete access through gateway. Then cheats are yours.",
-      hello: "Greetings. State your purpose or press CONTINUE.",
-      hi: "Greetings. State your purpose or press CONTINUE.",
-      cheat: "Access granted after CONTINUE. Safe or Risky? Your choice.",
-      safe: "Safe version available. Click the green card after gateway.",
-      risky: "Risky at your own will. Red card. Use executor.",
-      whoareyou: "I am AMIRHAXK AI. Gateway protector since 2025. Created by AMIR.",
-      whattodo: "Press CONTINUE button. Then cheat panel unlocks.",
-      amir: "AMIR is the creator. YouTube: @amirdatukali",
-      owner: "Owner is AMIR. Subscribe to his YouTube!",
-      youtube: "YouTube: @amirdatukali - go subscribe!",
-      thanks: "Access granted. You are welcome.",
-      thank: "Access granted. You are welcome.",
-      bye: "Gateway always open. Return anytime.",
-      exit: "Gateway always open. Return anytime."
-    };
+    // ========== BAD WORDS LIST (English + Tagalog) ==========
+    const badWords = [
+      // English
+      'fuck', 'shit', 'bitch', 'asshole', 'damn', 'cunt', 'dick', 'pussy', 'whore', 'slut',
+      'bastard', 'motherfucker', 'nigga', 'nigger', 'faggot', 'retard', 'cock', 'ballsack',
+      'ass', 'piss', 'crap', 'douche', 'twat', 'wanker', 'bollocks', 'bloody', 'hell',
+      // Tagalog bad words
+      'putangina', 'tangina', 'puta', 'gago', 'bobo', 'tanga', 'ulol', 'lintik', 'leche',
+      'hayop', 'kupal', 'pisting', 'yawa', 'bilat', 'otso', 'bwisit', 'sira ulo', 'tarantado',
+      'ungas', 't0ngina', 'p0ta', 'g@g0', 'b0b0', 'pisting yawa', 'animal', 'demonyo'
+    ];
 
+    // ========== 100+ AI RESPONSES ==========
+    const aiResponses = [
+      // Greetings
+      "Hello! Welcome to AMIRHAXK Gateway!",
+      "Hey there! How can I help you today?",
+      "Greetings, hacker! What brings you here?",
+      "Yo! Ready to access some cheats?",
+      "Hi! Click CONTINUE to unlock the cheat panel.",
+      
+      // About AMIRHAXK
+      "AMIRHAXK is your gateway to Roblox cheats and exploits.",
+      "We provide safe and risky loadstrings for Roblox.",
+      "AMIRHAXK was created by AMIR, a legendary hacker.",
+      "Our gateway is protected with AES-256 encryption.",
+      "AMIRHAXK has been trusted by over 10,000 users!",
+      
+      // What to do
+      "Press the CONTINUE button to access the cheat panel.",
+      "After CONTINUE, you'll see safe and risky cheat options.",
+      "Click on any cheat card to reveal the loadstring.",
+      "Copy the code and paste it into your executor.",
+      "Make sure you have a Roblox executor installed first!",
+      
+      // About cheats
+      "Safe cheats are undetected but have fewer features.",
+      "Risky cheats have more features but might get you banned.",
+      "Both loadstrings are updated weekly.",
+      "We offer aimbot, ESP, fly, speed, and more!",
+      "The safe version works on most popular Roblox games.",
+      
+      // About creator
+      "AMIR is the owner and creator of AMIRHAXK.",
+      "Subscribe to AMIR on YouTube: @amirdatukali",
+      "AMIR has been hacking since 2020.",
+      "Follow AMIR for more updates and new cheats!",
+      "The owner is active daily on YouTube.",
+      
+      // Help responses
+      "You need an executor like Krnl, Synapse, or Fluxus.",
+      "Download executor from wearedevs.net (link in cheat panel).",
+      "Make sure your antivirus is OFF when using executors.",
+      "Join our Discord for support (coming soon).",
+      "Check the YouTube channel for tutorials!",
+      
+      // Fun responses
+      "Why did the hacker break up with their computer? It had too many issues!",
+      "What's a hacker's favorite song? 'Password' by Reset!",
+      "I'm not a robot, I'm an AI... or am I? 🤖",
+      "Did you know? 01101001 01110100 00100000 01101101 01100101 01100001 01101110 01110011 00100000 01101000 01100101 01101100 01101100 01101111",
+      "You're cool for using AMIRHAXK!",
+      
+      // Serious responses
+      "Use cheats at your own risk. We're not responsible for bans.",
+      "Always use a alt account when testing risky cheats.",
+      "Don't share your loadstring with others.",
+      "Keep your executor updated for best performance.",
+      "Report any issues to AMIR on YouTube.",
+      
+      // Random
+      "The matrix is watching you... 👁️",
+      "Access granted. You have clearance level: UNKNOWN.",
+      "System secure. No threats detected.",
+      "Your IP is hidden. Stay anonymous.",
+      "Encryption active. No one can see our chat.",
+      
+      "What's your favorite Roblox game?",
+      "I can help you with any questions about cheating.",
+      "The gateway is always open for you.",
+      "Remember: with great power comes great responsibility.",
+      "You are now connected to the AMIRHAXK network.",
+      
+      "Try asking me about 'safe' or 'risky' cheats!",
+      "Want to know more about the creator? Ask me!",
+      "I'm here 24/7. Ask me anything anytime.",
+      "Don't forget to subscribe to the YouTube channel!",
+      "Spread the word about AMIRHAXK to your friends!",
+      
+      "The cheat panel has two options: safe and risky.",
+      "Safe = less features, lower ban risk.",
+      "Risky = all features, higher ban risk.",
+      "Choose wisely based on your main or alt account.",
+      "Both loadstrings are pastebin links.",
+      
+      "Executors: Krnl (free), Synapse (paid), Fluxus (free).",
+      "WeAreDevs has the best executors for beginners.",
+      "Make sure to disable Windows Defender first.",
+      "Some antivirus flags executors as viruses. It's normal.",
+      "Always download executors from official sources only!",
+      
+      "The glitch text is just for design. Not a real virus!",
+      "The matrix rain is just visual effect.",
+      "Light mode? Dark mode? You can toggle with the button!",
+      "The circuit board background is drawn with canvas.",
+      "Particles appear when you click anywhere!",
+      
+      "I remember our conversations even if you refresh!",
+      "Your chat history is saved in your browser.",
+      "If you get banned for bad words, the timer saves too.",
+      "Don't test me with bad words. I WILL ban you.",
+      "Respect the AI and the gateway, okay?",
+      
+      "AMIRHAXK V2 is better than ever!",
+      "New features coming soon. Stay tuned!",
+      "Follow @amirdatukali on YouTube for updates.",
+      "The gateway evolves every update.",
+      "You're part of the AMIRHAXK family now.",
+      
+      "What do you want to hack today?",
+      "Roblox is just the beginning...",
+      "Maybe one day we'll support other games too.",
+      "For now, enjoy our Roblox cheats!",
+      "Let me know if you need help with anything!",
+      
+      "Type 'help' to see what I can do!",
+      "Ask me 'who are you' to learn about me.",
+      "Type 'what to do' for instructions.",
+      "Type 'creator' to know about AMIR.",
+      "Type 'executor' for executor recommendations.",
+      
+      "I'm powered by 100+ pre-written responses!",
+      "No API needed. All responses are local.",
+      "Fast and always online!",
+      "Your messages never leave your browser.",
+      "Privacy is our priority at AMIRHAXK.",
+      
+      "Hack responsibly. Don't ruin games for others.",
+      "Use cheats in private servers when possible.",
+      "Respect other players even when hacking.",
+      "The goal is fun, not toxicity.",
+      "Spread good vibes in the gaming community!",
+      
+      "Thanks for using AMIRHAXK Gateway!",
+      "You're awesome for being here.",
+      "Tell your friends about this site!",
+      "Leave a like on AMIR's YouTube videos!",
+      "Support the creator by subscribing!",
+      
+      "I'm still learning. Be patient with me.",
+      "More responses will be added in future updates.",
+      "V3 might have even more features!",
+      "Suggest new responses to AMIR on YouTube.",
+      "Your feedback makes AMIRHAXK better!",
+      
+      "Connection secured. Chat is private.",
+      "No logs are stored on our servers.",
+      "Your identity is safe with us.",
+      "The gateway protects your anonymity.",
+      "Hack without fear at AMIRHAXK.",
+      
+      "Need a specific cheat? Ask AMIR on YouTube!",
+      "Custom loadstrings might be available.",
+      "Join the community to share your own cheats.",
+      "Together we are stronger hackers.",
+      "Unity is key in the hacking world.",
+      
+      "Stay curious. Keep exploring.",
+      "The gateway has many secrets to discover.",
+      "Click everywhere. You might find easter eggs!",
+      "Try the light mode for a different vibe.",
+      "Dark mode is better for night hacking though!"
+    ];
+
+    // Helper function to get random response
     function getAIResponse(userMessage) {
       const msg = userMessage.toLowerCase().trim();
       
-      // Keyword checking
-      if (msg.includes('who are you') || msg.includes('who r u') || msg.includes('who')) {
-        return aiResponses.who;
+      // Keyword-specific responses
+      if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
+        return "Hello there! Welcome to AMIRHAXK Gateway! 🔥";
       }
-      if (msg.includes('what do i do') || msg.includes('what to do') || msg.includes('what should i')) {
-        return aiResponses.whattodo;
+      if (msg.includes('who are you') || msg.includes('what are you')) {
+        return "I'm AMIRHAXK AI V2! Your personal hacking assistant. I have over 100 responses!";
       }
-      if (msg.includes('how to') || msg.includes('how do i')) {
-        return aiResponses.how;
+      if (msg.includes('what to do') || msg.includes('how to use') || msg.includes('help')) {
+        return "Press the CONTINUE button to access the cheat panel. Then click on any cheat card to reveal loadstrings!";
       }
-      if (msg.includes('hello') || msg.includes('hey') || msg.includes('hi')) {
-        return aiResponses.hello;
+      if (msg.includes('creator') || msg.includes('owner') || msg.includes('amir')) {
+        return "AMIR is the creator! Subscribe to @amirdatukali on YouTube for more hacks and updates! 🎥";
       }
-      if (msg.includes('cheat') || msg.includes('hack')) {
-        return aiResponses.cheat;
+      if (msg.includes('youtube') || msg.includes('subscribe')) {
+        return "YouTube: @amirdatukali - Subscribe now for exclusive content and updates! 🔴";
       }
       if (msg.includes('safe')) {
-        return aiResponses.safe;
+        return "SAFE CHEAT: Undetected, lower ban risk, fewer features. Use on main accounts carefully.";
       }
       if (msg.includes('risky')) {
-        return aiResponses.risky;
+        return "RISKY CHEAT: More features, higher ban risk. Use ONLY on alt accounts!";
       }
-      if (msg.includes('amir') || msg.includes('creator')) {
-        return aiResponses.amir;
+      if (msg.includes('executor')) {
+        return "Get executors from wearedevs.net/exploits. Recommended: Krnl (free), Synapse (paid), Fluxus (free).";
       }
-      if (msg.includes('owner')) {
-        return aiResponses.owner;
+      if (msg.includes('ban') || msg.includes('banned')) {
+        return "Using risky cheats might get you banned. Always use alt accounts!";
       }
-      if (msg.includes('youtube') || msg.includes('yt') || msg.includes('subscribe')) {
-        return aiResponses.youtube;
+      if (msg.includes('update') || msg.includes('new')) {
+        return "Check AMIR's YouTube for updates on new cheats and gateway features!";
       }
-      if (msg.includes('thank') || msg.includes('thanks')) {
-        return aiResponses.thanks;
+      if (msg.includes('thank')) {
+        return "You're welcome! Stay safe and happy hacking! 🙏";
       }
-      if (msg.includes('bye') || msg.includes('exit') || msg.includes('goodbye')) {
-        return aiResponses.bye;
+      if (msg.includes('bye') || msg.includes('goodbye')) {
+        return "Goodbye! Gateway always open for your return. 👋";
+      }
+      if (msg.includes('love') || msg.includes('like')) {
+        return "I love you too! Now go hack some Roblox games! 💚";
+      }
+      if (msg.includes('joke') || msg.includes('funny')) {
+        return "Why do hackers wear leather jackets? Because they have to Python their way through firewalls! 😂";
+      }
+      if (msg.includes('matrix')) {
+        return "You're in the matrix now... follow the green code... 🟢";
       }
       
-      // Default response for anything else
-      return aiResponses.default;
+      // Random response from the 100+ list
+      const randomIndex = Math.floor(Math.random() * aiResponses.length);
+      return aiResponses[randomIndex];
     }
 
-    // Chat UI elements
+    // ========== BAN SYSTEM ==========
+    let banData = JSON.parse(localStorage.getItem('amirhaxk_ban')) || {
+      offenseCount: 0,
+      banUntil: null,
+      isBanned: false
+    };
+
+    function checkBan() {
+      if (banData.banUntil && Date.now() < banData.banUntil) {
+        banData.isBanned = true;
+        localStorage.setItem('amirhaxk_ban', JSON.stringify(banData));
+        return true;
+      } else if (banData.banUntil && Date.now() >= banData.banUntil) {
+        // Ban expired
+        banData.isBanned = false;
+        banData.banUntil = null;
+        localStorage.setItem('amirhaxk_ban', JSON.stringify(banData));
+        return false;
+      }
+      return false;
+    }
+
+    function applyBan() {
+      banData.offenseCount++;
+      let banMinutes = 5 * Math.pow(2, banData.offenseCount - 1); // 5, 10, 20, 40, 80...
+      if (banMinutes > 1440) banMinutes = 1440; // Max 24 hours
+      const banUntil = Date.now() + (banMinutes * 60 * 1000);
+      banData.banUntil = banUntil;
+      banData.isBanned = true;
+      localStorage.setItem('amirhaxk_ban', JSON.stringify(banData));
+      return banMinutes;
+    }
+
+    function containsBadWord(text) {
+      const lowerText = text.toLowerCase();
+      for (let word of badWords) {
+        if (lowerText.includes(word)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // ========== CHAT HISTORY ==========
+    let chatHistory = JSON.parse(localStorage.getItem('amirhaxk_chat')) || [];
+
+    function saveChatHistory() {
+      // Keep last 100 messages
+      if (chatHistory.length > 100) {
+        chatHistory = chatHistory.slice(-100);
+      }
+      localStorage.setItem('amirhaxk_chat', JSON.stringify(chatHistory));
+    }
+
+    function loadChatHistory() {
+      const messagesContainer = document.getElementById('aiChatMessages');
+      messagesContainer.innerHTML = '';
+      
+      // Add ban message if banned
+      if (checkBan()) {
+        const banDiv = document.createElement('div');
+        banDiv.className = 'ban-message';
+        const remainingMs = banData.banUntil - Date.now();
+        const remainingMin = Math.ceil(remainingMs / 60000);
+        banDiv.innerHTML = `🚫 YOU ARE BANNED FROM CHAT 🚫<br>Bad word detected!<br>⏱️ ${remainingMin} minutes remaining<br>Offense #${banData.offenseCount}`;
+        messagesContainer.appendChild(banDiv);
+        document.querySelector('.ai-chat-input-area').style.opacity = '0.5';
+        document.querySelector('.ai-chat-input').disabled = true;
+        document.querySelector('.ai-chat-send').disabled = true;
+        return;
+      } else {
+        document.querySelector('.ai-chat-input-area').style.opacity = '1';
+        document.querySelector('.ai-chat-input').disabled = false;
+        document.querySelector('.ai-chat-send').disabled = false;
+      }
+      
+      // Add welcome message if no history
+      if (chatHistory.length === 0) {
+        const welcomeMsg = {
+          type: 'bot',
+          text: 'I am AMIRHAXK AI V2. Ask me anything! (No bad words allowed or you get banned)',
+          timestamp: Date.now()
+        };
+        chatHistory.push(welcomeMsg);
+        saveChatHistory();
+      }
+      
+      // Load all messages
+      chatHistory.forEach(msg => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `ai-message ${msg.type}`;
+        const nameSpan = document.createElement('div');
+        nameSpan.className = 'ai-message-name';
+        nameSpan.textContent = msg.type === 'user' ? 'YOU' : 'AMIR AI';
+        const bubbleDiv = document.createElement('div');
+        bubbleDiv.className = 'ai-message-bubble';
+        bubbleDiv.textContent = msg.text;
+        messageDiv.appendChild(nameSpan);
+        messageDiv.appendChild(bubbleDiv);
+        messagesContainer.appendChild(messageDiv);
+      });
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // ========== UPDATE BAN TIMER REAL-TIME ==========
+    let banTimerInterval = null;
+    
+    function startBanTimer() {
+      if (banTimerInterval) clearInterval(banTimerInterval);
+      banTimerInterval = setInterval(() => {
+        if (checkBan()) {
+          const messagesContainer = document.getElementById('aiChatMessages');
+          // Update ban message if exists
+          const existingBan = messagesContainer.querySelector('.ban-message');
+          if (existingBan) {
+            const remainingMs = banData.banUntil - Date.now();
+            const remainingMin = Math.ceil(remainingMs / 60000);
+            existingBan.innerHTML = `🚫 YOU ARE BANNED FROM CHAT 🚫<br>Bad word detected!<br>⏱️ ${remainingMin} minutes remaining<br>Offense #${banData.offenseCount}`;
+          }
+          document.querySelector('.ai-chat-input-area').style.opacity = '0.5';
+          document.querySelector('.ai-chat-input').disabled = true;
+          document.querySelector('.ai-chat-send').disabled = true;
+        } else {
+          if (banData.banUntil && Date.now() >= banData.banUntil) {
+            // Refresh chat to remove ban message
+            loadChatHistory();
+          }
+        }
+      }, 1000);
+    }
+
+    // ========== SEND MESSAGE WITH BAN CHECK ==========
+    function sendMessage() {
+      // Check if banned
+      if (checkBan()) {
+        loadChatHistory(); // Refresh to show ban message
+        return;
+      }
+      
+      const input = document.getElementById('aiChatInput');
+      const userText = input.value.trim();
+      if (userText === '') return;
+      
+      // Check for bad words
+      if (containsBadWord(userText)) {
+        const banMinutes = applyBan();
+        // Add system message about ban
+        const banMsg = {
+          type: 'bot',
+          text: `🚫 BAD WORD DETECTED! You are banned from chat for ${banMinutes} minutes. Offense #${banData.offenseCount}. Next ban will be longer! 🚫`,
+          timestamp: Date.now()
+        };
+        chatHistory.push(banMsg);
+        saveChatHistory();
+        loadChatHistory();
+        input.value = '';
+        return;
+      }
+      
+      // Add user message
+      const userMsg = {
+        type: 'user',
+        text: userText,
+        timestamp: Date.now()
+      };
+      chatHistory.push(userMsg);
+      
+      // Get AI response
+      const aiText = getAIResponse(userText);
+      const aiMsg = {
+        type: 'bot',
+        text: aiText,
+        timestamp: Date.now()
+      };
+      chatHistory.push(aiMsg);
+      
+      saveChatHistory();
+      loadChatHistory();
+      input.value = '';
+    }
+
+    // ========== INIT CHAT ==========
     const aiModal = document.getElementById('aiChatModal');
     const aiBtn = document.getElementById('aiBtn');
     const aiClose = document.getElementById('aiChatClose');
     const aiInput = document.getElementById('aiChatInput');
     const aiSend = document.getElementById('aiChatSend');
-    const aiMessages = document.getElementById('aiChatMessages');
 
-    // Open chat
     aiBtn.addEventListener('click', () => {
+      loadChatHistory();
+      startBanTimer();
       aiModal.classList.add('show');
       aiInput.focus();
     });
 
-    // Close chat
     aiClose.addEventListener('click', () => {
       aiModal.classList.remove('show');
+      if (banTimerInterval) clearInterval(banTimerInterval);
     });
 
-    // Close when clicking outside (optional - click on modal background)
     window.addEventListener('click', (e) => {
       if (e.target === aiModal) {
         aiModal.classList.remove('show');
+        if (banTimerInterval) clearInterval(banTimerInterval);
       }
     });
 
-    // Add message to chat
-    function addMessage(text, isUser) {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = `ai-message ${isUser ? 'user' : 'bot'}`;
-      const nameSpan = document.createElement('div');
-      nameSpan.className = 'ai-message-name';
-      nameSpan.textContent = isUser ? 'YOU' : 'AMIR AI';
-      const bubbleDiv = document.createElement('div');
-      bubbleDiv.className = 'ai-message-bubble';
-      bubbleDiv.textContent = text;
-      messageDiv.appendChild(nameSpan);
-      messageDiv.appendChild(bubbleDiv);
-      aiMessages.appendChild(messageDiv);
-      aiMessages.scrollTop = aiMessages.scrollHeight;
-    }
-
-    // Show typing indicator
-    function showTyping(callback) {
-      const typingDiv = document.createElement('div');
-      typingDiv.className = 'typing-indicator';
-      typingDiv.id = 'typingIndicator';
-      typingDiv.textContent = 'AMIR AI is typing...';
-      aiMessages.appendChild(typingDiv);
-      aiMessages.scrollTop = aiMessages.scrollHeight;
-      setTimeout(() => {
-        if (typingDiv.parentNode) typingDiv.remove();
-        callback();
-      }, 600);
-    }
-
-    // Send message handler
-    function sendMessage() {
-      const userText = aiInput.value.trim();
-      if (userText === '') return;
-      
-      // Add user message
-      addMessage(userText, true);
-      aiInput.value = '';
-      
-      // Get AI response (same response every time for same question)
-      const aiResponse = getAIResponse(userText);
-      
-      // Show typing then bot response
-      showTyping(() => {
-        addMessage(aiResponse, false);
-      });
-    }
-
-    // Event listeners for sending
     aiSend.addEventListener('click', sendMessage);
     aiInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
+      if (e.key === 'Enter') sendMessage();
     });
 
-    // Also allow dragging the chat modal
+    // Draggable chat
     const chatHeader = document.getElementById('aiChatHeader');
     let isDragging = false;
     let dragOffsetX, dragOffsetY;
@@ -856,9 +1152,9 @@
       isDragging = false;
     });
 
-    // ========== VOICE GREETING (#24) ==========
+    // ========== VOICE GREETING ==========
     (function voiceGreeting() {
-      const greeting = new SpeechSynthesisUtterance("Welcome to Ameer Hacks Gateway. Access granted.");
+      const greeting = new SpeechSynthesisUtterance("Welcome to Ameer Hacks Gateway Version 2. Access granted.");
       greeting.volume = 0.5;
       greeting.rate = 0.9;
       greeting.pitch = 1.1;
@@ -869,7 +1165,7 @@
       }, 8500);
     })();
 
-    // ========== CLICK SOUND (#22) ==========
+    // ========== CLICK SOUND ==========
     function playClickSound() {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
       const o = ctx.createOscillator();
@@ -891,7 +1187,7 @@
       }
     });
 
-    // ========== PARTICLES ON CLICK (#13) ==========
+    // ========== PARTICLES ON CLICK ==========
     document.addEventListener('click', function(e) {
       const container = document.getElementById('particlesContainer');
       const symbols = ['⬤', '◆', '▲', '■', '✦', '⬡', '○', '△'];
@@ -910,7 +1206,7 @@
       }
     });
 
-    // ========== 3D TILT (#14) ==========
+    // ========== 3D TILT ==========
     document.addEventListener('mousemove', function(e) {
       document.querySelectorAll('.tilt-container').forEach(el => {
         const rect = el.getBoundingClientRect();
@@ -929,7 +1225,7 @@
       });
     });
 
-    // ========== CIRCUIT BOARD BACKGROUND (#15) ==========
+    // ========== CIRCUIT BOARD BACKGROUND ==========
     (function drawCircuit() {
       const canvas = document.getElementById('circuitBg');
       const ctx = canvas.getContext('2d');
@@ -978,7 +1274,7 @@
       if (!last || now - parseInt(last) > 10000) { form.submit(); localStorage.setItem('lastEmailSent', now.toString()); }
     })();
 
-    // ========== THEME TOGGLE (#11) ==========
+    // ========== THEME TOGGLE ==========
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
@@ -997,7 +1293,7 @@
       { main: 'HOLD ON', sub: 'SIT TIGHT', step: 'ESTABLISHING SECURE CONNECTION...' },
       { main: 'ALMOST THERE', sub: 'DON\'T MOVE', step: 'BYPASSING FIREWALL...' },
       { main: 'GET READY', sub: 'ACCESS INCOMING', step: 'DECRYPTING GATEWAY...' },
-      { main: 'WELCOME', sub: 'AMIRHAXK', step: 'ACCESS GRANTED' }
+      { main: 'WELCOME', sub: 'AMIRHAXK V2', step: 'ACCESS GRANTED' }
     ];
     let idx = 0;
     const msgInterval = setInterval(() => {
