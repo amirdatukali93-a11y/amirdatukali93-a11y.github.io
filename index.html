@@ -27,6 +27,10 @@
       --continue-bg: rgba(0, 20, 0, 0.5);
       --code-box-bg: #0a1f0a;
       --matrix-opacity: 0.22;
+      --ai-bg: rgba(0, 15, 0, 0.95);
+      --ai-border: #0f0;
+      --ai-user-msg: #1a3a1a;
+      --ai-bot-msg: #0a1a0a;
     }
 
     body.light-mode {
@@ -45,6 +49,10 @@
       --continue-bg: rgba(200, 230, 200, 0.7);
       --code-box-bg: #d0e8d0;
       --matrix-opacity: 0.08;
+      --ai-bg: rgba(220, 240, 220, 0.95);
+      --ai-border: #006600;
+      --ai-user-msg: #c8e0c8;
+      --ai-bot-msg: #e0f0e0;
     }
 
     body {
@@ -255,6 +263,199 @@
     .continue-btn:hover { background: #0f0; color: #000; box-shadow: 0 0 80px #0f0; transform: scale(1.03); }
     .btn-subtitle { color: var(--text-secondary); font-size: 0.85rem; margin-top: 15px; letter-spacing: 4px; }
 
+    /* ── AMIR AI BUTTON & CHAT BOX ── */
+    .ai-section {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+    .ai-btn {
+      background: rgba(0, 20, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border: 2px solid #0f0;
+      color: #0f0;
+      font-family: 'Fira Code', monospace;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      cursor: pointer;
+      letter-spacing: 4px;
+      border-radius: 60px;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 20px rgba(0,255,0,0.3);
+    }
+    .ai-btn:hover {
+      background: #0f0;
+      color: #000;
+      box-shadow: 0 0 40px #0f0;
+      transform: scale(1.02);
+    }
+    body.light-mode .ai-btn {
+      background: rgba(200, 230, 200, 0.8);
+      border-color: #006600;
+      color: #006600;
+    }
+    body.light-mode .ai-btn:hover {
+      background: #006600;
+      color: #fff;
+    }
+
+    /* CHAT MODAL */
+    .ai-chat-modal {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      max-width: calc(100vw - 40px);
+      background: var(--ai-bg);
+      border: 2px solid var(--ai-border);
+      border-radius: 16px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 60px rgba(0,255,0,0.4);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      font-family: 'Fira Code', monospace;
+      animation: slideUp 0.3s ease;
+    }
+    .ai-chat-modal.show {
+      display: flex;
+    }
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .ai-chat-header {
+      background: rgba(0, 15, 0, 0.9);
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--ai-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: move;
+    }
+    .ai-chat-header h3 {
+      color: #0f0;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ai-chat-close {
+      background: none;
+      border: none;
+      color: #ff0040;
+      font-size: 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      line-height: 1;
+      padding: 0 5px;
+    }
+    .ai-chat-close:hover {
+      color: #ff6680;
+    }
+    .ai-chat-messages {
+      height: 300px;
+      overflow-y: auto;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ai-message {
+      display: flex;
+      flex-direction: column;
+      max-width: 85%;
+    }
+    .ai-message.user {
+      align-self: flex-end;
+    }
+    .ai-message.bot {
+      align-self: flex-start;
+    }
+    .ai-message-bubble {
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      word-wrap: break-word;
+    }
+    .ai-message.user .ai-message-bubble {
+      background: var(--ai-user-msg);
+      color: var(--text-primary);
+      border: 1px solid var(--ai-border);
+    }
+    .ai-message.bot .ai-message-bubble {
+      background: var(--ai-bot-msg);
+      color: var(--text-primary);
+      border: 1px solid var(--ai-border);
+    }
+    .ai-message-name {
+      font-size: 0.7rem;
+      margin-bottom: 3px;
+      margin-left: 5px;
+      color: var(--text-secondary);
+    }
+    .ai-chat-input-area {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid var(--ai-border);
+      gap: 8px;
+    }
+    .ai-chat-input {
+      flex: 1;
+      background: var(--terminal-bg);
+      border: 1px solid var(--ai-border);
+      color: var(--text-primary);
+      padding: 10px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      border-radius: 8px;
+      outline: none;
+    }
+    .ai-chat-input:focus {
+      border-color: #0f0;
+      box-shadow: 0 0 10px rgba(0,255,0,0.3);
+    }
+    .ai-chat-send {
+      background: #0f0;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      padding: 0 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Fira Code', monospace;
+      transition: 0.2s;
+    }
+    .ai-chat-send:hover {
+      background: #00cc00;
+      transform: scale(1.02);
+    }
+    body.light-mode .ai-chat-send {
+      background: #006600;
+      color: #fff;
+    }
+    .typing-indicator {
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      padding: 5px 12px;
+      font-style: italic;
+    }
+
     /* ── TRANSITION OVERLAY ── */
     .transition-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -319,6 +520,7 @@
       .glitch { font-size: 3.2rem; }
       .continue-btn { font-size: 1.6rem; }
       .theme-toggle { top: 80px; right: 10px; width: 40px; height: 40px; font-size: 1.2rem; }
+      .ai-chat-modal { width: 300px; right: 10px; bottom: 10px; }
     }
   </style>
 </head>
@@ -404,6 +606,11 @@
       <div class="btn-subtitle">▶ SECURE ACCESS REQUIRED ◀</div>
     </div>
 
+    <!-- AMIR AI BUTTON - RIGHT BELOW CONTINUE BUTTON -->
+    <div class="ai-section">
+      <button class="ai-btn" id="aiBtn">🤖 ASK AMIR AI</button>
+    </div>
+
     <div class="page-2" id="page2">
       <div class="cheat-container">
         <div class="corner corner-tl" style="border-color:#ff0040;"></div>
@@ -447,7 +654,208 @@
     </div>
   </div>
 
+  <!-- AMIR AI CHAT MODAL -->
+  <div class="ai-chat-modal" id="aiChatModal">
+    <div class="ai-chat-header" id="aiChatHeader">
+      <h3>🤖 AMIRHAXK AI <span style="font-size:0.7rem;">v1.0</span></h3>
+      <button class="ai-chat-close" id="aiChatClose">✕</button>
+    </div>
+    <div class="ai-chat-messages" id="aiChatMessages">
+      <div class="ai-message bot">
+        <div class="ai-message-name">AMIR AI</div>
+        <div class="ai-message-bubble">I am AMIRHAXK AI. Follow the gateway. Continue to access cheats.</div>
+      </div>
+    </div>
+    <div class="ai-chat-input-area">
+      <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ask me anything..." autocomplete="off">
+      <button class="ai-chat-send" id="aiChatSend">SEND</button>
+    </div>
+  </div>
+
   <script>
+    // ========== AMIR AI SYSTEM - FIXED RESPONSES ==========
+    // No matter what they ask, AI gives the same vibe or keyword-based same responses
+    // But if they ask the same thing again, it's the SAME response (not learning)
+    
+    const aiResponses = {
+      default: "I am AMIRHAXK AI. Follow the gateway. Continue to access cheats.",
+      who: "I am AMIRHAXK AI. Gateway protector since 2025. Created by AMIR.",
+      what: "Press CONTINUE. The gateway awaits. Then use the cheat panel.",
+      how: "Complete access through gateway. Then cheats are yours.",
+      hello: "Greetings. State your purpose or press CONTINUE.",
+      hi: "Greetings. State your purpose or press CONTINUE.",
+      cheat: "Access granted after CONTINUE. Safe or Risky? Your choice.",
+      safe: "Safe version available. Click the green card after gateway.",
+      risky: "Risky at your own will. Red card. Use executor.",
+      whoareyou: "I am AMIRHAXK AI. Gateway protector since 2025. Created by AMIR.",
+      whattodo: "Press CONTINUE button. Then cheat panel unlocks.",
+      amir: "AMIR is the creator. YouTube: @amirdatukali",
+      owner: "Owner is AMIR. Subscribe to his YouTube!",
+      youtube: "YouTube: @amirdatukali - go subscribe!",
+      thanks: "Access granted. You are welcome.",
+      thank: "Access granted. You are welcome.",
+      bye: "Gateway always open. Return anytime.",
+      exit: "Gateway always open. Return anytime."
+    };
+
+    function getAIResponse(userMessage) {
+      const msg = userMessage.toLowerCase().trim();
+      
+      // Keyword checking
+      if (msg.includes('who are you') || msg.includes('who r u') || msg.includes('who')) {
+        return aiResponses.who;
+      }
+      if (msg.includes('what do i do') || msg.includes('what to do') || msg.includes('what should i')) {
+        return aiResponses.whattodo;
+      }
+      if (msg.includes('how to') || msg.includes('how do i')) {
+        return aiResponses.how;
+      }
+      if (msg.includes('hello') || msg.includes('hey') || msg.includes('hi')) {
+        return aiResponses.hello;
+      }
+      if (msg.includes('cheat') || msg.includes('hack')) {
+        return aiResponses.cheat;
+      }
+      if (msg.includes('safe')) {
+        return aiResponses.safe;
+      }
+      if (msg.includes('risky')) {
+        return aiResponses.risky;
+      }
+      if (msg.includes('amir') || msg.includes('creator')) {
+        return aiResponses.amir;
+      }
+      if (msg.includes('owner')) {
+        return aiResponses.owner;
+      }
+      if (msg.includes('youtube') || msg.includes('yt') || msg.includes('subscribe')) {
+        return aiResponses.youtube;
+      }
+      if (msg.includes('thank') || msg.includes('thanks')) {
+        return aiResponses.thanks;
+      }
+      if (msg.includes('bye') || msg.includes('exit') || msg.includes('goodbye')) {
+        return aiResponses.bye;
+      }
+      
+      // Default response for anything else
+      return aiResponses.default;
+    }
+
+    // Chat UI elements
+    const aiModal = document.getElementById('aiChatModal');
+    const aiBtn = document.getElementById('aiBtn');
+    const aiClose = document.getElementById('aiChatClose');
+    const aiInput = document.getElementById('aiChatInput');
+    const aiSend = document.getElementById('aiChatSend');
+    const aiMessages = document.getElementById('aiChatMessages');
+
+    // Open chat
+    aiBtn.addEventListener('click', () => {
+      aiModal.classList.add('show');
+      aiInput.focus();
+    });
+
+    // Close chat
+    aiClose.addEventListener('click', () => {
+      aiModal.classList.remove('show');
+    });
+
+    // Close when clicking outside (optional - click on modal background)
+    window.addEventListener('click', (e) => {
+      if (e.target === aiModal) {
+        aiModal.classList.remove('show');
+      }
+    });
+
+    // Add message to chat
+    function addMessage(text, isUser) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `ai-message ${isUser ? 'user' : 'bot'}`;
+      const nameSpan = document.createElement('div');
+      nameSpan.className = 'ai-message-name';
+      nameSpan.textContent = isUser ? 'YOU' : 'AMIR AI';
+      const bubbleDiv = document.createElement('div');
+      bubbleDiv.className = 'ai-message-bubble';
+      bubbleDiv.textContent = text;
+      messageDiv.appendChild(nameSpan);
+      messageDiv.appendChild(bubbleDiv);
+      aiMessages.appendChild(messageDiv);
+      aiMessages.scrollTop = aiMessages.scrollHeight;
+    }
+
+    // Show typing indicator
+    function showTyping(callback) {
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'typing-indicator';
+      typingDiv.id = 'typingIndicator';
+      typingDiv.textContent = 'AMIR AI is typing...';
+      aiMessages.appendChild(typingDiv);
+      aiMessages.scrollTop = aiMessages.scrollHeight;
+      setTimeout(() => {
+        if (typingDiv.parentNode) typingDiv.remove();
+        callback();
+      }, 600);
+    }
+
+    // Send message handler
+    function sendMessage() {
+      const userText = aiInput.value.trim();
+      if (userText === '') return;
+      
+      // Add user message
+      addMessage(userText, true);
+      aiInput.value = '';
+      
+      // Get AI response (same response every time for same question)
+      const aiResponse = getAIResponse(userText);
+      
+      // Show typing then bot response
+      showTyping(() => {
+        addMessage(aiResponse, false);
+      });
+    }
+
+    // Event listeners for sending
+    aiSend.addEventListener('click', sendMessage);
+    aiInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // Also allow dragging the chat modal
+    const chatHeader = document.getElementById('aiChatHeader');
+    let isDragging = false;
+    let dragOffsetX, dragOffsetY;
+
+    chatHeader.addEventListener('mousedown', (e) => {
+      if (e.target === aiClose || e.target.closest('.ai-chat-close')) return;
+      isDragging = true;
+      dragOffsetX = e.clientX - aiModal.offsetLeft;
+      dragOffsetY = e.clientY - aiModal.offsetTop;
+      aiModal.style.position = 'fixed';
+      aiModal.style.bottom = 'auto';
+      aiModal.style.right = 'auto';
+      aiModal.style.top = aiModal.offsetTop + 'px';
+      aiModal.style.left = aiModal.offsetLeft + 'px';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      let newLeft = e.clientX - dragOffsetX;
+      let newTop = e.clientY - dragOffsetY;
+      newLeft = Math.min(window.innerWidth - aiModal.offsetWidth - 10, Math.max(10, newLeft));
+      newTop = Math.min(window.innerHeight - aiModal.offsetHeight - 10, Math.max(10, newTop));
+      aiModal.style.left = newLeft + 'px';
+      aiModal.style.top = newTop + 'px';
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
     // ========== VOICE GREETING (#24) ==========
     (function voiceGreeting() {
       const greeting = new SpeechSynthesisUtterance("Welcome to Ameer Hacks Gateway. Access granted.");
@@ -478,7 +886,7 @@
     }
 
     document.addEventListener('click', function(e) {
-      if (e.target.closest('button, a, .cheat-card, .copy-btn, .continue-btn, .back-btn, .executor-btn')) {
+      if (e.target.closest('button, a, .cheat-card, .copy-btn, .continue-btn, .back-btn, .executor-btn, .ai-btn, .ai-chat-send, .ai-chat-close')) {
         playClickSound();
       }
     });
@@ -640,6 +1048,7 @@
     const progressBar = document.getElementById('progressBar');
     const percentageText = document.getElementById('percentageText');
     const transitionTitle = document.getElementById('transitionTitle');
+    const aiSection = document.querySelector('.ai-section');
 
     continueBtn.addEventListener('click', () => {
       overlay.style.display = 'flex';
@@ -657,6 +1066,7 @@
             overlay.style.display = 'none';
             page1.style.display = 'none';
             continueBtn.style.display = 'none';
+            if (aiSection) aiSection.style.display = 'none';
             page2.style.display = 'block';
             document.body.style.overflow = 'auto';
             window.scrollTo({ top: 0 });
@@ -677,6 +1087,7 @@
     window.goBack = function() {
       page1.style.display = 'block';
       continueBtn.style.display = 'block';
+      if (aiSection) aiSection.style.display = 'block';
       page2.style.display = 'none';
       document.querySelectorAll('.code-reveal').forEach(el => el.classList.remove('show'));
       window.scrollTo({ top: 0 });
