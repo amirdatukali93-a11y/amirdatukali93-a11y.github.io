@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>AMIRHAXK | GATEWAY V2.0</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMIRHAXK | UNDER MAINTENANCE</title>
   <style>
     * {
       margin: 0;
@@ -18,47 +18,11 @@
       --text-secondary: #b0ffb0;
       --border-color: #0f0;
       --glow-color: rgba(0, 255, 65, 0.3);
-      --card-bg: rgba(8, 8, 8, 0.85);
       --terminal-bg: #010501;
       --loading-bg: radial-gradient(circle at center, #020802 0%, #000000 100%);
       --overlay-bg: #000;
       --scrollbar-track: #0a0f0a;
       --scrollbar-thumb: #0f0;
-      --continue-bg: rgba(0, 20, 0, 0.5);
-      --code-box-bg: #0a1f0a;
-      --matrix-opacity: 0.22;
-      --ai-bg: rgba(0, 15, 0, 0.95);
-      --ai-border: #0f0;
-      --ai-user-msg: #1a3a1a;
-      --ai-bot-msg: #0a1a0a;
-      --modal-bg: rgba(0, 10, 0, 0.95);
-      --modal-border: #ffaa00;
-      --modal-text: #ffaa00;
-    }
-
-    body.light-mode {
-      --bg-primary: #f0f5f0;
-      --bg-container: rgba(220, 240, 220, 0.9);
-      --text-primary: #006600;
-      --text-secondary: #338833;
-      --border-color: #006600;
-      --glow-color: rgba(0, 100, 0, 0.3);
-      --card-bg: rgba(240, 248, 240, 0.9);
-      --terminal-bg: #e8f0e8;
-      --loading-bg: radial-gradient(circle at center, #e0f0e0 0%, #ffffff 100%);
-      --overlay-bg: #f0f5f0;
-      --scrollbar-track: #d0e0d0;
-      --scrollbar-thumb: #006600;
-      --continue-bg: rgba(200, 230, 200, 0.7);
-      --code-box-bg: #d0e8d0;
-      --matrix-opacity: 0.08;
-      --ai-bg: rgba(220, 240, 220, 0.95);
-      --ai-border: #006600;
-      --ai-user-msg: #c8e0c8;
-      --ai-bot-msg: #e0f0e0;
-      --modal-bg: rgba(240, 240, 240, 0.95);
-      --modal-border: #cc8800;
-      --modal-text: #cc8800;
     }
 
     body {
@@ -68,6 +32,10 @@
       cursor: crosshair;
       line-height: 1.5;
       transition: background 0.5s ease;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     ::-webkit-scrollbar { width: 6px; }
@@ -78,42 +46,54 @@
       box-shadow: 0 0 10px var(--scrollbar-thumb);
     }
 
-    .circuit-bg {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.06;
-    }
-    body.light-mode .circuit-bg { opacity: 0.12; }
-
-    .particles-container {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 5;
-      pointer-events: none;
-    }
-    .particle {
-      position: absolute;
-      pointer-events: none;
-      font-size: 16px;
-      font-weight: bold;
-      animation: particleFloat 0.8s ease-out forwards;
-      color: #0f0;
-      text-shadow: 0 0 12px #0f0, 0 0 24px #0f0;
-      z-index: 9999;
-    }
-    @keyframes particleFloat {
-      0% { opacity: 1; transform: translate(0, 0) scale(1.2); }
-      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+    #matrix-bg {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 1; opacity: 0.22; pointer-events: none;
     }
 
-    .tilt-container {
-      transform-style: preserve-3d;
-      transition: transform 0.15s ease-out;
+    .main-content {
+      position: relative; z-index: 10;
+      width: 100%; max-width: 880px;
+      padding: 50px 20px 60px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
+
+    .hack-container {
+      background: var(--bg-container); backdrop-filter: blur(15px);
+      border: 2px solid var(--border-color); border-radius: 16px;
+      padding: 45px 30px; position: relative; width: 100%;
+      box-shadow: 0 0 70px var(--glow-color), inset 0 0 40px rgba(0,255,65,0.03);
+      animation: borderPulse 3.5s infinite;
+    }
+    @keyframes borderPulse {
+      0%,100% { border-color: #0f0; box-shadow: 0 0 45px rgba(0,255,65,0.3); }
+      50% { border-color: #7fff7f; box-shadow: 0 0 75px rgba(0,255,100,0.5); }
+    }
+
+    .glitch {
+      font-size: 3.5rem; font-weight: 900; letter-spacing: 6px;
+      text-align: center; margin-bottom: 25px;
+      background: linear-gradient(180deg, #0fff0f, #0a0);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ccff;
+    }
+
+    .status-bar { display: flex; justify-content: center; gap: 30px; margin: 30px 0; color: var(--text-secondary); font-size: 0.9rem; flex-wrap: wrap; text-transform: uppercase; letter-spacing: 2px; }
+    .blink { animation: blink 1.5s step-end infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+    .terminal-box { background: var(--terminal-bg); border: 1px solid var(--border-color); padding: 22px; margin: 25px 0; color: var(--text-primary); border-radius: 10px; box-shadow: inset 0 0 30px rgba(0,255,65,0.15); }
+    .terminal-line { margin: 10px 0; display: flex; gap: 12px; font-size: 0.95rem; }
+    .prompt { color: var(--text-primary); font-weight: bold; }
+    .hash { color: #ff0055; } /* Red for warnings */
+    .info { color: #2ecc71; } /* Green for info */
+
+    .corner { position: absolute; width: 24px; height: 24px; border-color: var(--border-color); border-style: solid; }
+    .corner-tl { top: 12px; left: 12px; border-width: 4px 0 0 4px; }
+    .corner-tr { top: 12px; right: 12px; border-width: 4px 4px 0 0; }
+    .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 4px 4px; }
+    .corner-br { bottom: 12px; right: 12px; border-width: 0 4px 4px 0; }
 
     .yt-btn {
       position: fixed; top: 20px; right: 20px; z-index: 999;
@@ -123,1031 +103,100 @@
       box-shadow: 0 0 30px rgba(255, 0, 40, 0.6);
       text-decoration: none;
       transition: all 0.35s cubic-bezier(0.2, 0.9, 0.5, 1);
-      animation: floatGlow 3s infinite alternate;
     }
-    body.light-mode .yt-btn { background: rgba(255, 240, 240, 0.9); }
     .yt-btn:hover {
       transform: scale(1.08) translateY(-3px);
       box-shadow: 0 0 55px #ff0040, 0 0 80px rgba(255,0,40,0.7);
       border-color: #fff;
     }
-    @keyframes floatGlow {
-      0% { box-shadow: 0 0 20px rgba(255,0,40,0.5); }
-      100% { box-shadow: 0 0 45px rgba(255,0,40,0.9); }
-    }
     .yt-icon { color: #ff0040; font-size: 30px; display: flex; align-items: center; filter: drop-shadow(0 0 8px #ff0040); }
     .yt-svg { width: 30px; height: 30px; }
     .yt-text { color: #e0e0e0; font-weight: 700; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2.5px; text-shadow: 0 0 8px rgba(255,0,40,0.8); }
-    body.light-mode .yt-text { color: #333; }
     .yt-text span { color: #ff3355; margin-left: 6px; font-weight: 900; }
-    .owner-badge {
-      position: absolute; top: -12px; right: -12px;
-      background: #ff0040; color: #fff; font-size: 0.7rem;
-      padding: 4px 9px; border-radius: 30px; font-weight: bold;
-      letter-spacing: 1px; border: 1px solid white;
-      box-shadow: 0 0 20px #ff0040;
-    }
-
-    .theme-toggle {
-      position: fixed; top: 90px; right: 20px; z-index: 999;
-      background: rgba(0, 8, 0, 0.8); backdrop-filter: blur(12px);
-      border: 2px solid #0f0; color: #0f0;
-      width: 48px; height: 48px; border-radius: 50%;
-      cursor: pointer; font-size: 1.5rem;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s; box-shadow: 0 0 20px rgba(0,255,0,0.4);
-    }
-    .theme-toggle:hover { box-shadow: 0 0 40px #0f0; transform: scale(1.1); }
-    body.light-mode .theme-toggle {
-      background: rgba(240, 248, 240, 0.9);
-      border-color: #006600; color: #006600;
-    }
-
-    .loading-screen {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--loading-bg); z-index: 1000;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      transition: opacity 1.2s ease, visibility 1.2s;
-    }
-    .loading-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loading-name {
-      font-size: 5rem; font-weight: 900;
-      background: linear-gradient(45deg, #0f0, #a0ffa0);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 6px 6px 0 #ff006e, -6px -6px 0 #00f0ff;
-      letter-spacing: 14px; margin-bottom: 45px;
-      animation: glitchSkew 2.5s infinite;
-    }
-    @keyframes glitchSkew {
-      0%,100% { transform: skew(0deg); text-shadow: 5px 5px 0 #ff006e, -5px -5px 0 #0ff; }
-      25% { transform: skew(2.5deg); text-shadow: -6px 4px 0 #ff006e, 6px -4px 0 #0ff; }
-      50% { transform: skew(-2deg); text-shadow: 7px -5px 0 #ff006e, -7px 5px 0 #0ff; }
-      75% { transform: skew(1deg); text-shadow: -4px 6px 0 #ff006e, 4px -6px 0 #0ff; }
-    }
-    .circle-loader { width: 90px; height: 90px; margin: 30px auto; filter: drop-shadow(0 0 20px #0f0); }
-    .circle-loader svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-    .circle-bg { stroke: #112211; stroke-width: 5; }
-    .circle-progress { stroke: url(#gradientStroke); stroke-width: 5; stroke-dasharray: 251.2; stroke-dashoffset: 251.2; animation: fillCircle 8s linear forwards; }
-    @keyframes fillCircle { to { stroke-dashoffset: 0; } }
-    .loading-text { color: #0f0; font-size: 1.4rem; margin-top: 20px; text-transform: uppercase; letter-spacing: 5px; animation: pulse 1.3s infinite; font-weight: bold; }
-    .loading-subtext { color: #4caf50; font-size: 0.9rem; margin-top: 12px; letter-spacing: 4px; opacity: 0.8; }
-    .loading-steps { color: #7fff7f; font-size: 0.85rem; margin-top: 25px; letter-spacing: 2.5px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 30px; border: 1px solid #0f0; }
-    @keyframes pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
-
-    #matrix-bg {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 1; opacity: var(--matrix-opacity); pointer-events: none;
-      transition: opacity 0.5s ease;
-    }
-
-    .main-content {
-      position: relative; z-index: 10; min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 50px 20px 60px; opacity: 0; transition: opacity 1.2s ease;
-    }
-    .main-content.show { opacity: 1; }
-
-    .page-1 { width: 100%; max-width: 880px; margin-bottom: 30px; }
-    .hack-container {
-      background: var(--bg-container); backdrop-filter: blur(15px);
-      border: 2px solid var(--border-color); border-radius: 16px;
-      padding: 45px 30px; position: relative;
-      box-shadow: 0 0 70px var(--glow-color), inset 0 0 40px rgba(0,255,65,0.03);
-      animation: borderPulse 3.5s infinite;
-    }
-    @keyframes borderPulse {
-      0%,100% { border-color: #0f0; box-shadow: 0 0 45px rgba(0,255,65,0.3); }
-      50% { border-color: #7fff7f; box-shadow: 0 0 75px rgba(0,255,100,0.5); }
-    }
-    body.light-mode .hack-container { animation: borderPulseLight 3.5s infinite; }
-    @keyframes borderPulseLight {
-      0%,100% { border-color: #006600; box-shadow: 0 0 25px rgba(0,100,0,0.2); }
-      50% { border-color: #009900; box-shadow: 0 0 45px rgba(0,150,0,0.3); }
-    }
-    .glitch {
-      font-size: 5rem; font-weight: 900; letter-spacing: 10px;
-      text-align: center; margin-bottom: 25px;
-      background: linear-gradient(180deg, #0fff0f, #0a0);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 4px 4px 0 #ff0055, -4px -4px 0 #00ccff;
-    }
-    .status-bar { display: flex; justify-content: center; gap: 30px; margin: 30px 0; color: var(--text-secondary); font-size: 0.9rem; flex-wrap: wrap; text-transform: uppercase; letter-spacing: 2px; }
-    .blink { animation: blink 1.5s step-end infinite; }
-    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
-    .terminal-box { background: var(--terminal-bg); border: 1px solid var(--border-color); padding: 22px; margin: 25px 0; color: var(--text-primary); border-radius: 10px; box-shadow: inset 0 0 30px rgba(0,255,65,0.15); }
-    .terminal-line { margin: 10px 0; display: flex; gap: 12px; font-size: 0.95rem; }
-    .prompt { color: var(--text-primary); font-weight: bold; }
-    .hash { color: #2ecc71; }
-    .access-log { color: var(--text-secondary); font-size: 0.9rem; margin: 25px 0; padding: 15px; background: rgba(0,0,0,0.7); border-left: 5px solid var(--border-color); line-height: 1.7; border-radius: 4px; }
-    .corner { position: absolute; width: 24px; height: 24px; border-color: var(--border-color); border-style: solid; }
-    .corner-tl { top: 12px; left: 12px; border-width: 4px 0 0 4px; }
-    .corner-tr { top: 12px; right: 12px; border-width: 4px 4px 0 0; }
-    .corner-bl { bottom: 12px; left: 12px; border-width: 0 0 4px 4px; }
-    .corner-br { bottom: 12px; right: 12px; border-width: 0 4px 4px 0; }
-
-    .continue-section { width: 100%; max-width: 480px; margin: 25px 0 45px; text-align: center; }
-    .continue-btn {
-      background: var(--continue-bg); backdrop-filter: blur(5px);
-      border: 3px solid var(--border-color); color: var(--text-primary);
-      font-family: 'Fira Code', monospace; font-size: 2.2rem; font-weight: bold;
-      text-transform: uppercase; padding: 22px 35px; cursor: pointer;
-      letter-spacing: 12px; width: 100%; transition: 0.4s;
-      border-radius: 60px; box-shadow: 0 0 40px rgba(0,255,65,0.4);
-    }
-    .continue-btn:hover { background: #0f0; color: #000; box-shadow: 0 0 80px #0f0; transform: scale(1.03); }
-    .btn-subtitle { color: var(--text-secondary); font-size: 0.85rem; margin-top: 15px; letter-spacing: 4px; }
-
-    .ai-section {
-      width: 100%;
-      max-width: 480px;
-      margin: 0 auto 45px;
-      text-align: center;
-    }
-    .ai-btn {
-      background: rgba(0, 20, 0, 0.7);
-      backdrop-filter: blur(10px);
-      border: 2px solid #0f0;
-      color: #0f0;
-      font-family: 'Fira Code', monospace;
-      font-size: 1rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      padding: 12px 28px;
-      cursor: pointer;
-      letter-spacing: 4px;
-      border-radius: 60px;
-      transition: 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 0 20px rgba(0,255,0,0.3);
-    }
-    .ai-btn:hover {
-      background: #0f0;
-      color: #000;
-      box-shadow: 0 0 40px #0f0;
-      transform: scale(1.02);
-    }
-    body.light-mode .ai-btn {
-      background: rgba(200, 230, 200, 0.8);
-      border-color: #006600;
-      color: #006600;
-    }
-    body.light-mode .ai-btn:hover {
-      background: #006600;
-      color: #fff;
-    }
-
-    .ai-chat-modal {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 380px;
-      max-width: calc(100vw - 40px);
-      background: var(--ai-bg);
-      border: 2px solid var(--ai-border);
-      border-radius: 16px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 0 60px rgba(0,255,0,0.4);
-      z-index: 1000;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      font-family: 'Fira Code', monospace;
-      animation: slideUp 0.3s ease;
-    }
-    .ai-chat-modal.show {
-      display: flex;
-    }
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .ai-chat-header {
-      background: rgba(0, 15, 0, 0.9);
-      padding: 12px 15px;
-      border-bottom: 1px solid var(--ai-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: move;
-    }
-    .ai-chat-header h3 {
-      color: #0f0;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .ai-chat-close {
-      background: none;
-      border: none;
-      color: #ff0040;
-      font-size: 1.5rem;
-      cursor: pointer;
-      font-weight: bold;
-      line-height: 1;
-      padding: 0 5px;
-    }
-    .ai-chat-close:hover {
-      color: #ff6680;
-    }
-    .ai-chat-messages {
-      height: 320px;
-      overflow-y: auto;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .ai-message {
-      display: flex;
-      flex-direction: column;
-      max-width: 85%;
-    }
-    .ai-message.user {
-      align-self: flex-end;
-    }
-    .ai-message.bot {
-      align-self: flex-start;
-    }
-    .ai-message-bubble {
-      padding: 8px 12px;
-      border-radius: 12px;
-      font-size: 0.85rem;
-      word-wrap: break-word;
-    }
-    .ai-message.user .ai-message-bubble {
-      background: var(--ai-user-msg);
-      color: var(--text-primary);
-      border: 1px solid var(--ai-border);
-    }
-    .ai-message.bot .ai-message-bubble {
-      background: var(--ai-bot-msg);
-      color: var(--text-primary);
-      border: 1px solid var(--ai-border);
-    }
-    .ai-message-name {
-      font-size: 0.7rem;
-      margin-bottom: 3px;
-      margin-left: 5px;
-      color: var(--text-secondary);
-    }
-    .ai-chat-input-area {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid var(--ai-border);
-      gap: 8px;
-    }
-    .ai-chat-input {
-      flex: 1;
-      background: var(--terminal-bg);
-      border: 1px solid var(--ai-border);
-      color: var(--text-primary);
-      padding: 10px;
-      font-family: 'Fira Code', monospace;
-      font-size: 0.8rem;
-      border-radius: 8px;
-      outline: none;
-    }
-    .ai-chat-input:focus {
-      border-color: #0f0;
-      box-shadow: 0 0 10px rgba(0,255,0,0.3);
-    }
-    .ai-chat-send {
-      background: #0f0;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      padding: 0 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-family: 'Fira Code', monospace;
-      transition: 0.2s;
-    }
-    .ai-chat-send:hover {
-      background: #00cc00;
-      transform: scale(1.02);
-    }
-    body.light-mode .ai-chat-send {
-      background: #006600;
-      color: #fff;
-    }
-    .typing-indicator {
-      color: var(--text-secondary);
-      font-size: 0.7rem;
-      padding: 5px 12px;
-      font-style: italic;
-    }
-    .ban-message {
-      background: rgba(255, 0, 0, 0.2);
-      border: 1px solid #ff0000;
-      border-radius: 8px;
-      padding: 10px;
-      margin: 10px;
-      text-align: center;
-      color: #ff4444;
-      font-size: 0.8rem;
-    }
-    .chat-disabled .ai-chat-input,
-    .chat-disabled .ai-chat-send {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-    .chat-error {
-      color: #ff0000 !important;
-    }
-    .chat-error .ai-message-bubble {
-      border-color: #ff0000 !important;
-      color: #ff0000 !important;
-    }
-
-    /* Modal Styles */
-    .caution-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: visibility 0.2s, opacity 0.2s;
-    }
-    .caution-modal.show {
-      visibility: visible;
-      opacity: 1;
-    }
-    .caution-content {
-      background: var(--modal-bg);
-      border: 3px solid var(--modal-border);
-      border-radius: 20px;
-      padding: 30px 25px;
-      max-width: 450px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 0 60px rgba(255, 170, 0, 0.4);
-      animation: modalGlow 1.5s infinite alternate;
-    }
-    @keyframes modalGlow {
-      0% { box-shadow: 0 0 20px rgba(255, 170, 0, 0.3); border-color: var(--modal-border); }
-      100% { box-shadow: 0 0 50px rgba(255, 170, 0, 0.7); border-color: #ffcc44; }
-    }
-    .caution-icon {
-      font-size: 4rem;
-      margin-bottom: 15px;
-      display: block;
-    }
-    .caution-title {
-      color: var(--modal-text);
-      font-size: 1.8rem;
-      font-weight: bold;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-    .caution-text {
-      color: var(--text-primary);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-    .caution-ok {
-      background: var(--modal-border);
-      border: none;
-      color: #000;
-      font-family: 'Fira Code', monospace;
-      font-size: 1.2rem;
-      font-weight: bold;
-      padding: 12px 30px;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: 0.2s;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    .caution-ok:hover {
-      transform: scale(1.05);
-      background: #ffcc44;
-      box-shadow: 0 0 20px #ffaa00;
-    }
-    body.light-mode .caution-ok {
-      color: #000;
-    }
-
-    .transition-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--overlay-bg); z-index: 100;
-      display: none; flex-direction: column; align-items: center; justify-content: center;
-      backdrop-filter: blur(8px);
-    }
-    .transition-title { color: #0f0; font-size: 2.8rem; font-weight: bold; margin-bottom: 35px; letter-spacing: 8px; text-shadow: 0 0 40px #0f0; }
-    .progress-container { width: 65%; height: 8px; background: #0a1a0a; border: 1px solid #0f0; margin: 30px 0; border-radius: 10px; overflow: hidden; }
-    .progress-bar-transition { height: 100%; background: linear-gradient(90deg, #0f0, #ccff00, #0f0); width: 0%; box-shadow: 0 0 25px #0f0; }
-    .percentage-text { color: #0f0; font-size: 2.5rem; font-weight: bold; }
-
-    .page-2 { width: 100%; max-width: 880px; display: none; }
-    .cheat-container {
-      background: rgba(5, 1, 10, 0.8); backdrop-filter: blur(15px);
-      border: 2px solid #ff0040; border-radius: 16px;
-      padding: 40px 30px; position: relative;
-      box-shadow: 0 0 60px rgba(255,0,85,0.4);
-      animation: borderPulseRed 3s infinite;
-    }
-    body.light-mode .cheat-container { background: rgba(255, 245, 245, 0.9); }
-    .cheat-container::before {
-      content: ""; position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('https://amirdatukali93-a11y.github.io/bg-clip.gif');
-      background-size: cover; background-position: center;
-      opacity: 0.25; z-index: 0; border-radius: 16px;
-    }
-    .cheat-container > * { position: relative; z-index: 1; }
-    @keyframes borderPulseRed {
-      0%,100% { border-color: #ff0040; }
-      50% { border-color: #ff5580; }
-    }
-    .page-2 h2 { color: #ff0040; font-size: 2.5rem; text-align: center; margin-bottom: 25px; text-shadow: 3px 3px 0 #0f0; letter-spacing: 6px; }
-    .cheat-card {
-      background: var(--card-bg); backdrop-filter: blur(8px);
-      border: 2px solid; padding: 30px; margin: 22px 0;
-      cursor: pointer; transition: 0.3s; border-radius: 14px;
-      transform-style: preserve-3d;
-    }
-    .cheat-card.safe { border-color: #0f0; }
-    .cheat-card.risky { border-color: #ff0040; }
-    .cheat-card.mid { border-color: #ffaa00; }
-    .cheat-card:hover { box-shadow: 0 0 50px currentColor; }
-    .cheat-title { font-size: 2rem; font-weight: bold; text-align: center; letter-spacing: 3px; }
-    .cheat-title.safe { color: #0f0; }
-    .cheat-title.risky { color: #ff0040; }
-    .cheat-title.mid { color: #ffaa00; }
-    .cheat-desc { color: #ccc; text-align: center; margin-top: 8px; }
-    .roblox-icon { text-align: center; font-size: 2.8rem; margin-bottom: 8px; }
-    .code-reveal { background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); border: 1px solid #0f0; padding: 20px; margin-top: 25px; display: none; border-radius: 8px; }
-    .code-reveal.show { display: block; }
-    .code-box { background: var(--code-box-bg); padding: 18px; border: 1px solid #0f0; color: #0f0; font-size: 1rem; word-break: break-all; border-radius: 6px; }
-    .copy-btn { background: #0f0; color: #000; border: none; padding: 12px 28px; margin-top: 18px; font-weight: bold; cursor: pointer; border-radius: 30px; text-transform: uppercase; transition: 0.2s; }
-    .copy-btn:hover { background: #000; color: #0f0; box-shadow: 0 0 30px #0f0; }
-    .executor-btn { background: rgba(0,0,0,0.8); border: 2px solid #ff0040; color: #ff0040; padding: 16px 30px; font-weight: bold; text-decoration: none; display: inline-block; border-radius: 40px; transition: 0.3s; }
-    .executor-btn:hover { background: #ff0040; color: #000; }
-    .back-btn { background: transparent; border: 2px solid #ff0040; color: #ff0040; padding: 12px 30px; margin-top: 25px; cursor: pointer; border-radius: 30px; font-weight: bold; }
-    .back-btn:hover { background: #ff0040; color: #000; }
 
     @media (max-width: 650px) {
-      .loading-name { font-size: 3rem; }
-      .glitch { font-size: 3.2rem; }
-      .continue-btn { font-size: 1.6rem; }
-      .theme-toggle { top: 80px; right: 10px; width: 40px; height: 40px; font-size: 1.2rem; }
-      .ai-chat-modal { width: 300px; right: 10px; bottom: 10px; }
-      .cheat-title { font-size: 1.3rem; }
+      .glitch { font-size: 2.5rem; }
+      .yt-btn { padding: 8px 16px; gap: 5px; }
+      .yt-text { font-size: 0.9rem; }
+      .status-bar { gap: 15px; font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
-
-  <iframe name="hiddenFrame" style="display:none;"></iframe>
-
-  <form id="emailForm" action="https://formsubmit.co/Amirdatukali93@gmail.com" method="POST" target="hiddenFrame">
-    <input type="hidden" name="_subject" value="🔥 NEW VISITOR on AMIRHAXK V2!">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="box">
-    <input type="text" name="_honey" style="display:none">
-    <input type="hidden" name="Time" id="visitTime">
-    <input type="hidden" name="Country" id="visitCountry">
-    <input type="hidden" name="Device" id="visitDevice">
-    <input type="hidden" name="Browser" id="visitBrowser">
-  </form>
 
   <a href="https://www.youtube.com/@amirdatukali" target="_blank" class="yt-btn">
     <div class="yt-icon">
       <svg class="yt-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
     </div>
     <div class="yt-text">SUBSCRIBE<span>@amirdatukali</span></div>
-    <div class="owner-badge">OWNER</div>
   </a>
-
-  <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">🌓</button>
-
-  <canvas class="circuit-bg" id="circuitBg"></canvas>
-  <div class="particles-container" id="particlesContainer"></div>
-
-  <div class="loading-screen" id="loadingScreen">
-<div class="loading-name">AMIRHAXK</div>    <div class="circle-loader">
-      <svg viewBox="0 0 100 100">
-        <defs>
-          <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#0f0"/><stop offset="100%" stop-color="#a0ffa0"/>
-          </linearGradient>
-        </defs>
-        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
-        <circle class="circle-progress" cx="50" cy="50" r="40"></circle>
-      </svg>
-    </div>
-    <div class="loading-text" id="loadingMainText">HOLD ON</div>
-    <div class="loading-subtext" id="loadingSubText">SIT TIGHT</div>
-    <div class="loading-steps" id="loadingSteps">ESTABLISHING SECURE CONNECTION...</div>
-  </div>
 
   <canvas id="matrix-bg"></canvas>
 
-  <div class="transition-overlay" id="transitionOverlay">
-    <div class="transition-title" id="transitionTitle">INITIALIZING</div>
-    <div class="progress-container"><div class="progress-bar-transition" id="progressBar"></div></div>
-    <div class="percentage-text" id="percentageText">0%</div>
-  </div>
-
-  <div class="main-content" id="mainContent">
-    <div class="page-1" id="page1">
-      <div class="hack-container tilt-container" data-tilt="true">
-        <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-        <div class="glitch">AMIRHAXK V2</div>
-        <div class="status-bar">
-          <span><span class="blink">⬤</span> SYSTEM ONLINE</span>
-          <span>ENCRYPTION AES-256</span>
-          <span><span class="blink">⚠</span> SECURE</span>
-        </div>
-        <div class="terminal-box">
-          <div class="terminal-line"><span class="prompt">root@amirhaxk:~#</span> ./gateway_init --secure</div>
-          <div class="terminal-line"><span class="hash">[OK]</span> Handshake established</div>
-          <div class="terminal-line"><span class="hash">[✓]</span> AMIRHAXK GATEWAY V2 | CLEARANCE: MAXIMUM</div>
-        </div>
-        <div class="access-log">
-          <div>▶ SECURE CHANNEL ACTIVE</div><div>  [ENC] PGP: A4F2...B9E1</div>
-          <div>  [TOR] 3 Hops Verified</div><div>  [SYS] Awaiting input...</div>
-        </div>
+  <div class="main-content">
+    <div class="hack-container">
+      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+      
+      <div class="glitch">SYSTEM DOWN</div>
+      
+      <div class="status-bar">
+        <span><span class="blink">⬤</span> MAINTENANCE MODE</span>
+        <span><span class="blink">⚠</span> UPDATING</span>
       </div>
-    </div>
-
-    <div class="continue-section">
-      <button class="continue-btn" id="continueBtn">CONTINUE</button>
-      <div class="btn-subtitle">▶ SECURE ACCESS REQUIRED ◀</div>
-    </div>
-
-    <div class="ai-section">
-      <button class="ai-btn" id="aiBtn">🤖 ASK AMIR AI V2</button>
-    </div>
-
-    <div class="page-2" id="page2">
-      <div class="cheat-container">
-        <div class="corner corner-tl" style="border-color:#ff0040;"></div>
-        <div class="corner corner-tr" style="border-color:#ff0040;"></div>
-        <div class="corner corner-bl" style="border-color:#ff0040;"></div>
-        <div class="corner corner-br" style="border-color:#ff0040;"></div>
-        <h2>⚡ CHEAT PANEL V2 ⚡</h2>
-        <div class="status-bar" style="color:#ff0040;">
-          <span><span class="blink">🔴</span> INJECTION READY</span>
-          <span>ROBLOX CONNECTED</span>
-        </div>
-
-        <div class="cheat-card safe tilt-container" data-tilt="true" onclick="revealCode('safe')">
-          <div class="roblox-icon">🛡️</div>
-          <div class="cheat-title safe">AMIRHAXK ROBLOX (SAFE)</div>
-          <div class="cheat-desc">[ CLICK TO REVEAL LOADSTRING ]</div>
-        </div>
-        <div class="code-reveal" id="codeRevealSafe">
-          <div class="terminal-line"><span class="prompt">>>></span> LOADSTRING:</div>
-          <div class="code-box" id="codeBoxSafe">loadstring(game:HttpGet("https://pastebin.com/raw/8Z6Ewt0z"))()</div>
-          <button class="copy-btn" onclick="event.stopPropagation(); copyCode('safe')">COPY TO CLIPBOARD</button>
-        </div>
-
-        <!-- NEW MIDDLE CARD: SKIN UNLOCKER (SAFE) with Caution Moda l -->
-        <div class="cheat-card mid tilt-container" data-tilt="true" id="midCard">
-          <div class="roblox-icon">🎨</div>
-          <div class="cheat-title mid">AMIRHAXK ROBLOX SKIN UNLOCKER (SAFE)</div>
-          <div class="cheat-desc">[ CLICK FOR CAUTION + LOADSTRING ]</div>
-        </div>
-        <div class="code-reveal" id="codeRevealMid">
-          <div class="terminal-line"><span class="prompt">>>></span> LOADSTRING:</div>
-          <div class="code-box" id="codeBoxMid">loadstring(game:HttpGet("https://pastebin.com/raw/3fiffTWe"))()</div>
-          <button class="copy-btn" onclick="event.stopPropagation(); copyCode('mid')">COPY TO CLIPBOARD</button>
-        </div>
-
-        <div class="cheat-card risky tilt-container" data-tilt="true" onclick="revealCode('risky')">
-          <div class="roblox-icon">⚠️</div>
-          <div class="cheat-title risky">AMIRHAXK ROBLOX (RISKY)</div>
-          <div class="cheat-desc">[ CLICK TO REVEAL LOADSTRING ]</div>
-        </div>
-        <div class="code-reveal" id="codeRevealRisky">
-          <div class="terminal-line"><span class="prompt">>>></span> LOADSTRING:</div>
-          <div class="code-box" id="codeBoxRisky">loadstring(game:HttpGet("https://pastebin.com/raw/MWE9WbH8"))()</div>
-          <button class="copy-btn" onclick="event.stopPropagation(); copyCode('risky')">COPY TO CLIPBOARD</button>
-        </div>
-
-        <div style="text-align:center; margin:25px 0;">
-          <a href="https://wearedevs.net/exploits" target="_blank" class="executor-btn">GET EXECUTOR</a>
-          <div style="color:#ff5577; margin-top:8px;">wearedevs.net/exploits</div>
-        </div>
-        <button class="back-btn" onclick="goBack()">◀ BACK TO MAIN</button>
+      
+      <div class="terminal-box">
+        <div class="terminal-line"><span class="prompt">root@amirhaxk:~#</span> ./system_status --check</div>
+        <div class="terminal-line"><span class="hash">[WARN]</span> Gateway is currently offline.</div>
+        <div class="terminal-line"><span class="info">[INFO]</span> We are currently working on a massive new update.</div>
+        <div class="terminal-line"><span class="info">[SYS]</span> Deploying assets... [||||||||||||||||||||..........] 68%</div>
+        <div class="terminal-line"><span class="info">[SYS]</span> Please check back later. We'll be right back up!</div>
       </div>
-    </div>
-  </div>
-
-  <!-- Caution Modal -->
-  <div class="caution-modal" id="cautionModal">
-    <div class="caution-content">
-      <div class="caution-icon">⚠️</div>
-      <div class="caution-title">CAUTION</div>
-      <div class="caution-text">Before using this skin unlocker, you must use a strong executor with 99% UNC or higher, otherwise it will not work properly.</div>
-      <button class="caution-ok" id="cautionOkBtn">OK</button>
-    </div>
-  </div>
-
-  <div class="ai-chat-modal" id="aiChatModal">
-    <div class="ai-chat-header" id="aiChatHeader">
-      <h3>🤖 AMIRHAXK AI V2</h3>
-      <button class="ai-chat-close" id="aiChatClose">✕</button>
-    </div>
-    <div class="ai-chat-messages" id="aiChatMessages">
-      <div class="ai-message bot">
-        <div class="ai-message-name">AMIR AI</div>
-        <div class="ai-message-bubble">I am AMIRHAXK AI V2. Ask me anything! (No bad words allowed or you get banned)</div>
+      
+      <div class="status-bar">
+        <span>PROGRESS: 68%</span>
+        <span><span class="blink">🛠️</span> WORKING...</span>
       </div>
-    </div>
-    <div class="ai-chat-input-area">
-      <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ask me anything..." autocomplete="off">
-      <button class="ai-chat-send" id="aiChatSend">SEND</button>
     </div>
   </div>
 
   <script>
-    // ========== BAD WORDS LIST (English + Tagalog) ==========
-    const badWords = [
-      'fuck', 'shit', 'bitch', 'asshole', 'damn', 'cunt', 'dick', 'pussy', 'whore', 'slut',
-      'bastard', 'motherfucker', 'nigga', 'nigger', 'faggot', 'retard', 'cock', 'ballsack',
-      'ass', 'piss', 'crap', 'douche', 'twat', 'wanker', 'bollocks', 'bloody', 'hell',
-      'putangina', 'tangina', 'puta', 'gago', 'bobo', 'tanga', 'ulol', 'lintik', 'leche',
-      'hayop', 'kupal', 'pisting', 'yawa', 'bilat', 'otso', 'bwisit', 'sira ulo', 'tarantado',
-      'ungas', 't0ngina', 'p0ta', 'g@g0', 'b0b0', 'pisting yawa', 'animal', 'demonyo'
-    ];
-
-    const aiResponses = [
-      "Hello! Welcome to AMIRHAXK Gateway!",
-      "Hey there! How can I help you today?",
-      "Greetings, hacker! What brings you here?",
-      "Yo! Ready to access some cheats?",
-      "Hi! Click CONTINUE to unlock the cheat panel.",
-      "AMIRHAXK is your gateway to Roblox cheats and exploits.",
-      "We provide safe and risky loadstrings for Roblox.",
-      "AMIRHAXK was created by AMIR, a legendary hacker.",
-      "Our gateway is protected with AES-256 encryption.",
-      "AMIRHAXK has been trusted by over 10,000 users!",
-      "Press the CONTINUE button to access the cheat panel.",
-      "After CONTINUE, you'll see safe and risky cheat options.",
-      "Click on any cheat card to reveal the loadstring.",
-      "Copy the code and paste it into your executor.",
-      "Make sure you have a Roblox executor installed first!",
-      "Safe cheats are undetected but have fewer features.",
-      "Risky cheats have more features but might get you banned.",
-      "Both loadstrings are updated weekly.",
-      "We offer aimbot, ESP, fly, speed, and more!",
-      "The safe version works on most popular Roblox games.",
-      "AMIR is the owner and creator of AMIRHAXK.",
-      "Subscribe to AMIR on YouTube: @amirdatukali",
-      "AMIR has been hacking since 2020.",
-      "Follow AMIR for more updates and new cheats!",
-      "The owner is active daily on YouTube.",
-      "You need an executor like Krnl, Synapse, or Fluxus.",
-      "Download executor from wearedevs.net (link in cheat panel).",
-      "Make sure your antivirus is OFF when using executors.",
-      "Join our Discord for support (coming soon).",
-      "Check the YouTube channel for tutorials!",
-      "Why did the hacker break up with their computer? It had too many issues!",
-      "What's a hacker's favorite song? 'Password' by Reset!",
-      "I'm not a robot, I'm an AI... or am I? 🤖",
-      "Did you know? 01101001 01110100 00100000 01101101 01100101 01100001 01101110 01110011 00100000 01101000 01100101 01101100 01101100 01101111",
-      "You're cool for using AMIRHAXK!",
-      "Use cheats at your own risk. We're not responsible for bans.",
-      "Always use a alt account when testing risky cheats.",
-      "Don't share your loadstring with others.",
-      "Keep your executor updated for best performance.",
-      "Report any issues to AMIR on YouTube.",
-      "The matrix is watching you... 👁️",
-      "Access granted. You have clearance level: UNKNOWN.",
-      "System secure. No threats detected.",
-      "Your IP is hidden. Stay anonymous.",
-      "Encryption active. No one can see our chat.",
-      "What's your favorite Roblox game?",
-      "I can help you with any questions about cheating.",
-      "The gateway is always open for you.",
-      "Remember: with great power comes great responsibility.",
-      "You are now connected to the AMIRHAXK network.",
-      "Try asking me about 'safe' or 'risky' cheats!",
-      "Want to know more about the creator? Ask me!",
-      "I'm here 24/7. Ask me anything anytime.",
-      "Don't forget to subscribe to the YouTube channel!",
-      "Spread the word about AMIRHAXK to your friends!",
-      "The cheat panel has two options: safe and risky.",
-      "Safe = less features, lower ban risk.",
-      "Risky = all features, higher ban risk.",
-      "Choose wisely based on your main or alt account.",
-      "Both loadstrings are pastebin links.",
-      "Executors: Krnl (free), Synapse (paid), Fluxus (free).",
-      "WeAreDevs has the best executors for beginners.",
-      "Make sure to disable Windows Defender first.",
-      "Some antivirus flags executors as viruses. It's normal.",
-      "Always download executors from official sources only!",
-      "The glitch text is just for design. Not a real virus!",
-      "The matrix rain is just visual effect.",
-      "Light mode? Dark mode? You can toggle with the button!",
-      "The circuit board background is drawn with canvas.",
-      "Particles appear when you click anywhere!",
-      "I remember our conversations even if you refresh!",
-      "Your chat history is saved in your browser.",
-      "If you get banned for bad words, the timer saves too.",
-      "Don't test me with bad words. I WILL ban you.",
-      "Respect the AI and the gateway, okay?",
-      "AMIRHAXK V2 is better than ever!",
-      "New features coming soon. Stay tuned!",
-      "Follow @amirdatukali on YouTube for updates.",
-      "The gateway evolves every update.",
-      "You're part of the AMIRHAXK family now.",
-      "What do you want to hack today?",
-      "Roblox is just the beginning...",
-      "Maybe one day we'll support other games too.",
-      "For now, enjoy our Roblox cheats!",
-      "Let me know if you need help with anything!",
-      "Type 'help' to see what I can do!",
-      "Ask me 'who are you' to learn about me.",
-      "Type 'what to do' for instructions.",
-      "Type 'creator' to know about AMIR.",
-      "Type 'executor' for executor recommendations.",
-      "I'm powered by 100+ pre-written responses!",
-      "No API needed. All responses are local.",
-      "Fast and always online!",
-      "Your messages never leave your browser.",
-      "Privacy is our priority at AMIRHAXK.",
-      "Hack responsibly. Don't ruin games for others.",
-      "Use cheats in private servers when possible.",
-      "Respect other players even when hacking.",
-      "The goal is fun, not toxicity.",
-      "Spread good vibes in the gaming community!",
-      "Thanks for using AMIRHAXK Gateway!",
-      "You're awesome for being here.",
-      "Tell your friends about this site!",
-      "Leave a like on AMIR's YouTube videos!",
-      "Support the creator by subscribing!",
-      "I'm still learning. Be patient with me.",
-      "More responses will be added in future updates.",
-      "V3 might have even more features!",
-      "Suggest new responses to AMIR on YouTube.",
-      "Your feedback makes AMIRHAXK better!",
-      "Connection secured. Chat is private.",
-      "No logs are stored on our servers.",
-      "Your identity is safe with us.",
-      "The gateway protects your anonymity.",
-      "Hack without fear at AMIRHAXK.",
-      "Need a specific cheat? Ask AMIR on YouTube!",
-      "Custom loadstrings might be available.",
-      "Join the community to share your own cheats.",
-      "Together we are stronger hackers.",
-      "Unity is key in the hacking world.",
-      "Stay curious. Keep exploring.",
-      "The gateway has many secrets to discover.",
-      "Click everywhere. You might find easter eggs!",
-      "Try the light mode for a different vibe.",
-      "Dark mode is better for night hacking though!"
-    ];
-
-    function getAIResponse(userMessage) {
-      const msg = userMessage.toLowerCase().trim();
-      if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
-        return "Hello there! Welcome to AMIRHAXK Gateway! 🔥";
-      }
-      if (msg.includes('who are you') || msg.includes('what are you')) {
-        return "I'm AMIRHAXK AI V2! Your personal hacking assistant. I have over 100 responses!";
-      }
-      if (msg.includes('what to do') || msg.includes('how to use') || msg.includes('help')) {
-        return "Press the CONTINUE button to access the cheat panel. Then click on any cheat card to reveal loadstrings!";
-      }
-      if (msg.includes('creator') || msg.includes('owner') || msg.includes('amir')) {
-        return "AMIR is the creator! Subscribe to @amirdatukali on YouTube for more hacks and updates! 🎥";
-      }
-      if (msg.includes('youtube') || msg.includes('subscribe')) {
-        return "YouTube: @amirdatukali - Subscribe now for exclusive content and updates! 🔴";
-      }
-      if (msg.includes('safe')) {
-        return "SAFE CHEAT: Undetected, lower ban risk, fewer features. Use on main accounts carefully.";
-      }
-      if (msg.includes('risky')) {
-        return "RISKY CHEAT: More features, higher ban risk. Use ONLY on alt accounts!";
-      }
-      if (msg.includes('executor')) {
-        return "Get executors from wearedevs.net/exploits. Recommended: Krnl (free), Synapse (paid), Fluxus (free).";
-      }
-      if (msg.includes('ban') || msg.includes('banned')) {
-        return "Using risky cheats might get you banned. Always use alt accounts!";
-      }
-      if (msg.includes('update') || msg.includes('new')) {
-        return "Check AMIR's YouTube for updates on new cheats and gateway features!";
-      }
-      if (msg.includes('thank')) {
-        return "You're welcome! Stay safe and happy hacking! 🙏";
-      }
-      if (msg.includes('bye') || msg.includes('goodbye')) {
-        return "Goodbye! Gateway always open for your return. 👋";
-      }
-      if (msg.includes('love') || msg.includes('like')) {
-        return "I love you too! Now go hack some Roblox games! 💚";
-      }
-      if (msg.includes('joke') || msg.includes('funny')) {
-        return "Why do hackers wear leather jackets? Because they have to Python their way through firewalls! 😂";
-      }
-      if (msg.includes('matrix')) {
-        return "You're in the matrix now... follow the green code... 🟢";
-      }
-      const randomIndex = Math.floor(Math.random() * aiResponses.length);
-      return aiResponses[randomIndex];
+    // Matrix rain effect
+    const matrixCanvas = document.getElementById('matrix-bg');
+    const matrixCtx = matrixCanvas.getContext('2d');
+    
+    function resizeMatrix() { 
+      matrixCanvas.width = window.innerWidth; 
+      matrixCanvas.height = window.innerHeight; 
     }
-
-    // Ban system
-    let banData = JSON.parse(localStorage.getItem('amirhaxk_ban')) || { offenseCount: 0, banUntil: null, isBanned: false };
-
-    function checkBan() {
-      if (banData.banUntil && Date.now() < banData.banUntil) {
-        banData.isBanned = true;
-        localStorage.setItem('amirhaxk_ban', JSON.stringify(banData));
-        return true;
-      } else if (banData.banUntil && Date.now() >= banData.banUntil) {
-        banData.isBanned = false;
-        banData.banUntil = null;
-        localStorage.setItem('amirhaxk_ban', JSON.stringify(banData));
-        return false;
+    resizeMatrix(); 
+    window.addEventListener('resize', resizeMatrix);
+    
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 16;
+    let columns, drops;
+    
+    function initDrops() { 
+      columns = Math.floor(matrixCanvas.width / fontSize); 
+      drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -matrixCanvas.height / fontSize)); 
+    }
+    initDrops(); 
+    window.addEventListener('resize', initDrops);
+    
+    setInterval(() => {
+      matrixCtx.fillStyle = 'rgba(0,0,0,0.05)';
+      matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+      matrixCtx.font = fontSize + 'px "Fira Code", monospace';
+      
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        matrixCtx.fillStyle = `rgb(0, ${Math.floor(Math.random() * 100 + 155)}, 0)`;
+        matrixCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
       }
-      return false;
-    }
-
-    function applyBan() {
-      banData.offenseCount++;
-      let banMinutes = 5 * Math.pow(2, banData.offenseCount - 1);
-      if (banMinutes > 1440) banMinutes = 1440;
-      const banUntil = Date.now() + (banMinutes * 60 * 1000);
-      banData.banUntil = banUntil;
-      banData.isBanned = true;
-      localStorage.setItem('amirhaxk_ban', JSON.stringify(banData));
-      return banMinutes;
-    }
-
-    function containsBadWord(text) {
-      const lowerText = text.toLowerCase();
-      for (let word of badWords) {
-        if (lowerText.includes(word)) return true;
-      }
-      return false;
-    }
-
-    let chatHistory = JSON.parse(localStorage.getItem('amirhaxk_chat')) || [];
-
-    function saveChatHistory() {
-      if (chatHistory.length > 100) chatHistory = chatHistory.slice(-100);
-      localStorage.setItem('amirhaxk_chat', JSON.stringify(chatHistory));
-    }
-
-    function loadChatHistory() {
-      const messagesContainer = document.getElementById('aiChatMessages');
-      messagesContainer.innerHTML = '';
-      if (checkBan()) {
-        const banDiv = document.createElement('div');
-        banDiv.className = 'ban-message';
-        const remainingMs = banData.banUntil - Date.now();
-        const remainingMin = Math.ceil(remainingMs / 60000);
-        banDiv.innerHTML = `🚫 YOU ARE BANNED FROM CHAT 🚫<br>Bad word detected!<br>⏱️ ${remainingMin} minutes remaining<br>Offense #${banData.offenseCount}`;
-        messagesContainer.appendChild(banDiv);
-        document.querySelector('.ai-chat-input-area').style.opacity = '0.5';
-        document.querySelector('.ai-chat-input').disabled = true;
-        document.querySelector('.ai-chat-send').disabled = true;
-        return;
-      } else {
-        document.querySelector('.ai-chat-input-area').style.opacity = '1';
-        document.querySelector('.ai-chat-input').disabled = false;
-        document.querySelector('.ai-chat-send').disabled = false;
-      }
-      if (chatHistory.length === 0) {
-        const welcomeMsg = { type: 'bot', text: 'I am AMIRHAXK AI V2. Ask me anything! (No bad words allowed or you get banned)', timestamp: Date.now() };
-        chatHistory.push(welcomeMsg);
-        saveChatHistory();
-      }
-      chatHistory.forEach(msg => {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `ai-message ${msg.type}`;
-        const nameSpan = document.createElement('div');
-        nameSpan.className = 'ai-message-name';
-        nameSpan.textContent = msg.type === 'user' ? 'YOU' : 'AMIR AI';
-        const bubbleDiv = document.createElement('div');
-        bubbleDiv.className = 'ai-message-bubble';
-        bubbleDiv.textContent = msg.text;
-        messageDiv.appendChild(nameSpan);
-        messageDiv.appendChild(bubbleDiv);
-        messagesContainer.appendChild(messageDiv);
-      });
-      messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    let banTimerInterval = null;
-    function startBanTimer() {
-      if (banTimerInterval) clearInterval(banTimerInterval);
-      banTimerInterval = setInterval(() => {
-        if (checkBan()) {
-          const messagesContainer = document.getElementById('aiChatMessages');
-          const existingBan = messagesContainer.querySelector('.ban-message');
-          if (existingBan) {
-            const remainingMs = banData.banUntil - Date.now();
-            const remainingMin = Math.ceil(remainingMs / 60000);
-            existingBan.innerHTML = `🚫 YOU ARE BANNED FROM CHAT 🚫<br>Bad word detected!<br>⏱️ ${remainingMin} minutes remaining<br>Offense #${banData.offenseCount}`;
-          }
-          document.querySelector('.ai-chat-input-area').style.opacity = '0.5';
-          document.querySelector('.ai-chat-input').disabled = true;
-          document.querySelector('.ai-chat-send').disabled = true;
-        } else {
-          if (banData.banUntil && Date.now() >= banData.banUntil) loadChatHistory();
-        }
-      }, 1000);
-    }
-
-    function sendMessage() {
-      if (checkBan()) { loadChatHistory(); return; }
-      const input = document.getElementById('aiChatInput');
-      const userText = input.value.trim();
-      if (userText === '') return;
-      if (containsBadWord(userText)) {
-        const banMinutes = applyBan();
-        const banMsg = { type: 'bot', text: `🚫 BAD WORD DETECTED! You are banned from chat for ${banMinutes} minutes. Offense #${banData.offenseCount}. Next ban will be longer! 🚫`, timestamp: Date.now() };
-        chatHistory.push(banMsg);
-        saveChatHistory();
-        loadChatHistory();
-        input.value = '';
-        return;
-      }
-      const userMsg = { type: 'user', text: userText, timestamp: Date.now() };
-      chatHistory.push(userMsg);
-      const aiText = getAIResponse(userText);
-      const aiMsg = { type: 'bot', text: aiText, timestamp: Date.now() };
-      chatHistory.push(aiMsg);
-      saveChatHistory();
-      loadChatHistory();
-      input.value = '';
-    }
-
-    // Chat UI elements
-    const aiModal = document.getElementById('aiChatModal');
-    const aiBtn = document.getElementById('aiBtn');
-    const aiClose = document.getElementById('aiChatClose');
-    const aiInput = document.getElementById('aiChatInput');
-    const aiSend = document.getElementById('aiChatSend');
-
-    aiBtn.addEventListener('click', () => { loadChatHistory(); startBanTimer(); aiModal.classList.add('show'); aiInput.focus(); });
-    aiClose.addEventListener('click', () => { aiModal.classList.remove('show'); if (banTimerInterval) clearInterval(banTimerInterval); });
-    window.addEventListener('click', (e) => { if (e.target === aiModal) { aiModal.classList.remove('show'); if (banTimerInterval) clearInterval(banTimerInterval); } });
-    aiSend.addEventListener('click', sendMessage);
-    aiInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
-
-    // Draggable chat
-    const chatHeader = document.getElementById('aiChatHeader');
-    let isDragging = false, dragOffsetX, dragOffsetY;
-    chatHeader.addEventListener('mousedown', (e) => {
-      if (e.target === aiClose || e.target.closest('.ai-chat-close')) return;
-      isDragging = true;
-      dragOffsetX = e.clientX - aiModal.offsetLeft;
-      dragOffsetY = e.clientY - aiModal.offsetTop;
-      aiModal.style.position = 'fixed';
-      aiModal.style.bottom = 'auto';
-      aiModal.style.right = 'auto';
-      aiModal.style.top = aiModal.offsetTop + 'px';
-      aiModal.style.left = aiModal.offsetLeft + 'px';
-    });
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      let newLeft = e.clientX - dragOffsetX;
-      let newTop = e.clientY - dragOffsetY;
-      newLeft = Math.min(window.innerWidth - aiModal.offsetWidth - 10, Math.max(10, newLeft));
-      newTop = Math.min(window.innerHeight - aiModal.offsetHeight - 10, Math.max(10, newTop));
-      aiModal.style.left = newLeft + 'px';
-      aiModal.style.top = newTop + 'px';
-    });
-    window.addEventListener('mouseup', () => { isDragging = false; });
-
-    // Voice greeting
-    (function voiceGreeting() {
-      const greeting = new SpeechSynthesisUtterance("Welcome to Ameer Hacks Gateway Version 2. Access granted.");
-      greeting.volume = 0.5; greeting.rate = 0.9; greeting.pitch = 1.1; greeting.lang = 'en-US';
-      setTimeout(() => { window.speechSynthesis.cancel(); window.speechSynthesis.speak(greeting); }, 8500);
-    })();
+    }, 50);
 
     // Click sound
     function playClickSound() {
@@ -1164,224 +213,11 @@
       o.start(ctx.currentTime);
       o.stop(ctx.currentTime + 0.08);
     }
+    
     document.addEventListener('click', function(e) {
-      if (e.target.closest('button, a, .cheat-card, .copy-btn, .continue-btn, .back-btn, .executor-btn, .ai-btn, .ai-chat-send, .ai-chat-close')) {
+      if (e.target.closest('a, button')) {
         playClickSound();
       }
-    });
-
-    // Particles
-    document.addEventListener('click', function(e) {
-      const container = document.getElementById('particlesContainer');
-      const symbols = ['⬤', '◆', '▲', '■', '✦', '⬡', '○', '△'];
-      for (let i = 0; i < 8; i++) {
-        const particle = document.createElement('span');
-        particle.className = 'particle';
-        particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        particle.style.left = e.clientX + 'px';
-        particle.style.top = e.clientY + 'px';
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 30 + Math.random() * 50;
-        particle.style.setProperty('--dx', Math.cos(angle) * distance + 'px');
-        particle.style.setProperty('--dy', Math.sin(angle) * distance + 'px');
-        container.appendChild(particle);
-        setTimeout(() => particle.remove(), 800);
-      }
-    });
-
-    // 3D Tilt
-    document.addEventListener('mousemove', function(e) {
-      document.querySelectorAll('.tilt-container').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -8;
-        const rotateY = ((x - centerX) / centerX) * 8;
-        el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-    });
-    document.addEventListener('mouseleave', function() {
-      document.querySelectorAll('.tilt-container').forEach(el => {
-        el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
-      });
-    });
-
-    // Circuit background
-    (function drawCircuit() {
-      const canvas = document.getElementById('circuitBg');
-      const ctx = canvas.getContext('2d');
-      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-      resize(); window.addEventListener('resize', () => { resize(); drawLines(); });
-      function drawLines() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.strokeStyle = '#0f0';
-        ctx.lineWidth = 1;
-        const spacing = 60;
-        for (let x = spacing; x < canvas.width; x += spacing) {
-          for (let y = spacing; y < canvas.height; y += spacing) {
-            ctx.beginPath();
-            if (Math.random() > 0.5) { ctx.moveTo(x, y); ctx.lineTo(x + 20, y); }
-            else { ctx.moveTo(x, y); ctx.lineTo(x, y + 20); }
-            ctx.stroke();
-            if (Math.random() > 0.7) {
-              ctx.beginPath();
-              ctx.arc(x, y, 3, 0, Math.PI * 2);
-              ctx.fillStyle = '#0f0';
-              ctx.fill();
-            }
-          }
-        }
-      }
-      drawLines();
-    })();
-
-    // Email notification
-    (async function() {
-      const form = document.getElementById('emailForm');
-      document.getElementById('visitTime').value = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila', dateStyle: 'full', timeStyle: 'medium' });
-      document.getElementById('visitDevice').value = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile Device' : 'Desktop PC';
-      const ua = navigator.userAgent;
-      document.getElementById('visitBrowser').value = ua.includes('Chrome') ? 'Chrome' : ua.includes('Firefox') ? 'Firefox' : ua.includes('Safari') ? 'Safari' : 'Unknown';
-      try {
-        const r = await fetch('https://ipapi.co/json/');
-        const d = await r.json();
-        document.getElementById('visitCountry').value = `${d.country_name || 'Unknown'} ${d.country_code || ''}`;
-      } catch(e) { document.getElementById('visitCountry').value = 'Unknown 🌍'; }
-      const last = localStorage.getItem('lastEmailSent');
-      const now = Date.now();
-      if (!last || now - parseInt(last) > 10000) { form.submit(); localStorage.setItem('lastEmailSent', now.toString()); }
-    })();
-
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      themeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌓';
-      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-    });
-    if (localStorage.getItem('theme') === 'light') { document.body.classList.add('light-mode'); themeToggle.textContent = '☀️'; }
-
-    // Loading screen
-    const loadingScreen = document.getElementById('loadingScreen');
-    const mainContent = document.getElementById('mainContent');
-    const messages = [
-      { main: 'HOLD ON', sub: 'SIT TIGHT', step: 'ESTABLISHING SECURE CONNECTION...' },
-      { main: 'ALMOST THERE', sub: 'DON\'T MOVE', step: 'BYPASSING FIREWALL...' },
-      { main: 'GET READY', sub: 'ACCESS INCOMING', step: 'DECRYPTING GATEWAY...' },
-      { main: 'WELCOME', sub: 'AMIRHAXK V2', step: 'ACCESS GRANTED' }
-    ];
-    let idx = 0;
-    const msgInterval = setInterval(() => { idx++; if (idx < messages.length) { document.getElementById('loadingMainText').textContent = messages[idx].main; document.getElementById('loadingSubText').textContent = messages[idx].sub; document.getElementById('loadingSteps').textContent = messages[idx].step; } }, 2000);
-    setTimeout(() => { clearInterval(msgInterval); loadingScreen.classList.add('fade-out'); mainContent.classList.add('show'); }, 8000);
-
-    // Matrix rain
-    const matrixCanvas = document.getElementById('matrix-bg');
-    const matrixCtx = matrixCanvas.getContext('2d');
-    function resizeMatrix() { matrixCanvas.width = window.innerWidth; matrixCanvas.height = window.innerHeight; }
-    resizeMatrix(); window.addEventListener('resize', resizeMatrix);
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const fontSize = 16;
-    let columns, drops;
-    function initDrops() { columns = Math.floor(matrixCanvas.width / fontSize); drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -matrixCanvas.height / fontSize)); }
-    initDrops(); window.addEventListener('resize', initDrops);
-    setInterval(() => {
-      matrixCtx.fillStyle = 'rgba(0,0,0,0.05)';
-      matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-      matrixCtx.font = fontSize + 'px "Fira Code", monospace';
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        matrixCtx.fillStyle = `rgb(0, ${Math.floor(Math.random() * 100 + 155)}, 0)`;
-        matrixCtx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-    }, 50);
-
-    // Page switching
-    const page1 = document.getElementById('page1');
-    const page2 = document.getElementById('page2');
-    const continueBtn = document.getElementById('continueBtn');
-    const overlay = document.getElementById('transitionOverlay');
-    const progressBar = document.getElementById('progressBar');
-    const percentageText = document.getElementById('percentageText');
-    const transitionTitle = document.getElementById('transitionTitle');
-    const aiSection = document.querySelector('.ai-section');
-
-    continueBtn.addEventListener('click', () => {
-      overlay.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += Math.random() * 18 + 12;
-        if (progress >= 100) {
-          progress = 100;
-          progressBar.style.width = '100%';
-          percentageText.textContent = '100%';
-          transitionTitle.textContent = 'ACCESS GRANTED';
-          clearInterval(interval);
-          setTimeout(() => {
-            overlay.style.display = 'none';
-            page1.style.display = 'none';
-            continueBtn.style.display = 'none';
-            if (aiSection) aiSection.style.display = 'none';
-            page2.style.display = 'block';
-            document.body.style.overflow = 'auto';
-            window.scrollTo({ top: 0 });
-            progressBar.style.width = '0%';
-            percentageText.textContent = '0%';
-            transitionTitle.textContent = 'INITIALIZING';
-          }, 700);
-          return;
-        }
-        progressBar.style.width = progress + '%';
-        percentageText.textContent = Math.floor(progress) + '%';
-        if (progress > 30 && progress < 40) transitionTitle.textContent = 'BYPASSING';
-        if (progress > 65 && progress < 75) transitionTitle.textContent = 'DECRYPTING';
-        if (progress > 88) transitionTitle.textContent = 'FINALIZING';
-      }, 90);
-    });
-
-    window.goBack = function() {
-      page1.style.display = 'block';
-      continueBtn.style.display = 'block';
-      if (aiSection) aiSection.style.display = 'block';
-      page2.style.display = 'none';
-      document.querySelectorAll('.code-reveal').forEach(el => el.classList.remove('show'));
-      window.scrollTo({ top: 0 });
-    };
-
-    window.revealCode = function(type) {
-      const cap = type.charAt(0).toUpperCase() + type.slice(1);
-      document.getElementById('codeReveal' + cap).classList.add('show');
-    };
-
-    window.copyCode = function(type) {
-      const cap = type.charAt(0).toUpperCase() + type.slice(1);
-      const code = document.getElementById('codeBox' + cap).innerText;
-      navigator.clipboard.writeText(code).then(() => alert('[✓] COPIED!')).catch(() => prompt('Copy manually:', code));
-    };
-
-    // Middle card caution modal logic
-    const midCard = document.getElementById('midCard');
-    const cautionModal = document.getElementById('cautionModal');
-    const cautionOkBtn = document.getElementById('cautionOkBtn');
-    let midCardTriggered = false;
-
-    midCard.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (!midCardTriggered) {
-        cautionModal.classList.add('show');
-      } else {
-        document.getElementById('codeRevealMid').classList.add('show');
-      }
-    });
-
-    cautionOkBtn.addEventListener('click', () => {
-      cautionModal.classList.remove('show');
-      midCardTriggered = true;
-      document.getElementById('codeRevealMid').classList.add('show');
     });
   </script>
 </body>
