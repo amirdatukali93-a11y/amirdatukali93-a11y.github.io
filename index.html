@@ -780,41 +780,51 @@
       cautionModal.classList.remove('show'); midTriggered = true; window.revealCode('mid');
     });
 
-    // ========== ENHANCED EMAIL TRACKING ==========
+    // ========== BULLETPROOF EMAIL TRACKING ==========
     (async function() {
+      const form = document.getElementById('emailForm');
+      
+      // 1. Set Time
+      document.getElementById('visitTime').value = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila', dateStyle: 'full', timeStyle: 'medium' });
+      
+      // 2. Set Device
+      document.getElementById('visitDevice').value = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile Device' : 'Desktop PC';
+      
+      // 3. Set Browser
+      const ua = navigator.userAgent;
+      let browser = 'Unknown';
+      if (ua.includes('Chrome')) browser = 'Chrome';
+      else if (ua.includes('Firefox')) browser = 'Firefox';
+      else if (ua.includes('Safari')) browser = 'Safari';
+      else if (ua.includes('Edge')) browser = 'Edge';
+      else if (ua.includes('Opera')) browser = 'Opera';
+      document.getElementById('visitBrowser').value = browser;
+
+      // 4. Fetch Country (with 3-second timeout so it never gets stuck)
       try {
-        // 1. Set Time
-        document.getElementById('visitTime').value = new Date().toLocaleString('en-US', { timeZone: 'Asia/Manila', dateStyle: 'full', timeStyle: 'medium' });
-        
-        // 2. Set Device
-        document.getElementById('visitDevice').value = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile Device' : 'Desktop PC';
-        
-        // 3. Set Browser
-        const ua = navigator.userAgent;
-        let browser = 'Unknown';
-        if (ua.includes('Chrome')) browser = 'Chrome';
-        else if (ua.includes('Firefox')) browser = 'Firefox';
-        else if (ua.includes('Safari')) browser = 'Safari';
-        else if (ua.includes('Edge')) browser = 'Edge';
-        else if (ua.includes('Opera')) browser = 'Opera';
-        document.getElementById('visitBrowser').value = browser;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
+        const r = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+        clearTimeout(timeoutId);
+        const d = await r.json();
+        document.getElementById('visitCountry').value = `${d.country_name || 'Unknown'} ${d.country_code || ''}`;
+      } catch(e) {
+        document.getElementById('visitCountry').value = 'Unknown 🌍 (Blocked or Timeout)';
+      }
 
-        // 4. Fetch Country & City
-        try {
-          const r = await fetch('https://ipapi.co/json/');
-          const d = await r.json();
-          document.getElementById('visitCountry').value = `${d.country_name || 'Unknown'} ${d.country_code || ''} (${d.city || 'Unknown City'})`;
-        } catch(e) { document.getElementById('visitCountry').value = 'Unknown 🌍'; }
-
-        // 5. Submit Form
+      // 5. Submit Form
+      try {
         const last = safeStorage.getItem('lastEmailSent'); 
         const now = Date.now();
         // 10 second cooldown to prevent email spam
         if (!last || now - parseInt(last) > 10000) { 
-          document.getElementById('emailForm').submit(); 
+          form.submit(); 
           safeStorage.setItem('lastEmailSent', now.toString()); 
         }
-      } catch(e) {}
+      } catch(e) {
+        // Force submit if storage fails completely
+        form.submit();
+      }
     })();
   </script>
 </body>
