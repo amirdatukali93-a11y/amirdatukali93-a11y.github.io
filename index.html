@@ -167,6 +167,9 @@
     .scan-line { height: 2px; background: var(--neon-cyan); width: 100%; box-shadow: 0 0 10px var(--neon-cyan); animation: scan 1s linear infinite; display: none; margin: 10px 0; z-index: 3; position: relative; }
     @keyframes scan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
+    /* Page 3 Universal Vault Grid Layout */
+    .uni-cheat-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: start; max-width: 1000px; margin: 0 auto; }
+
     /* AI Chat Modal */
     .ai-modal { position: fixed; bottom: 40px; right: 40px; width: 400px; height: 550px; background: rgba(5, 5, 10, 0.9); backdrop-filter: blur(30px); border: 1px solid var(--neon-cyan); z-index: 1000; display: none; flex-direction: column; overflow: hidden; clip-path: polygon(0 0, calc(100% - 30px) 0, 1000 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px)); box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0, 240, 255, 0.1); }
     .ai-modal.show { display: flex; animation: modalUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -215,7 +218,7 @@
 
     /* Responsive */
     @media (max-width: 900px) {
-      .bento-grid, .cheat-grid { grid-template-columns: 1fr; }
+      .bento-grid, .cheat-grid, .uni-cheat-grid { grid-template-columns: 1fr; }
       .card-1 { grid-column: span 1; }
       .hero-title { font-size: 3rem; }
       .main-app { padding: 20px; }
@@ -383,7 +386,23 @@
         </div>
       </div>
 
-      <div class="cheat-grid" style="grid-template-columns: 1fr; max-width: 500px; margin: 0 auto;">
+      <div class="uni-cheat-grid">
+        <!-- AMIRHAXK YIELD (Bigger Admin Card) -->
+        <div class="cheat-card risky tilt-card hoverable" onclick="revealCode('yield')">
+          <div class="card-id">#ID:55YL</div>
+          <div class="cheat-icon" style="width: 80px; height: 80px; font-size: 3rem;">👑</div>
+          <div class="cheat-name" style="font-size: 1.6rem;">AMIRHAXK YIELD</div>
+          <div class="cheat-status"><div class="status-dot"></div> ADMIN COMMAND SCRIPT</div>
+          <div class="cheat-bar"><div class="cheat-bar-fill" style="width: 100%;"></div></div>
+          <div class="cheat-bar-text"><span>CONTROL</span><span>100%</span></div>
+          <div class="scan-line" id="scanYield"></div>
+          <div class="code-panel" id="codePanelYield" onclick="event.stopPropagation()">
+            <div class="code-box">loadstring(game:HttpGet("https://pastebin.com/raw/2qjNc6aJ"))()</div>
+            <button class="copy-btn hoverable" onclick="event.stopPropagation(); copyCode('yield')">COPY SCRIPT</button>
+          </div>
+        </div>
+
+        <!-- TSB INJECTOR (Normal Card) -->
         <div class="cheat-card mid tilt-card hoverable" onclick="revealCode('tsb')">
           <div class="card-id">#ID:88TS</div>
           <div class="cheat-icon">⚔️</div>
