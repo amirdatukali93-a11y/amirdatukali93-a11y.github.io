@@ -265,10 +265,10 @@
   <div class="cursor-ring" id="cursorRing"></div>
   <div class="toast-notification" id="toast">✓ SCRIPT COPIED TO CLIPBOARD!</div>
 
-  <div class="cyber-grid"></div>
+  <div class="cyber-grid" id="cyberGrid"></div>
   <canvas id="particle-network"></canvas>
-  <div class="glow-orb orb-1"></div>
-  <div class="glow-orb orb-2"></div>
+  <div class="glow-orb orb-1" id="orb1"></div>
+  <div class="glow-orb orb-2" id="orb2"></div>
 
   <div class="top-nav">
     <a href="https://www.youtube.com/@amirdatukali" target="_blank" class="nav-btn red hoverable">
@@ -749,7 +749,12 @@
     // Initialize Page 1 Video on load
     document.getElementById('videoBgContainer').classList.add('show');
     document.getElementById('bgVideo').play();
-    document.getElementById('particle-network').style.display = 'none'; // Hide particles on Page 1
+    
+    // Clean background specifically for Page 1
+    document.getElementById('particle-network').style.display = 'none'; 
+    document.getElementById('cyberGrid').style.display = 'none';
+    document.getElementById('orb1').style.display = 'none';
+    document.getElementById('orb2').style.display = 'none';
 
     function showPage(id) {
       Object.values(pages).forEach(p => p.classList.remove('active'));
@@ -760,15 +765,26 @@
       const videoBg = document.getElementById('videoBgContainer');
       const video = document.getElementById('bgVideo');
       const particleCanvas = document.getElementById('particle-network');
+      const cyberGrid = document.getElementById('cyberGrid');
+      const orb1 = document.getElementById('orb1');
+      const orb2 = document.getElementById('orb2');
 
       if (id === 1) {
+        // Page 1: Show Video, Hide Grid/Particles/Orbs
         videoBg.classList.add('show');
         video.play();
-        particleCanvas.style.display = 'none'; // Hide particles on Page 1
+        particleCanvas.style.display = 'none'; 
+        cyberGrid.style.display = 'none';
+        orb1.style.display = 'none';
+        orb2.style.display = 'none';
       } else {
+        // Page 2 & 3: Hide Video, Show Grid/Particles/Orbs
         videoBg.classList.remove('show');
         video.pause();
-        particleCanvas.style.display = 'block'; // Show particles on Page 2 & 3
+        particleCanvas.style.display = 'block'; 
+        cyberGrid.style.display = 'block';
+        orb1.style.display = 'block';
+        orb2.style.display = 'block';
       }
     }
 
