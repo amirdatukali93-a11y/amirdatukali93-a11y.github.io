@@ -172,7 +172,8 @@
     .scan-line { height: 2px; background: var(--neon-cyan); width: 100%; box-shadow: 0 0 15px var(--neon-cyan); animation: scan 1s linear infinite; display: none; margin: 10px 0; z-index: 3; position: relative; }
     @keyframes scan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-    .uni-cheat-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; align-items: start; max-width: 1000px; margin: 0 auto; }
+    /* Page 3 Universal Vault Grid Layout */
+    .uni-cheat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start; max-width: 1200px; margin: 0 auto; }
 
     /* AI Chat Modal */
     .ai-modal { position: fixed; bottom: 40px; right: 40px; width: 420px; height: 600px; background: rgba(5, 5, 10, 0.95); backdrop-filter: blur(30px); border: 1px solid var(--neon-cyan); z-index: 1000; display: none; flex-direction: column; overflow: hidden; clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px)); box-shadow: 0 25px 80px rgba(0,0,0,0.8), 0 0 50px rgba(0, 240, 255, 0.15); }
@@ -425,6 +426,21 @@
           <div class="code-panel" id="codePanelTsb" onclick="event.stopPropagation()">
             <div class="code-box">loadstring(game:HttpGet("https://pastebin.com/raw/e3rtmriV"))()</div>
             <button class="copy-btn hoverable" onclick="event.stopPropagation(); copyCode('tsb')">COPY SCRIPT</button>
+          </div>
+        </div>
+
+        <!-- NEW PAINT AND HIDE CARD -->
+        <div class="cheat-card safe tilt-card hoverable" onclick="revealCode('paint')">
+          <div class="card-id">#ID:12PH</div>
+          <div class="cheat-icon">🖌️</div>
+          <div class="cheat-name">PAINT & HIDE</div>
+          <div class="cheat-status"><div class="status-dot"></div> NEW • GAME SPECIFIC</div>
+          <div class="cheat-bar"><div class="cheat-bar-fill" style="width: 95%;"></div></div>
+          <div class="cheat-bar-text"><span>FUN</span><span>95%</span></div>
+          <div class="scan-line" id="scanPaint"></div>
+          <div class="code-panel" id="codePanelPaint" onclick="event.stopPropagation()">
+            <div class="code-box">loadstring(game:HttpGet("https://pastebin.com/raw/mVSkZwB7"))()</div>
+            <button class="copy-btn hoverable" onclick="event.stopPropagation(); copyCode('paint')">COPY SCRIPT</button>
           </div>
         </div>
       </div>
